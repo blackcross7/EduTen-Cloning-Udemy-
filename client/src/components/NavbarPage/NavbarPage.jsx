@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // <-- Add this line
 
 const exploreItems = [
   "Development",
@@ -51,6 +52,7 @@ const secondaryLinks = [
 const NavbarPage = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const navigate = useNavigate(); // <-- Add this line
 
   useEffect(() => {
     if (mobileMenu) {
@@ -225,10 +227,16 @@ const NavbarPage = () => {
               </svg>
             </button>
             {/* Log in & Sign up */}
-            <button className="px-4 py-1 border border-purple-700 text-purple-700 rounded hover:bg-purple-50 font-semibold text-sm">
+            <button
+              className="px-4 py-1 border border-purple-700 text-purple-700 rounded hover:bg-purple-50 font-semibold text-sm"
+              onClick={() => navigate("/login")} // <-- Add this
+            >
               Log in
             </button>
-            <button className="px-4 py-1 bg-purple-700 text-white rounded hover:bg-purple-800 font-semibold text-sm">
+            <button
+              className="px-4 py-1 bg-purple-700 text-white rounded hover:bg-purple-800 font-semibold text-sm"
+              onClick={() => navigate("/signup")} // <-- Add this
+            >
               Sign up
             </button>
             {/* Globe Icon */}
