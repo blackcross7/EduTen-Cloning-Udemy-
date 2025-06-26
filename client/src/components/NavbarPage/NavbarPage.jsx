@@ -163,14 +163,14 @@ const NavbarPage = () => {
                 </div>
               )}
             </div>
-            {/* Udemy Business Dropdown */}
+            {/* EDU Business Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setOpenDropdown("business")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
-                Udemy Business
+                EDU Business
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
@@ -190,14 +190,14 @@ const NavbarPage = () => {
                 </div>
               )}
             </div>
-            {/* Teach on Udemy Dropdown */}
+            {/* EDU Teach Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setOpenDropdown("teach")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
               <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
-                Teach on Udemy
+                EDU Teach
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
@@ -279,7 +279,7 @@ const NavbarPage = () => {
       </nav>
 
       {/* Secondary Navbar */}
-      <nav className="bg-gray-50 border-b border-gray-200 w-full">
+      <nav className="bg-gray-50 border-b border-gray-200 w-full ">
         <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
           <div
             className="
@@ -288,6 +288,7 @@ const NavbarPage = () => {
               overflow-x-auto
               space-x-2
               py-2
+              justify-center
             "
             style={{ scrollbarWidth: "auto" }} // <-- Yeh line scroll bar ko visible rakhegi (Firefox)
           >
