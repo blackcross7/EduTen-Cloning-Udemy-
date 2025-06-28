@@ -85,8 +85,8 @@ const NavbarPage = () => {
           {/* Logo */}
           <div className="flex items-center flex-shrink-0">
             <img
-              src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
-              alt="Udemy Logo"
+              src="/assets/landingPage/logo.svg" // <-- yahan apna logo path de
+              alt="Logo"
               className="h-7 sm:h-8"
             />
             {/* Explore (lg+ only) */}
