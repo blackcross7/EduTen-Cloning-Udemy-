@@ -169,7 +169,9 @@ const NavbarPage = () => {
               onMouseEnter={() => setOpenDropdown("business")}
               onMouseLeave={() => setOpenDropdown(null)}
             >
-              <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
+              <button className="text-sm font-semibold hover:text-purple-700 flex items-center"
+              onClick={() => navigate("/business")}
+              >
                 EDU Business
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M19 9l-7 7-7-7" />
