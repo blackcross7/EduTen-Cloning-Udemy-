@@ -4,17 +4,17 @@ const TourSection = () => {
   return (
     <section className="bg-[#1c1c1c] px-4">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-8">
-        {/* Image Container */}
-        <div className="w-full lg:w-1/2">
-          <div className="bg-[#1c1c1c] overflow-hidden">
-           <img
-            src="/assets/business/tour-udemy-platform.png"
-            alt="Tour Udemy Business"
-            className="w-full h-auto max-h-[320px] object-contain sm:object-cover sm:h-[320px] object-center"
-          />
+       {/* Image Container */}
+<div className="w-full lg:w-1/2">
+  <div className="bg-[#1c1c1c] overflow-hidden">
+   <img
+  src="/assets/business/tour-udemy-platform.png"
+  alt="Tour Udemy Business"
+  className="w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[320px] object-cover object-top"
+/>
+  </div>
+</div>
 
-          </div>
-        </div>
 
         {/* Text Container */}
         <div className="w-full lg:w-1/2 flex items-center">
