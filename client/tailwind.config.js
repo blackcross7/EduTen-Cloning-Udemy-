@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        '3xl': '2000px',
+      },
       animation: {
         scrollLogo: 'scroll 30s linear infinite',
       },

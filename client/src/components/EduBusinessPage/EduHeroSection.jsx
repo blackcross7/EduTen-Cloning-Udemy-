@@ -2,7 +2,7 @@ import React from 'react';
 
 const EduHeroSection = () => {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between px-4 sm:px-8 lg:px-16 xl:px-24 py-16 bg-white">
+    <div className="flex flex-col lg:flex-row items-center justify-around px-4 sm:px-8 lg:px-16 xl:px-24 py-16 bg-white">
       <div className="max-w-3xl">
         <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
           The AI-powered skills development platform that accelerates transformation
