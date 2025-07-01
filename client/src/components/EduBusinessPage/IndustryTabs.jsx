@@ -48,67 +48,69 @@ const IndustryTabs = () => {
 
   return (
     <section className="bg-white py-20 px-4 lg:px-20">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-semibold text-black mb-10">
-          Transforming organizations <br /> in every industry
-        </h2>
+  <div className="max-w-6xl mx-auto">
+    <h2 className="text-4xl md:text-5xl font-semibold text-black mb-10 text-center lg:text-left">
+      Transforming organizations <br /> in every industry
+    </h2>
 
-        {/* Tabs */}
-        <div className="flex space-x-8 text-sm md:text-base border-b border-gray-300 mb-6">
-          {industries.map((industry, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              className={`pb-2 font-medium ${
-                idx === activeIndex
-                  ? "border-b-2 border-black text-black"
-                  : "text-gray-500 hover:text-black"
-              }`}
-            >
-              {industry.name}
-            </button>
+    {/* Tabs */}
+    <div className="flex flex-wrap justify-center lg:justify-start space-x-4 text-sm md:text-base border-b border-gray-300 mb-6 text-center">
+      {industries.map((industry, idx) => (
+        <button
+          key={idx}
+          onClick={() => setActiveIndex(idx)}
+          className={`pb-2 font-medium ${
+            idx === activeIndex
+              ? "border-b-2 border-black text-black"
+              : "text-gray-500 hover:text-black"
+          }`}
+        >
+          {industry.name}
+        </button>
+      ))}
+    </div>
+
+    {/* Tab Content */}
+    <div className="bg-gray-50 rounded-2xl p-8 flex flex-col lg:flex-row gap-10 items-center text-center lg:text-left">
+      {/* Text + Stats */}
+      <div className="flex-1">
+        <h3 className="text-3xl font-semibold text-black mb-8 max-w-lg mx-auto lg:mx-0">
+          {industries[activeIndex].title}
+        </h3>
+
+        <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-10 mb-8">
+          {industries[activeIndex].stats.map((stat, i) => (
+            <div key={i} className="flex-1">
+              <p className="text-lg font-semibold md:text-5xl text-black mb-1">{stat.value}</p>
+              <p className="text-lg text-gray-700">{stat.description}</p>
+              <a
+                href="#"
+                className="block text-sm text-purple-700 mt-1 underline underline-offset-2"
+              >
+                {stat.source}
+              </a>
+            </div>
           ))}
         </div>
 
-        {/* Tab Content */}
-        <div className="bg-gray-50 rounded-2xl p-8 flex flex-col lg:flex-row gap-10 items-center">
-          {/* Text + Stats */}
-          <div className="flex-1">
-            <h3 className="text-3xl font-semibold text-black mb-8 max-w-lg">
-              {industries[activeIndex].title}
-            </h3>
-
-            <div className="flex flex-col sm:flex-row gap-10 mb-8">
-              {industries[activeIndex].stats.map((stat, i) => (
-                <div key={i}>
-                  <p className="text-lg font-semibold md:text-5xl text-black mb-1">{stat.value}</p>
-                  <p className="text-lg text-gray-700">{stat.description}</p>
-                  <a
-                    href="#"
-                    className="block text-sm text-purple-700 mt-1 underline underline-offset-2"
-                  >
-                    {stat.source}
-                  </a>
-                </div>
-              ))}
-            </div>
-
-            <button className="mt-4 bg-black text-white px-6 py-3 rounded font-semibold text-base hover:bg-purple-600 transition duration-300">
-              {industries[activeIndex].buttonText}
-            </button>
-          </div>
-
-          {/* Image */}
-          <div className="flex-1">
-            <img
-              src={industries[activeIndex].image}
-              alt={industries[activeIndex].name}
-              className="rounded-xl w-full object-cover max-h-[400px]"
-            />
-          </div>
+        <div className="flex justify-center lg:justify-start">
+          <button className="mt-4 bg-black text-white px-6 py-3 rounded font-semibold text-base hover:bg-purple-600 transition duration-300">
+            {industries[activeIndex].buttonText}
+          </button>
         </div>
       </div>
-    </section>
+
+      {/* Image */}
+      <div className="flex-1">
+        <img
+          src={industries[activeIndex].image}
+          alt={industries[activeIndex].name}
+          className="rounded-xl w-full object-cover max-h-[400px]"
+        />
+      </div>
+    </div>
+  </div>
+</section>
   );
 };
 

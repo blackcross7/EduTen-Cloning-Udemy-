@@ -4,10 +4,10 @@ const TestimonialSection = () => {
   return (
     <section className="py-16 bg-white">
       {/* Heading aligned left */}
-      <div className="mb-10 pl-4 sm:pl-6 md:pl-10 lg:pl-16">
-        <h1 className="text-4xl lg:text-5xl font-semibold text-black text-left">
-          Don’t just take it from us
-        </h1>
+      <div className="mb-10 px-4 sm:px-6 md:px-10 lg:px-16 text-center">
+      <h1 className="text-4xl lg:text-5xl font-semibold text-black">
+       Don’t just take it from us
+      </h1>
       </div>
 
       {/* Logos and Avatar (logo in front, less overlap) */}
@@ -17,13 +17,14 @@ const TestimonialSection = () => {
           src="/assets/business/testimonial-person.png"
           alt="Profile"
           className="w-20 h-20 rounded-full border-4 border-cyan-900 z-0"
+          style={{ marginRight:"-40px"}}
         />
         {/* Logo in front, slightly overlapping left */}
         <img
           src="/assets/business/Ten-logo.webp"
           alt="Genpact Logo"
           className="w-20 h-20 rounded-full border-4 border-white z-10 absolute left-1/2 -translate-x-1/2"
-          style={{ marginLeft: "-60px" }}
+          style={{ marginLeft: "-40px" }}
         />
       </div>
 

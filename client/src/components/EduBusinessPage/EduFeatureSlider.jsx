@@ -36,6 +36,7 @@ const features = [
 
 const EduFeatureSlider = () => {
   const scrollRef = useRef(null);
+  const cardRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
@@ -47,9 +48,11 @@ const EduFeatureSlider = () => {
     }
   };
 
-  const scroll = (offset) => {
+  const scroll = (direction) => {
+    const cardWidth = cardRef.current?.offsetWidth || 300;
+    const scrollAmount = cardWidth + 24; // gap-6 is approx 24px
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: offset, behavior: "smooth" });
+      scrollRef.current.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
     }
   };
 
@@ -65,37 +68,44 @@ const EduFeatureSlider = () => {
   }, []);
 
   return (
-    <div className="px-6 lg:px-20 py-10 ">
-      {/* Arrows on the left */}
-      <div className="flex justify-start 3xl:hidden gap-4 mb-6">
+    <div className="px-4 sm:px-6 lg:px-20 py-10">
+      {/* Arrows */}
+      <div className="flex justify-start gap-4 mb-6">
         <button
-          onClick={() => scroll(-300)}
+          onClick={() => scroll(-1)}
           disabled={!canScrollLeft}
-          className={`w-10 h-10 rounded-full flex items-center justify-center border transition ${canScrollLeft ? "border-black text-black hover:bg-gray-100" : "border-gray-300 text-gray-300 cursor-not-allowed"
-            }`}
+          className={`w-10 h-10 rounded-full flex items-center justify-center border transition ${
+            canScrollLeft
+              ? "border-black text-black hover:bg-gray-100"
+              : "border-gray-300 text-gray-300 cursor-not-allowed"
+          }`}
         >
           <ChevronLeft size={20} />
         </button>
         <button
-          onClick={() => scroll(300)}
+          onClick={() => scroll(1)}
           disabled={!canScrollRight}
-          className={`w-10 h-10 rounded-full flex items-center justify-center border transition ${canScrollRight ? "border-black text-black hover:bg-gray-100" : "border-gray-300 text-gray-300 cursor-not-allowed"
-            }`}
+          className={`w-10 h-10 rounded-full flex items-center justify-center border transition ${
+            canScrollRight
+              ? "border-black text-black hover:bg-gray-100"
+              : "border-gray-300 text-gray-300 cursor-not-allowed"
+          }`}
         >
           <ChevronRight size={20} />
         </button>
       </div>
 
       {/* Cards */}
-      <div className="flex justify-center items-center w-full ">
+      <div className="flex justify-center items-center w-full">
         <div
           ref={scrollRef}
-          className="flex overflow-x-auto gap-6 pb-4 no-scrollbar"
+          className="flex overflow-x-auto gap-6 pb-4 no-scrollbar scroll-smooth px-1"
         >
           {features.map((item, idx) => (
             <div
+              ref={idx === 0 ? cardRef : null}
               key={idx}
-              className="flex-shrink-0 w-[85vw] sm:w-[300px] md:w-[350px] h-[500px] rounded-2xl overflow-hidden relative bg-white shadow-sm border group"
+              className="flex-shrink-0 w-[90vw] sm:w-[95vw] md:w-[300px] lg:w-[350px] h-[500px] rounded-2xl overflow-hidden relative bg-white shadow-sm border group mx-auto"
             >
               <div className="relative h-full">
                 <img
@@ -103,11 +113,9 @@ const EduFeatureSlider = () => {
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
-
                 <span className="absolute top-4 left-4 px-3 py-1 text-sm font-medium text-gray-800 bg-white/60 backdrop-blur-sm rounded border border-black">
                   {item.tag}
                 </span>
-
                 <div className="absolute bottom-0 left-0 w-full bg-white p-4 transition-all duration-300 ease-in-out group-hover:h-[45%] h-[25%] rounded-t-2xl z-10">
                   <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-1">
                     {item.title}
@@ -118,7 +126,6 @@ const EduFeatureSlider = () => {
                 </div>
               </div>
             </div>
-
           ))}
         </div>
       </div>
