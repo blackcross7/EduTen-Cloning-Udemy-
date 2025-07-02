@@ -23,11 +23,39 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Password is required'],
       minlength: [6, 'Password must be at least 6 characters long'],
-      // Regex for stronger passwords
       match: [
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/,
         'Password must contain upper, lower, number',
       ],
+    },
+
+    // Profile Fields
+    headline: {
+      type: String,
+      maxlength: 60,
+      trim: true,
+      default: '',
+    },
+    biography: {
+      type: String,
+      maxlength: 1000,
+      trim: true,
+      default: '',
+    },
+    language: {
+      type: String,
+      default: 'English (US)',
+    },
+
+    // Social Links
+    links: {
+      website: { type: String, trim: true },
+      facebook: { type: String, trim: true },
+      instagram: { type: String, trim: true },
+      linkedin: { type: String, trim: true },
+      tiktok: { type: String, trim: true },
+      x: { type: String, trim: true },
+      youtube: { type: String, trim: true },
     },
   },
   {

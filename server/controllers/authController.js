@@ -99,3 +99,36 @@ export const getCurrentUser = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+export const updateProfile = async (req, res) => {
+  try {
+    const userId = req.user._id; 
+    const {
+      name,
+      headline,
+      biography,
+      language,
+      links,
+    } = req.body;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        ...(name && { name }),
+        ...(headline && { headline }),
+        ...(biography && { biography }),
+        ...(language && { language }),
+        ...(links && { links }), 
+      },
+      { new: true, runValidators: true }
+    ).select('-password');
+
+    res.status(200).json({
+      success: true,
+      message: 'Profile updated successfully',
+      user: updatedUser,
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
