@@ -1,9 +1,16 @@
 import React from 'react';
 import { FaFacebookF, FaApple } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const LoginForm = () => {
   return (
-    <div className="w-full max-w-sm sm:max-w-md md:max-w-lg bg-white text-black flex flex-col justify-center p-6 sm:p-8 md:p-10 shadow-md rounded-xl mx-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="w-full max-w-sm sm:max-w-md md:max-w-lg bg-white text-black flex flex-col justify-center p-6 sm:p-8 md:p-10 shadow-md rounded-xl mx-auto"
+    >
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 text-center">
         Log in to continue your learning journey
       </h2>
@@ -15,10 +22,17 @@ const LoginForm = () => {
         className="w-full p-3 sm:p-4 text-base sm:text-lg border border-black rounded-lg mb-4 sm:mb-6 focus:outline-none focus:ring-2 focus:ring-purple-600"
       />
 
+      {/* Password Input */}
+      <input
+        type="password"
+        placeholder="Password"
+        className="w-full p-3 sm:p-4 text-base sm:text-lg border border-black rounded-lg mb-4 sm:mb-6 focus:outline-none focus:ring-2 focus:ring-purple-600"
+      />
+
       {/* Continue Button */}
       <div className="flex justify-center mb-4 sm:mb-6">
         <button className="w-full sm:w-3/4 bg-purple-700 text-white py-3 rounded-full hover:bg-purple-800 transition text-sm sm:text-base">
-          Continue with email
+          Continue to Login
         </button>
       </div>
 
@@ -27,7 +41,7 @@ const LoginForm = () => {
         Other log in options
       </div>
 
-      {/* Icon Buttons with Purple Border */}
+      {/* Icon Buttons */}
       <div className="flex justify-center gap-4 sm:gap-6 mb-6">
         <button
           className="p-3 border border-purple-600 rounded hover:scale-105 transition flex items-center justify-center"
@@ -57,17 +71,17 @@ const LoginForm = () => {
 
       {/* Footer Links */}
       <p className="text-center text-sm">
-        Don’t have an account?{" "}
-        <a href="#" className="text-purple-700 font-medium">
+        Don't have an account?{" "}
+        <Link to="/signup" className="text-purple-700 font-medium">
           Sign up
-        </a>
+        </Link>
       </p>
       <p className="text-center text-sm mt-2">
-        <a href="#" className="text-purple-700 font-medium">
+        <Link to="#" className="text-purple-700 font-medium">
           Log in with your organization
-        </a>
+        </Link>
       </p>
-    </div>
+    </motion.div>
   );
 };
 
