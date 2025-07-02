@@ -104,7 +104,7 @@ const LandingCourseSection = () => (
     </div>
 
     {/* Top Filters (scrollable) */}
-    <div className="flex gap-4 overflow-x-auto pb-2 border-b">
+    <div className="flex gap-4 overflow-x-auto pb-2 border-b scrollbar-hide">
       {filters.map((f, i) => (
         <button key={i} className="text-sm font-medium text-gray-700 hover:text-black whitespace-nowrap">
           {f}
@@ -113,7 +113,7 @@ const LandingCourseSection = () => (
     </div>
 
     {/* Sub Filters (scrollable pills) */}
-    <div className="flex gap-3 overflow-x-auto py-3">
+    <div className="flex gap-3 overflow-x-auto py-3 scrollbar-hide">
       {subFilters.map((f, i) => (
         <button key={i} className="flex-shrink-0 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm text-gray-800 whitespace-nowrap">
           <span className="font-semibold">{f.label}</span>
@@ -123,7 +123,7 @@ const LandingCourseSection = () => (
     </div>
 
     {/* Course cards slider */}
-    <div className="flex gap-6 overflow-x-auto pb-4">
+    <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
       {courses.map((course) => (
         <div key={course.id} className="min-w-[280px] max-w-[300px] bg-white rounded-xl shadow-md border border-gray-200">
           <img src={course.img} alt={course.title} className="w-full h-40 object-cover rounded-t-xl" />
