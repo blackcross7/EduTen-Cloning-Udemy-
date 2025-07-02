@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // <-- Add this line
+import { useNavigate } from "react-router-dom";
 
 const exploreItems = [
   "Development",
@@ -51,8 +51,28 @@ const secondaryLinks = [
 
 const NavbarPage = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [dropdownTimeout, setDropdownTimeout] = useState(null);
   const [mobileMenu, setMobileMenu] = useState(false);
-  const navigate = useNavigate(); // <-- Add this line
+  const navigate = useNavigate();
+
+  // Add these lines for login state and user info
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const user = {
+    name: "John Doe",
+    initials: "JD",
+    avatar: "/assets/landingPage/user-avatar.svg",
+  };
+
+  // Dropdown helpers for delay
+  const handleDropdownEnter = (name) => {
+    if (dropdownTimeout) clearTimeout(dropdownTimeout);
+    setOpenDropdown(name);
+  };
+
+  const handleDropdownLeave = () => {
+    const timeout = setTimeout(() => setOpenDropdown(null), 250);
+    setDropdownTimeout(timeout);
+  };
 
   useEffect(() => {
     if (mobileMenu) {
@@ -85,15 +105,15 @@ const NavbarPage = () => {
           {/* Logo */}
           <div className="flex items-center flex-shrink-0">
             <img
-              src="/assets/landingPage/logo.svg" // <-- yahan apna logo path de
+              src="/assets/landingPage/logo.svg"
               alt="Logo"
               className="h-7 sm:h-8"
             />
             {/* Explore (lg+ only) */}
             <div
               className="relative hidden lg:block ml-4"
-              onMouseEnter={() => setOpenDropdown("explore")}
-              onMouseLeave={() => setOpenDropdown(null)}
+              onMouseEnter={() => handleDropdownEnter("explore")}
+              onMouseLeave={handleDropdownLeave}
             >
               <button className="font-semibold text-sm hover:text-purple-700 flex items-center">
                 Explore
@@ -139,8 +159,8 @@ const NavbarPage = () => {
             {/* Plans & Pricing Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setOpenDropdown("plans")}
-              onMouseLeave={() => setOpenDropdown(null)}
+              onMouseEnter={() => handleDropdownEnter("plans")}
+              onMouseLeave={handleDropdownLeave}
             >
               <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
                 Plans &amp; Pricing
@@ -166,8 +186,8 @@ const NavbarPage = () => {
             {/* EDU Business Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setOpenDropdown("business")}
-              onMouseLeave={() => setOpenDropdown(null)}
+              onMouseEnter={() => handleDropdownEnter("business")}
+              onMouseLeave={handleDropdownLeave}
             >
               <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
                 EDU Business
@@ -193,8 +213,8 @@ const NavbarPage = () => {
             {/* EDU Teach Dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setOpenDropdown("teach")}
-              onMouseLeave={() => setOpenDropdown(null)}
+              onMouseEnter={() => handleDropdownEnter("teach")}
+              onMouseLeave={handleDropdownLeave}
             >
               <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
                 EDU Teach
@@ -226,19 +246,58 @@ const NavbarPage = () => {
                 <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
               </svg>
             </button>
-            {/* Log in & Sign up */}
-            <button
-              className="px-4 py-1 border border-purple-700 text-purple-700 rounded hover:bg-purple-50 font-semibold text-sm"
-              onClick={() => navigate("/login")} // <-- Add this
-            >
-              Log in
-            </button>
-            <button
-              className="px-4 py-1 bg-purple-700 text-white rounded hover:bg-purple-800 font-semibold text-sm"
-              onClick={() => navigate("/signup")} // <-- Add this
-            >
-              Sign up
-            </button>
+
+            {/* Conditional: Log in/Sign up or User Avatar */}
+            {!isLoggedIn ? (
+              <>
+                <button
+                  className="px-4 py-1 border border-purple-700 text-purple-700 rounded hover:bg-purple-50 font-semibold text-sm"
+                  onClick={() => navigate("/login")}
+                >
+                  Log in
+                </button>
+                <button
+                  className="px-4 py-1 bg-purple-700 text-white rounded hover:bg-purple-800 font-semibold text-sm"
+                  onClick={() => navigate("/signup")}
+                >
+                  Sign up
+                </button>
+              </>
+            ) : (
+              <div className="relative group">
+                <button className="flex items-center space-x-2 focus:outline-none">
+                  <img
+                    src={user.avatar}
+                    alt={user.name}
+                    className="w-8 h-8 rounded-full border"
+                    onError={e => {
+                      e.target.style.display = "none";
+                      e.target.nextSibling.style.display = "flex";
+                    }}
+                  />
+                  <span
+                    className="w-8 h-8 rounded-full bg-purple-700 text-white flex items-center justify-center font-bold text-sm"
+                    style={{ display: "none" }}
+                  >
+                    {user.initials}
+                  </span>
+                </button>
+                {/* Dropdown */}
+                <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-50 hidden group-hover:block">
+                  <ul>
+                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Profile</li>
+                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Settings</li>
+                    <li
+                      className="px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer"
+                      onClick={() => setIsLoggedIn(false)}
+                    >
+                      Log out
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            )}
+
             {/* Globe Icon */}
             <button className="p-2 border rounded hover:bg-gray-100">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2"
