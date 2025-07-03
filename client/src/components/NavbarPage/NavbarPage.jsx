@@ -239,8 +239,18 @@ const NavbarPage = () => {
                 </div>
               )}
             </div>
+
+            {/* Wishlist Icon */}
+            {isLoggedIn && (
+              <button className="p-2 hover:bg-gray-100 rounded-full" title="Wishlist">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+              </button>
+            )}
+
             {/* Cart Icon */}
-            <button className="p-2 hover:bg-gray-100 rounded-full">
+            <button className="p-2 hover:bg-gray-100 rounded-full" title="Cart">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
                 viewBox="0 0 24 24">
                 <circle cx="9" cy="21" r="1" />
@@ -248,6 +258,28 @@ const NavbarPage = () => {
                 <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
               </svg>
             </button>
+
+            {/* Notification Icon */}
+            {isLoggedIn && (
+              <button className="p-2 hover:bg-gray-100 rounded-full" title="Notifications">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+                  <path d="M13.73 21a2 2 0 01-3.46 0"/>
+                </svg>
+                {/* Notification dot */}
+                <span className="absolute top-2 right-2 w-2 h-2 bg-purple-600 rounded-full"></span>
+              </button>
+            )}
+
+            {/* My Learning */}
+            {isLoggedIn && (
+              <button
+                className="text-sm font-semibold hover:text-purple-700"
+                onClick={() => navigate("/my-learning")}
+              >
+                My learning
+              </button>
+            )}
 
             {/* Conditional: Log in/Sign up or User Avatar */}
             {!isLoggedIn ? (
@@ -267,22 +299,12 @@ const NavbarPage = () => {
               </>
             ) : (
               <div className="relative group">
-                <button className="flex items-center space-x-2 focus:outline-none">
-                  <img
-                    src={user.avatar}
-                    alt={user.name}
-                    className="w-8 h-8 rounded-full border"
-                    onError={e => {
-                      e.target.style.display = "none";
-                      e.target.nextSibling.style.display = "flex";
-                    }}
-                  />
-                  <span
-                    className="w-8 h-8 rounded-full bg-purple-700 text-white flex items-center justify-center font-bold text-sm"
-                    style={{ display: "none" }}
-                  >
+                <button className="flex items-center space-x-2 focus:outline-none relative">
+                  <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm">
                     {user.initials}
                   </span>
+                  {/* Purple dot for active */}
+                  <span className="absolute top-0 right-0 w-2 h-2 bg-purple-500 rounded-full border-2 border-white"></span>
                 </button>
                 {/* Dropdown */}
                 <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-50 hidden group-hover:block">
@@ -333,8 +355,79 @@ const NavbarPage = () => {
 
         {/* Mobile Menu */}
         {mobileMenu && (
-          <div className="fixed inset-0 bg-black bg-opacity-40 z-50">
-            {/* ...your mobile menu code... */}
+          <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex">
+            <div className="bg-white w-72 h-full p-6 shadow-lg flex flex-col">
+              <button
+                className="mb-4 text-gray-600"
+                onClick={() => setMobileMenu(false)}
+                aria-label="Close menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <ul className="space-y-4 mb-6">
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => {navigate("/"); setMobileMenu(false);}}>Home</button>
+                </li>
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => {navigate("/explore"); setMobileMenu(false);}}>Explore</button>
+                </li>
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => {navigate("/plans"); setMobileMenu(false);}}>Plans & Pricing</button>
+                </li>
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => {navigate("/business"); setMobileMenu(false);}}>EDU Business</button>
+                </li>
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => {navigate("/teach"); setMobileMenu(false);}}>EDU Teach</button>
+                </li>
+                {isLoggedIn && (
+                  <>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => {navigate("/my-learning"); setMobileMenu(false);}}>My learning</button>
+                    </li>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Wishlist</button>
+                    </li>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Notifications</button>
+                    </li>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Profile</button>
+                    </li>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setIsLoggedIn(false)}>Log out</button>
+                    </li>
+                  </>
+                )}
+                {!isLoggedIn && (
+                  <>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => {navigate("/login"); setMobileMenu(false);}}>Log in</button>
+                    </li>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => {navigate("/signup"); setMobileMenu(false);}}>Sign up</button>
+                    </li>
+                  </>
+                )}
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Cart</button>
+                </li>
+              </ul>
+              <div className="mt-auto">
+                <h4 className="text-xs text-gray-500 mb-2">Popular</h4>
+                <ul className="space-y-2">
+                  {secondaryLinks.map(link => (
+                    <li key={link}>
+                      <button className="text-left w-full text-gray-700" onClick={() => setMobileMenu(false)}>{link}</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            {/* Click outside to close */}
+            <div className="flex-1" onClick={() => setMobileMenu(false)} />
           </div>
         )}
       </nav>
