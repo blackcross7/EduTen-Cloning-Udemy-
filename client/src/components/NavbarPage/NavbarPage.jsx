@@ -446,9 +446,15 @@ const NavbarPage = () => {
             "
             style={{ scrollbarWidth: "auto" }} // <-- Yeh line scroll bar ko visible rakhegi (Firefox)
           >
+           
             {secondaryLinks.map((link) => (
               <button
                 key={link}
+                onClick={() => {
+                  if (link === "Web Development") {
+                    navigate("/web-development");
+                  }
+                }}
                 className="flex-shrink-0 px-3 py-1 rounded-full text-xs sm:text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition whitespace-nowrap"
               >
                 {link}
