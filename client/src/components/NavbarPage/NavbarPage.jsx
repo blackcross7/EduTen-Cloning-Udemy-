@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useAuthStore } from "../../store/authStore";
+import { Link } from "react-router-dom";
 
 const exploreItems = [
   "Development",
@@ -70,15 +72,31 @@ const NavbarPage = () => {
   const [hoveredSecondary, setHoveredSecondary] = useState(null);
   const navigate = useNavigate();
 
+  const location = useLocation();
+  const hiddenRoutes = ["/login", "/signup", "/profile"];
+  const hideSecondaryNavbar = hiddenRoutes.includes(location.pathname);
+
   // Add these lines for login state and user info
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const user = {
-    name: "John Doe",
-    initials: "JD",
-    avatar: "/assets/landingPage/user-avatar.svg",
+  const { user, logout } = useAuthStore();
+  const isLoggedIn = !!user;
+
+    const confirmLogout = () => {
+    logout();  
+    navigate('/'); 
   };
 
+<<<<<<< Updated upstream
   const [avatarError, setAvatarError] = useState(false);
+=======
+  const initials = user?.name
+    ? user.name
+      .split(' ')
+      .map((n) => n[0])
+      .join('')
+      .toUpperCase()
+    : '';
+
+>>>>>>> Stashed changes
 
   // Dropdown helpers for delay
   const handleDropdownEnter = (name) => {
@@ -120,7 +138,11 @@ const NavbarPage = () => {
             </button>
           </div>
           {/* Logo */}
+<<<<<<< Updated upstream
           <div className="flex items-end flex-shrink-0">
+=======
+          <Link to="/" className="flex items-center flex-shrink-0">
+>>>>>>> Stashed changes
             <img
               src="/assets/landingPage/logo.png"
               alt="Logo"
@@ -159,7 +181,7 @@ const NavbarPage = () => {
                 </div>
               )}
             </div>
-          </div>
+          </Link>
           {/* Search Bar (always visible, responsive width) */}
           <div className="flex-1 min-w-0 mx-2">
             <div className="relative">
@@ -213,7 +235,7 @@ const NavbarPage = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <button className="text-sm font-semibold hover:text-purple-700 flex items-center"
-              onClick={() => navigate("/business")}
+                onClick={() => navigate("/business")}
               >
                 EDU Business
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -262,6 +284,19 @@ const NavbarPage = () => {
                 </div>
               )}
             </div>
+<<<<<<< Updated upstream
+=======
+
+            {/* Wishlist Icon */}
+            {isLoggedIn && (
+              <button className="p-2 hover:bg-gray-100 rounded-full" title="Wishlist">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+              </button>
+            )}
+
+>>>>>>> Stashed changes
             {/* Cart Icon */}
             <button className="p-2 hover:bg-gray-100 rounded-full">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
@@ -272,6 +307,31 @@ const NavbarPage = () => {
               </svg>
             </button>
 
+<<<<<<< Updated upstream
+=======
+            {/* Notification Icon */}
+            {isLoggedIn && (
+              <button className="p-2 hover:bg-gray-100 rounded-full" title="Notifications">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 01-3.46 0" />
+                </svg>
+                {/* Notification dot */}
+                <span className="absolute top-2 right-2 w-2 h-2 bg-purple-600 rounded-full"></span>
+              </button>
+            )}
+
+            {/* My Learning */}
+            {isLoggedIn && (
+              <button
+                className="text-sm font-semibold hover:text-purple-700"
+                onClick={() => navigate("/my-learning")}
+              >
+                My learning
+              </button>
+            )}
+
+>>>>>>> Stashed changes
             {/* Conditional: Log in/Sign up or User Avatar */}
             {!isLoggedIn ? (
               <>
@@ -290,6 +350,7 @@ const NavbarPage = () => {
               </>
             ) : (
               <div className="relative group">
+<<<<<<< Updated upstream
                 <button className="flex items-center space-x-2 focus:outline-none">
                   <img
                     src={user.avatar}
@@ -304,14 +365,28 @@ const NavbarPage = () => {
                     </span>
                   )}
                 </button>
+=======
+                <Link to="/profile">
+                  <button className="flex items-center space-x-2 focus:outline-none relative">
+                    <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm">
+                      {initials}
+                    </span>
+
+                    {/* Purple dot for active */}
+                    <span className="absolute top-0 right-0 w-2 h-2 bg-purple-500 rounded-full border-2 border-white"></span>
+                  </button>
+                </Link>
+>>>>>>> Stashed changes
                 {/* Dropdown */}
                 <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-50 hidden group-hover:block">
                   <ul>
-                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Profile</li>
+                    <Link to="/profile">
+                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Profile</li>
+                    </Link>
                     <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Settings</li>
                     <li
                       className="px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => setIsLoggedIn(false)}
+                      onClick={() => {confirmLogout()}}
                     >
                       Log out
                     </li>
@@ -353,13 +428,90 @@ const NavbarPage = () => {
 
         {/* Mobile Menu */}
         {mobileMenu && (
+<<<<<<< Updated upstream
           <div className="fixed inset-0 bg-black bg-opacity-40 z-50">
             {/* ...your mobile menu code... */}
+=======
+          <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex">
+            <div className="bg-white w-72 h-full p-6 shadow-lg flex flex-col">
+              <button
+                className="mb-4 text-gray-600"
+                onClick={() => setMobileMenu(false)}
+                aria-label="Close menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <ul className="space-y-4 mb-6">
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/"); setMobileMenu(false); }}>Home</button>
+                </li>
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/explore"); setMobileMenu(false); }}>Explore</button>
+                </li>
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/plans"); setMobileMenu(false); }}>Plans & Pricing</button>
+                </li>
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/business"); setMobileMenu(false); }}>EDU Business</button>
+                </li>
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/teach"); setMobileMenu(false); }}>EDU Teach</button>
+                </li>
+                {isLoggedIn && (
+                  <>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/my-learning"); setMobileMenu(false); }}>My learning</button>
+                    </li>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Wishlist</button>
+                    </li>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Notifications</button>
+                    </li>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Profile</button>
+                    </li>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => {confirmLogout()}}>Log out</button>
+                    </li>
+                  </>
+                )}
+                {!isLoggedIn && (
+                  <>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/login"); setMobileMenu(false); }}>Log in</button>
+                    </li>
+                    <li>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/signup"); setMobileMenu(false); }}>Sign up</button>
+                    </li>
+                  </>
+                )}
+                <li>
+                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Cart</button>
+                </li>
+              </ul>
+              <div className="mt-auto">
+                <h4 className="text-xs text-gray-500 mb-2">Popular</h4>
+                <ul className="space-y-2">
+                  {secondaryLinks.map(link => (
+                    <li key={link}>
+                      <button className="text-left w-full text-gray-700" onClick={() => setMobileMenu(false)}>{link}</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            {/* Click outside to close */}
+            <div className="flex-1" onClick={() => setMobileMenu(false)} />
+>>>>>>> Stashed changes
           </div>
         )}
       </nav>
 
       {/* Secondary Navbar */}
+<<<<<<< Updated upstream
       <nav className="bg-gray-50 border-b border-gray-200 w-full relative">
         <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
           <div
@@ -408,6 +560,34 @@ const NavbarPage = () => {
           </div>
         )}
       </nav>
+=======
+      {!hideSecondaryNavbar && (
+        <nav className="bg-gray-50 border-b border-gray-200 w-full">
+          <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div
+              className="flex flex-nowrap overflow-x-auto space-x-2 py-2 justify-center"
+              style={{ scrollbarWidth: "auto" }}
+            >
+              {secondaryLinks.map((link) => (
+                <button
+                  key={link}
+                  onClick={() => {
+                    if (link === "Web Development") {
+                      navigate("/web-development");
+                    }
+                  }}
+                  className="flex-shrink-0 px-3 py-1 rounded-full text-xs sm:text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition whitespace-nowrap"
+                >
+                  {link}
+                </button>
+              ))}
+            </div>
+          </div>
+        </nav>
+      )}
+
+
+>>>>>>> Stashed changes
     </>
   );
 };

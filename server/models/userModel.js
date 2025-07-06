@@ -23,10 +23,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Password is required'],
       minlength: [6, 'Password must be at least 6 characters long'],
-      match: [
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/,
-        'Password must contain upper, lower, number',
-      ],
     },
 
     // Profile Fields

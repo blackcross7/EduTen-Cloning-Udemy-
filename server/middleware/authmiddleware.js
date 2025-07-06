@@ -3,28 +3,27 @@ import User from '../models/userModel.js';
 
 const authMiddleware = async (req, res, next) => {
   try {
-    const authHeader = req.headers.authorization;
+    const token = req.cookies.token;
 
-    // Check for Bearer token
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'Authorization token missing' });
+    if (!token) {
+      return res.status(401).json({ message: 'Authentication token missing' });
     }
-
-    const token = authHeader.split(' ')[1];
 
     // Verify token
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // Attach user to request (exclude password)
-    req.user = await User.findById(decoded.userId).select('-password');
-    if (!req.user) {
-      return res.status(401).json({ message: 'Invalid user' });
+    const user = await User.findById(decoded.userId).select('-password');
+
+    if (!user) {
+      return res.status(401).json({ message: 'User not found' });
     }
 
+    req.user = user;
     next();
   } catch (error) {
     console.error('Auth middleware error:', error.message);
-    res.status(401).json({ message: 'Invalid or expired token' });
+    return res.status(401).json({ message: 'Invalid or expired token' });
   }
 };
 

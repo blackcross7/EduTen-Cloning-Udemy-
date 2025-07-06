@@ -1,4 +1,3 @@
-// src/pages/ProfilePage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import ProfileSidebar from '../components/ProfilePage/ProfileSidebar';
