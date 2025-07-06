@@ -80,14 +80,12 @@ const NavbarPage = () => {
   const { user, logout } = useAuthStore();
   const isLoggedIn = !!user;
 
-    const confirmLogout = () => {
-    logout();  
-    navigate('/'); 
+  const confirmLogout = () => {
+    logout();
+    navigate('/');
   };
 
-<<<<<<< Updated upstream
-  const [avatarError, setAvatarError] = useState(false);
-=======
+
   const initials = user?.name
     ? user.name
       .split(' ')
@@ -96,7 +94,7 @@ const NavbarPage = () => {
       .toUpperCase()
     : '';
 
->>>>>>> Stashed changes
+
 
   // Dropdown helpers for delay
   const handleDropdownEnter = (name) => {
@@ -138,16 +136,14 @@ const NavbarPage = () => {
             </button>
           </div>
           {/* Logo */}
-<<<<<<< Updated upstream
-          <div className="flex items-end flex-shrink-0">
-=======
-          <Link to="/" className="flex items-center flex-shrink-0">
->>>>>>> Stashed changes
-            <img
-              src="/assets/landingPage/logo.png"
-              alt="Logo"
-              className="h-8 sm:h-10"
-            />
+          <div className="flex items-center flex-shrink-0">
+            <Link to="/">
+              <img
+                src="/assets/landingPage/logo.png"
+                alt="Logo"
+                className="h-8 sm:h-10"
+              />
+            </Link>
             <span
               className="ml-1 text-xl font-black font-sans text-purple-700 tracking-tight select-none drop-shadow-sm"
               style={{ letterSpacing: "0.01em", fontFamily: "'Montserrat', 'Segoe UI', 'Arial', sans-serif" }}
@@ -181,7 +177,7 @@ const NavbarPage = () => {
                 </div>
               )}
             </div>
-          </Link>
+          </div>
           {/* Search Bar (always visible, responsive width) */}
           <div className="flex-1 min-w-0 mx-2">
             <div className="relative">
@@ -284,8 +280,6 @@ const NavbarPage = () => {
                 </div>
               )}
             </div>
-<<<<<<< Updated upstream
-=======
 
             {/* Wishlist Icon */}
             {isLoggedIn && (
@@ -296,7 +290,6 @@ const NavbarPage = () => {
               </button>
             )}
 
->>>>>>> Stashed changes
             {/* Cart Icon */}
             <button className="p-2 hover:bg-gray-100 rounded-full">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
@@ -307,8 +300,6 @@ const NavbarPage = () => {
               </svg>
             </button>
 
-<<<<<<< Updated upstream
-=======
             {/* Notification Icon */}
             {isLoggedIn && (
               <button className="p-2 hover:bg-gray-100 rounded-full" title="Notifications">
@@ -331,7 +322,6 @@ const NavbarPage = () => {
               </button>
             )}
 
->>>>>>> Stashed changes
             {/* Conditional: Log in/Sign up or User Avatar */}
             {!isLoggedIn ? (
               <>
@@ -350,22 +340,6 @@ const NavbarPage = () => {
               </>
             ) : (
               <div className="relative group">
-<<<<<<< Updated upstream
-                <button className="flex items-center space-x-2 focus:outline-none">
-                  <img
-                    src={user.avatar}
-                    alt={user.name}
-                    className="w-8 h-8 rounded-full border"
-                    style={{ display: avatarError ? "none" : "block" }}
-                    onError={() => setAvatarError(true)}
-                  />
-                  {avatarError && (
-                    <span className="w-8 h-8 rounded-full bg-purple-700 text-white flex items-center justify-center font-bold text-sm">
-                      {user.initials}
-                    </span>
-                  )}
-                </button>
-=======
                 <Link to="/profile">
                   <button className="flex items-center space-x-2 focus:outline-none relative">
                     <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm">
@@ -376,7 +350,6 @@ const NavbarPage = () => {
                     <span className="absolute top-0 right-0 w-2 h-2 bg-purple-500 rounded-full border-2 border-white"></span>
                   </button>
                 </Link>
->>>>>>> Stashed changes
                 {/* Dropdown */}
                 <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-50 hidden group-hover:block">
                   <ul>
@@ -386,7 +359,7 @@ const NavbarPage = () => {
                     <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Settings</li>
                     <li
                       className="px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => {confirmLogout()}}
+                      onClick={() => { confirmLogout() }}
                     >
                       Log out
                     </li>
@@ -428,10 +401,6 @@ const NavbarPage = () => {
 
         {/* Mobile Menu */}
         {mobileMenu && (
-<<<<<<< Updated upstream
-          <div className="fixed inset-0 bg-black bg-opacity-40 z-50">
-            {/* ...your mobile menu code... */}
-=======
           <div className="fixed inset-0 bg-black bg-opacity-40 z-50 flex">
             <div className="bg-white w-72 h-full p-6 shadow-lg flex flex-col">
               <button
@@ -474,7 +443,7 @@ const NavbarPage = () => {
                       <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Profile</button>
                     </li>
                     <li>
-                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => {confirmLogout()}}>Log out</button>
+                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { confirmLogout() }}>Log out</button>
                     </li>
                   </>
                 )}
@@ -505,17 +474,16 @@ const NavbarPage = () => {
             </div>
             {/* Click outside to close */}
             <div className="flex-1" onClick={() => setMobileMenu(false)} />
->>>>>>> Stashed changes
           </div>
         )}
       </nav>
 
       {/* Secondary Navbar */}
-<<<<<<< Updated upstream
-      <nav className="bg-gray-50 border-b border-gray-200 w-full relative">
-        <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
-          <div
-            className="
+      {!hideSecondaryNavbar && (
+        <nav className="bg-gray-50 border-b border-gray-200 w-full relative">
+          <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
+            <div
+              className="
               flex
               flex-nowrap
               overflow-x-auto
@@ -523,71 +491,46 @@ const NavbarPage = () => {
               py-2
               justify-center
             "
-            style={{ scrollbarWidth: "auto" }}
-            onMouseLeave={() => setHoveredSecondary(null)}
-          >
-            {secondaryLinks.map((link) => (
-              <button
-                key={link}
-                className="flex-shrink-0 px-3 py-1 rounded-full text-xs sm:text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition whitespace-nowrap"
-                onMouseEnter={() => setHoveredSecondary(link)}
-                onFocus={() => setHoveredSecondary(link)}
-              >
-                {link}
-              </button>
-            ))}
-          </div>
-        </div>
-        {/* Horizontal submenu */}
-        {hoveredSecondary && secondarySubmenus[hoveredSecondary] && (
-          <div
-            className="absolute left-0 w-full bg-white border-b border-gray-200 shadow z-40"
-            onMouseLeave={() => setHoveredSecondary(null)}
-            onMouseEnter={() => setHoveredSecondary(hoveredSecondary)}
-          >
-            <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
-              <div className="flex flex-nowrap overflow-x-auto space-x-4 py-3 justify-center">
-                {secondarySubmenus[hoveredSecondary].map((item) => (
-                  <button
-                    key={item}
-                    className="px-4 py-2 rounded text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 whitespace-nowrap transition"
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-      </nav>
-=======
-      {!hideSecondaryNavbar && (
-        <nav className="bg-gray-50 border-b border-gray-200 w-full">
-          <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
-            <div
-              className="flex flex-nowrap overflow-x-auto space-x-2 py-2 justify-center"
               style={{ scrollbarWidth: "auto" }}
+              onMouseLeave={() => setHoveredSecondary(null)}
             >
               {secondaryLinks.map((link) => (
                 <button
                   key={link}
-                  onClick={() => {
-                    if (link === "Web Development") {
-                      navigate("/web-development");
-                    }
-                  }}
                   className="flex-shrink-0 px-3 py-1 rounded-full text-xs sm:text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition whitespace-nowrap"
+                  onMouseEnter={() => setHoveredSecondary(link)}
+                  onFocus={() => setHoveredSecondary(link)}
                 >
                   {link}
                 </button>
               ))}
             </div>
           </div>
+          {/* Horizontal submenu */}
+          {hoveredSecondary && secondarySubmenus[hoveredSecondary] && (
+            <div
+              className="absolute left-0 w-full bg-white border-b border-gray-200 shadow z-40"
+              onMouseLeave={() => setHoveredSecondary(null)}
+              onMouseEnter={() => setHoveredSecondary(hoveredSecondary)}
+            >
+              <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
+                <div className="flex flex-nowrap overflow-x-auto space-x-4 py-3 justify-center">
+                  {secondarySubmenus[hoveredSecondary].map((item) => (
+                    <button
+                      key={item}
+                      className="px-4 py-2 rounded text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 whitespace-nowrap transition"
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </nav>
+
       )}
 
-
->>>>>>> Stashed changes
     </>
   );
 };
