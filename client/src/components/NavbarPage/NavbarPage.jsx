@@ -165,14 +165,21 @@ const NavbarPage = () => {
               {openDropdown === "explore" && (
                 <div className="absolute left-0 mt-2 w-56 bg-white border rounded shadow-lg z-50">
                   <ul>
-                    {exploreItems.map((item) => (
-                      <li
-                        key={item}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                      >
-                        {item}
-                      </li>
-                    ))}
+                  {exploreItems.map((item) => (
+                     <li
+                         key={item}
+                           onClick={() => {
+                               if (item === "Personal Development") {
+                                    navigate("/personal-development");
+                 setOpenDropdown(null); // optional: closes dropdown on click
+      }
+    }}
+    className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+  >
+    {item}
+  </li>
+))}
+
                   </ul>
                 </div>
               )}

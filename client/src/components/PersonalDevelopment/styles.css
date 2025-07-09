@@ -1,0 +1,517 @@
+/* ---------- General Wrapper ---------- */
+.personal-dev-wrapper {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  /* ---------- Hero Banner ---------- */
+  .hero-banner {
+    padding: 2rem 1rem;
+    text-align: left;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .hero-banner h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-banner p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  /* ---------- Subcategory Bar ---------- */
+  .subcategory-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ddd;
+    scrollbar-width: thin;
+  }
+  
+  .subcategory-btn {
+    flex-shrink: 0;
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+    color: #555;
+    background: #f4f4f4;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .subcategory-btn:hover {
+    background-color: #e6e6ff;
+    border-color: #ccc;
+    color: #4b0082;
+  }
+  .subcategory-bar {
+    margin-top: 0.1rem; /* Reduce spacing so it's closer to HeroBanner */
+  }
+  
+  
+  /* ---------- Tabs Section ---------- */
+  .tabs-section {
+    display: flex;
+    gap: 1.2rem;
+    padding: 1.5rem 0 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .tab-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: #666;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .tab-btn:hover {
+    color: #4b0082;
+  }
+  
+  .tab-btn.active {
+    color: #4b0082;
+    font-weight: 700;
+    border-bottom: 2px solid #4b0082;
+  }
+  
+  /* ---------- Course Grid ---------- */
+  .course-card-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    margin-top: 1rem;
+  }
+  
+  /* ---------- Course Card ---------- */
+.course-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: box-shadow 0.3s ease, transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .course-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+  }
+  
+  .card-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0.3rem 0;
+    color: #222;
+    line-height: 1.3;
+  }
+  
+  .card-instructor {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.2rem;
+  }
+  
+  .card-rating {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 0.3rem;
+  }
+  
+  /* ---------- Price ---------- */
+  .card-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #222;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: #888;
+    font-weight: normal;
+    font-size: 0.9rem;
+    margin-left: 0.4rem;
+  }
+  
+  /* ---------- Badges ---------- */
+  .card-badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+    flex-wrap: wrap;
+  }
+  
+  .badge {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  
+  .badge.Premium {
+    background-color: #e0e7ff;
+    color: #4338ca;
+  }
+  
+  .badge.Bestseller {
+    background-color: #fbbf24;
+    color: #78350f;
+  }
+  
+  /* ---------- Enroll Button ---------- */
+  .enroll-btn {
+    margin-top: 1rem;
+    background-color: #4b0082;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    align-self: start;
+    transition: background-color 0.2s ease;
+  }
+  
+  .enroll-btn:hover {
+    background-color: #3a006b;
+  }
+/* ---------- Featured Course Card ---------- */
+.featured-card {
+    display: flex;
+    gap: 1.5rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .featured-thumbnail {
+    width: 300px;
+    height: auto;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+  
+  .featured-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .featured-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #222;
+  }
+  
+  .featured-instructor {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.4rem;
+  }
+  
+  .featured-rating {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 0.4rem;
+  }
+  
+  .featured-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #222;
+  }
+  
+  .featured-price .original-price {
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+    text-decoration: line-through;
+    color: #888;
+    font-weight: normal;
+  }
+  
+  .course-meta {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.6rem;
+  }
+  .section-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  /* ---------- popular topics ---------- */
+  .popular-topics-wrapper {
+    margin-top: 3rem;
+  }
+  
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .topic-box {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 1.2rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  }
+  
+  .topic-box:hover {
+    background-color: #f0f4ff;
+    border-color: #c7d2fe;
+    color: #4b0082;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  
+
+  /* ---------- popular instructors ---------- */
+  
+  .popular-instructors-wrapper {
+    margin-top: 3rem;
+  }
+  
+  .instructor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .instructor-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .instructor-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .instructor-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 0.3rem;
+  }
+  
+  .instructor-expertise {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.4rem;
+  }
+  
+  .instructor-meta {
+    font-size: 0.85rem;
+    color: #666;
+  }
+  /*-------filtered section------*/
+  .filtered-section {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  .filters-column {
+    flex: 1 1 220px;
+    min-width: 200px;
+  }
+  
+  .results-column {
+    flex: 3 1 600px;
+  }
+  
+  .results-header {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    color: #444;
+  }
+  
+  .sort-pill {
+    background-color: #e0e7ff;
+    color: #4b0082;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+  }
+  
+  .filtered-course-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+  
+  .filtered-course-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    color: #222;
+  }
+  
+  .filter-sidebar {
+    padding-right: 1rem;
+  }
+  
+  .filter-heading {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #222;
+  }
+  
+  .filter-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .filter-option {
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .filter-option label {
+    margin-left: 0.5rem;
+    cursor: pointer;
+    color: #444;
+  }
+  .course-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+/*------------skill promo-----------*/
+.skill-promo-bg {
+    background-color: #3f0071; /* Deep purple */
+    padding: 4rem 1rem;
+    margin-top: 4rem;
+    color: #fff;
+  }
+  
+  .skill-promo-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  /* Scoped white text for skill promo only */
+  .skill-promo-bg .section-heading {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+  
+  .skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  
+  .skill-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: #fff;
+  }
+  
+  .skill-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .skill-item {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: #f3f4f6;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  
+  .skill-item:hover {
+    color: #c7d2fe;
+    text-decoration: underline;
+  }
+  
+  .trusted-by-bar {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+  }
+  
+  .logo-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .logo-row img {
+    max-height: 28px;
+    opacity: 0.9;
+    filter: brightness(0) invert(1);
+  }
+  
