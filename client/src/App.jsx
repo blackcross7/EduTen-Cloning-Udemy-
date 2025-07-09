@@ -10,6 +10,7 @@ import SignUpPage from "./pages/SignUpPage";
 import LandingPage from "./pages/LandingPage";
 import EduBusinessPage from "./pages/EduBusinessPage";
 import NavbarPage from "./components/NavbarPage/NavbarPage";
+<<<<<<< Updated upstream
 import ProfilePage from "./pages/ProfilePage";
 import WebDevelopmentPage from "./pages/WebDevelopmentPage";
 import Footer from "./components/FooterSection/Footer"; 
@@ -17,6 +18,9 @@ import Footer from "./components/FooterSection/Footer";
 // Components
 
 import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage"; // ✅ New Page
+=======
+import BusinessCoursePage from "./pages/BusinessCoursePage";
+>>>>>>> Stashed changes
 
 function App() {
   const { checkAuth, user } = useAuthStore();
@@ -35,10 +39,14 @@ function App() {
         <Route path="/login" element={user ? <LandingPage /> : <LoginPage />} />
         <Route path="/signup" element={user ? <LandingPage /> : <SignUpPage />} />
         <Route path="/business" element={<EduBusinessPage />} />
+<<<<<<< Updated upstream
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/web-development" element={<WebDevelopmentPage />} />
         <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
         <Route path="/personal-development" element={<PersonalDevPage />} /> {/* ✅ New Route */}
+=======
+        <Route path="businesscourse" element={<BusinessCoursePage />} />
+>>>>>>> Stashed changes
       </Routes>
 
       <Footer /> 

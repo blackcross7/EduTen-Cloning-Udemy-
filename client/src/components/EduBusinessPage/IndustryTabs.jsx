@@ -49,7 +49,7 @@ const IndustryTabs = () => {
   return (
     <section className="bg-white py-20 px-4 lg:px-20">
   <div className="max-w-6xl mx-auto">
-    <h2 className="text-4xl md:text-5xl font-semibold text-black mb-10 text-center lg:text-left">
+    <h2 className="text-4xl md:text-5xl font-semibold text-black mb-10 text-center lg:text-center">
       Transforming organizations <br /> in every industry
     </h2>
 

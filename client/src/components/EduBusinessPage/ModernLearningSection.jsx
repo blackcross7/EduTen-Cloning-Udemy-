@@ -27,26 +27,17 @@ const learningOptions = [
 const ModernLearningSection = () => {
   return (
     <section className="bg-[#f9fafb] py-16 px-4 lg:px-20">
-      <div className="max-w-screen-xl mx-auto">
-        {/* Top section */}
-        <div className="flex flex-col lg:flex-row justify-between gap-10 mb-12 text-center lg:text-left">
-          {/* Left text */}
-          <div className="flex-1">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-black">
-              Modern skills need a modern <br className="hidden lg:block" />
-              learning approach
-            </h2>
-          </div>
-
-          {/* Right paragraph */}
-          <div className="flex-1 text-gray-700 text-lg leading-relaxed">
-            <p>
-              Learning solutions shouldn’t be one-size-fits-all. For effective
-              training, you need the right skills and the right modalities.
-              That’s where we come in.
-            </p>
-          </div>
-        </div>
+      {/* Top section */}
+<div className="mb-12 text-center max-w-3xl mx-auto">
+  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-black mb-4">
+    Modern skills need a modern <br className="hidden lg:block" />
+    learning approach
+  </h2>
+  <p className="text-gray-700 text-lg leading-relaxed pt-5">
+    Learning solutions shouldn’t be one-size-fits-all. For effective training,
+    you need the right skills and the right modalities. That’s where we come in.
+  </p>
+</div>
 
         {/* Image + cards section */}
         <div className="bg-white rounded-3xl overflow-hidden shadow-md">
@@ -76,7 +67,6 @@ const ModernLearningSection = () => {
             ))}
           </div>
         </div>
-      </div>
     </section>
   );
 };
