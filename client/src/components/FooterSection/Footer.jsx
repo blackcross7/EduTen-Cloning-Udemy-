@@ -41,13 +41,13 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h3 className="text-white font-semibold mb-3">Language</h3>
-          <select className="bg-gray-800 text-white p-2 rounded-md w-full focus:outline-none">
-            <option>English</option>
-            <option>हिंदी</option>
-            <option>తెలుగు</option>
-            <option>Français</option>
-          </select>
+          <h3 className="text-white font-semibold mb-3">Connect with Us</h3>
+          <ul className="space-y-2">
+            <li className="hover:text-white cursor-pointer">Instagram</li>
+            <li className="hover:text-white cursor-pointer">LinkedIn</li>
+            <li className="hover:text-white cursor-pointer">Twitter</li>
+            <li className="hover:text-white cursor-pointer">YouTube</li>
+          </ul>
         </div>
       </div>
 
