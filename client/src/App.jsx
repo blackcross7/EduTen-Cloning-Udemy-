@@ -19,6 +19,7 @@ import BusinessCoursePage from "./pages/BusinessCoursePage";
 
 import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage"; // ✅ New Page
 
+
 function App() {
   const { checkAuth, user } = useAuthStore();
 
@@ -40,7 +41,7 @@ function App() {
         <Route path="/web-development" element={<WebDevelopmentPage />} />
         <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
         <Route path="/personal-development" element={<PersonalDevPage />} /> {/* ✅ New Route */}
-        <Route path="businesscourse" element={<BusinessCoursePage />} />
+        <Route path="/businesscourse" element={<BusinessCoursePage />} />
       </Routes>
 
       <Footer /> 

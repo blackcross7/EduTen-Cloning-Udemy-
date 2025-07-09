@@ -89,7 +89,7 @@ const FeaturedCourses = () => {
       {/* Left Scroll Button */}
       <button
         onClick={scrollLeft}
-        className="hidden md:flex absolute top-1/2 -translate-y-1/2 left-[1%] z-10 bg-white shadow-xl border border-gray-300 rounded-full w-14 h-14 items-center justify-center hover:bg-gray-100"
+        className="hidden md:flex absolute top-1/2 -translate-y-1/2 left-0 z-10 bg-white shadow-xl border border-gray-300 rounded-full w-14 h-14 items-center justify-center hover:bg-gray-100"
       >
         <ChevronLeftIcon className="w-7 h-7 text-gray-800" />
       </button>
@@ -97,7 +97,7 @@ const FeaturedCourses = () => {
       {/* Right Scroll Button */}
       <button
         onClick={scrollRight}
-        className="hidden md:flex absolute top-1/2 -translate-y-1/2 right-[1%] z-10 bg-white shadow-xl border border-gray-300 rounded-full w-14 h-14 items-center justify-center hover:bg-gray-100"
+        className="hidden md:flex absolute top-1/2 -translate-y-1/2 right-0 z-10 bg-white shadow-xl border border-gray-300 rounded-full w-14 h-14 items-center justify-center hover:bg-gray-100"
       >
         <ChevronRightIcon className="w-7 h-7 text-gray-800" />
       </button>

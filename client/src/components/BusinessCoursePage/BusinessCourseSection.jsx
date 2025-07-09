@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-const tabs = ["Most popular", "New", "Trending"];
+import React, { useState, useRef, useEffect } from "react";
 
 const coursesData = {
   "Most popular": [
@@ -131,148 +129,125 @@ const coursesData = {
   ],
 };
 
-const BusinessCourseSection = () => {
-  const [activeTab, setActiveTab] = useState("Most popular");
-  const courseList = coursesData[activeTab];
+const BusinessCourseGrid = () => {
+  const [selectedTab, setSelectedTab] = useState("Most popular");
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [isLeft, setIsLeft] = useState(false);
+  const cardRef = useRef();
+
+  useEffect(() => {
+    const handlePosition = () => {
+      const rect = cardRef.current?.getBoundingClientRect();
+      if (rect && rect.right + 360 > window.innerWidth) {
+        setIsLeft(true);
+      } else {
+        setIsLeft(false);
+      }
+    };
+    handlePosition();
+    window.addEventListener("resize", handlePosition);
+    return () => window.removeEventListener("resize", handlePosition);
+  }, [hoveredIndex]);
+
+  const tabs = Object.keys(coursesData);
+  const currentCourses = coursesData[selectedTab];
 
   return (
-    <section className="px-4 lg:px-20 pt-10 pb-0">
-      <h2 className="text-3xl font-bold mb-2 text-black">Business Courses</h2>
-      <h3 className="text-xl font-semibold text-gray-800 mb-1">
-        Courses to get you started
-      </h3>
-      <p className="text-sm text-gray-600 mb-6">
-        Explore courses from experienced, real-world experts.
-      </p>
-
-      <div className="flex gap-4 text-sm font-semibold mb-6">
-        {tabs.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`pb-1 ${
-              activeTab === tab
-                ? "border-b-2 border-black text-black"
-                : "text-gray-500 hover:text-black"
-            }`}
-          >
-            {tab}
-          </button>
-        ))}
+    <section className="bg-white text-gray-900 px-6 py-10">
+      <div className="pl-4 mb-6">
+        <h1 className="text-3xl font-bold mb-1">Top Business Courses</h1>
+        <h2 className="text-xl text-black font-semibold mb-2">Courses to get you started</h2>
+        <div className="flex gap-4 mt-2">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              className={`text-sm px-3 py-1 rounded-full border ${
+                selectedTab === tab
+                  ? "bg-indigo-600 text-white border-indigo-600"
+                  : "border-gray-300 text-gray-700 hover:bg-gray-100"
+              }`}
+              onClick={() => setSelectedTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-        {courseList.map((course, index) => (
-          <div key={index} className="relative group">
-            <div className="w-full bg-white rounded-md p-2 border h-[340px] flex flex-col justify-between">
-              <img
-                src={course.image || "/assets/business/sql-course.png"}
-                alt={course.title || "Course"}
-                className="rounded-md w-full h-[150px] object-cover mb-2"
-              />
-              <h4 className="font-semibold text-sm text-black leading-snug mb-1">
-                {course.title || "Sample Course Title"}
-              </h4>
-              <p className="text-xs text-gray-600">
-                {course.instructor || "Instructor Name"}
-              </p>
-              <div className="text-sm mt-1">
-                <span className="font-semibold text-yellow-600">
-                  {course.rating || "4.5"}
-                </span>
-                <span className="text-gray-600 text-xs ml-1">
-                  ★ ({course.students || "10,000"})
-                </span>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 items-start">
+        {currentCourses.map((course, index) => (
+          <div
+            key={index}
+            className="relative group"
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            ref={hoveredIndex === index ? cardRef : null}
+          >
+            {/* Course Card */}
+            <div className="border rounded-lg shadow-md overflow-hidden transition-all h-[400px] w-full flex flex-col">
+              <div className="w-full h-48 overflow-hidden rounded-t">
+                <img
+                  src={course.image}
+                  alt={course.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <div className="text-sm font-bold mt-1 text-black">
-                {course.price || "₹799"} {" "}
-                <span className="line-through text-gray-500 text-xs font-medium">
-                  {course.originalPrice || "₹3,999"}
-                </span>
-              </div>
-              <div className="flex gap-2 mt-2">
-                {(course.badges || ["Premium", "Bestseller"]).map((badge, i) => (
-                  <span
-                    key={i}
-                    className={`text-xs px-2 py-1 rounded font-medium ${
-                      badge === "Premium"
-                        ? "bg-purple-100 text-purple-700"
-                        : badge === "New"
-                        ? "bg-green-100 text-green-700"
-                        : "bg-yellow-100 text-yellow-700"
-                    }`}
-                  >
-                    {badge}
-                  </span>
-                ))}
+              <div className="p-4 flex flex-col justify-between h-full">
+                <div>
+                  <h2 className="text-md font-bold line-clamp-2">{course.title}</h2>
+                  <p className="text-sm text-gray-600 mt-1">{course.instructor}</p>
+                  <div className="flex items-center gap-2 mt-2 text-sm">
+                    <span className="text-yellow-500 font-bold">{course.rating}</span>
+                    <div className="flex text-yellow-500 text-sm">★★★★☆</div>
+                    <span className="text-gray-600 text-xs">({course.students})</span>
+                  </div>
+                  <div className="mt-2 text-sm font-semibold text-indigo-700">
+                    Current price: {course.price}
+                  </div>
+                </div>
+                <div className="flex flex-wrap items-center gap-2 text-xs mt-4">
+                  {course.badges.map((badge, i) => (
+                    <span
+                      key={i}
+                      className={`px-2 py-1 rounded font-semibold ${
+                        badge === "Premium"
+                          ? "bg-purple-100 text-purple-700"
+                          : badge === "Bestseller"
+                          ? "bg-green-100 text-green-700"
+                          : badge === "New"
+                          ? "bg-yellow-100 text-yellow-700"
+                          : "bg-blue-100 text-blue-700"
+                      }`}
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Hover Card */}
-            <div
-              className={`absolute top-0 z-30 w-[330px] bg-white shadow-2xl rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ${
-                index === courseList.length - 1 ? "right-full mr-4" : "left-full ml-4"
-              }`}
-            >
-              <div className="relative">
-                <div className="absolute left-[-6px] top-10 w-3 h-3 bg-white rotate-45 shadow-md"></div>
-              </div>
-              <div className="p-4 flex flex-col justify-between h-auto text-sm">
-                <div>
-                  <h3 className="text-base font-bold text-black mb-1">
-                    {course.title}
-                  </h3>
-                  <div className="flex gap-2 mb-2">
-                    {(course.badges || []).map((badge, i) => (
-                      <span
-                        key={i}
-                        className={`text-xs px-2 py-1 rounded font-semibold ${
-                          badge === "Premium"
-                            ? "bg-purple-100 text-purple-700"
-                            : badge === "New"
-                            ? "bg-green-100 text-green-700"
-                            : badge === "Bestseller"
-                            ? "bg-blue-100 text-blue-700"
-                            : "bg-yellow-100 text-yellow-700"
-                        }`}
-                      >
-                        {badge}
-                      </span>
-                    ))}
-                    <span className="text-xs text-gray-600">
-                      Updated <strong>2025</strong>
-                    </span>
-                  </div>
-                  <p className="text-xs text-gray-600 mb-2">
-                    2.5 total hours · Intermediate Level · Subtitles
-                  </p>
-                  <p className="text-gray-700 mb-2">
-                    Transform executive decision-making, enhance strategic planning, and lead AI-powered organizational change
-                  </p>
-                  <ul className="text-xs text-gray-700 list-disc list-inside space-y-1">
-                    <li>
-                      Evaluate AI's potential as a cognitive partner to enhance executive thinking, identify blind spots, and expand strategic vision.
-                    </li>
-                    <li>
-                      Develop AI-enhanced communication strategies that maintain authentic leadership voice while improving stakeholder engagement.
-                    </li>
-                    <li>
-                      Transform strategic planning processes by leveraging AI for deeper market insights, scenario planning, and innovation acceleration.
-                    </li>
-                  </ul>
-                </div>
-                <div className="mt-4 flex items-center gap-20">
-                  <button className="bg-purple-600 text-white text-lg px-6 py-2 rounded hover:bg-purple-700">
-                    Add to cart
-                  </button>
-                  <img
-                    src="/assets/business/heart.png"
-                    alt="Wishlist"
-                    className="w-10 h-10 cursor-pointer"
-                  />
-                </div>
-              </div>
-            </div>
+            {/* Hover Overlay */}
+           {hoveredIndex === index && (
+  <div
+    className={`
+      absolute z-30 w-[330px] bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 transition-all duration-300
+      ${isLeft ? "md:right-full md:mr-4" : "md:left-full md:ml-4"} 
+      md:top-0 top-full mt-2
+    `}
+  >
+    <h2 className="text-lg font-bold text-gray-900 mb-2">{course.title}</h2>
+    <p className="text-sm text-gray-700 mb-1">{course.instructor}</p>
+    <p className="text-xs text-gray-600 mb-2">Updated 2025 • All Levels • Subtitles</p>
+    <ul className="text-sm text-gray-700 space-y-1">
+      <li className="flex gap-2"><span className="text-green-500">✓</span> Real-world learning</li>
+      <li className="flex gap-2"><span className="text-green-500">✓</span> Business essentials</li>
+      <li className="flex gap-2"><span className="text-green-500">✓</span> Lifetime access</li>
+    </ul>
+    <button className="mt-4 bg-indigo-600 text-white py-2 px-4 w-full rounded hover:bg-indigo-700 transition">
+      Add to Cart
+    </button>
+  </div>
+)}
 
           </div>
         ))}
@@ -281,4 +256,4 @@ const BusinessCourseSection = () => {
   );
 };
 
-export default BusinessCourseSection;
+export default BusinessCourseGrid;

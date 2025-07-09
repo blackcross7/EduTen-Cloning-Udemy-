@@ -397,7 +397,7 @@ const WebCourseInfoPanel = () => {
         flex flex-col
         transition-transform duration-300
         ${showFilters ? "translate-x-0" : "-translate-x-full"}
-        md:static md:translate-x-0 md:relative md:h-auto md:border md:rounded-lg md:p-4 md:shadow-none
+         md:translate-x-0 md:relative md:h-auto md:border md:rounded-lg md:p-4 md:shadow-none
       `}
     >
       {/* Header + Close (Mobile) */}

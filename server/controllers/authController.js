@@ -11,7 +11,7 @@ const cookieOptions = {
 
 // ==========================
 // Signup Controller
-// ==========================
+// ========================== 
 export const signupUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -33,7 +33,7 @@ export const signupUser = async (req, res) => {
 
     // Generate token
     const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
-      expiresIn: '7d',
+      expiresIn: '10d',
     });
 
     res

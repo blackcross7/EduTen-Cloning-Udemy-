@@ -19,3 +19,4 @@ router.put('/update-profile', authMiddleware, updateProfile);
 
 
 export default router;
+ 
