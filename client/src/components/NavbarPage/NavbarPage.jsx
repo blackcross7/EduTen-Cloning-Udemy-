@@ -39,30 +39,33 @@ const teachItems = [
 ];
 
 const secondaryLinks = [
-  "Web Development",
-  "Python",
-  "Excel",
-  "JavaScript",
-  "Data Science",
-  "AWS Certification",
-  "Drawing",
-  "React",
-  "Graphic Design",
-  "Business Analytics",
-];
+  "Development",
+  "Business",
+  "Finance & Accounting",
+  "IT & Software",
+  "Office Productivity",
+  "Personal Development",
+  "Design",
+  "Marketing",
+  "Lifestyle",
+  "Photography & Video",
+  "Health & Fitness",
+  "Music",];
 
 // Dummy submenu items for demonstration
 const secondarySubmenus = {
-  "Web Development": ["HTML", "CSS", "JavaScript", "React", "Node.js"],
-  "Python": ["Beginner", "Data Science", "Automation", "Django", "Flask"],
-  "Excel": ["Formulas", "Pivot Tables", "Charts", "Macros"],
-  "JavaScript": ["ES6", "Async", "DOM", "Frameworks"],
-  "Data Science": ["Pandas", "NumPy", "Machine Learning", "Deep Learning"],
-  "AWS Certification": ["Cloud Practitioner", "Solutions Architect", "DevOps"],
-  "Drawing": ["Sketching", "Digital Art", "Perspective", "Color Theory"],
-  "React": ["Hooks", "Redux", "Next.js", "Testing"],
-  "Graphic Design": ["Photoshop", "Illustrator", "Branding", "UI/UX"],
-  "Business Analytics": ["Excel", "Power BI", "Tableau", "SQL"],
+  "Development": ["Web Development", "Mobile Development", "Game Development", "Software Testing", "DevOps"],
+  "Business": ["Entrepreneurship", "Management", "Sales", "Operations", "Business Strategy"],
+  "Finance & Accounting": ["Accounting", "Financial Analysis", "Investment", "Taxation", "Auditing"],
+  "IT & Software": ["Network & Security", "Hardware", "Operating Systems", "Cloud Computing", "Databases"],
+  "Office Productivity": ["Microsoft Office", "Google Workspace", "Time Management", "Project Management", "Communication"],
+  "Personal Development": ["Leadership", "Productivity", "Career Development", "Emotional Intelligence", "Stress Management"],
+  "Design": ["Graphic Design", "UX/UI Design", "Fashion Design", "Interior Design", "3D Modeling"],
+  "Marketing": ["Digital Marketing", "SEO", "Content Marketing", "Social Media", "Branding"],
+  "Lifestyle": ["Cooking", "Travel", "Gardening", "Home Improvement", "Fashion & Style"],
+  "Photography & Video": ["Photography Basics", "Video Editing", "Drone Photography", "Lighting Techniques", "Photo Editing"],
+  "Health & Fitness": ["Yoga", "Nutrition", "Mental Health", "Workout", "Meditation"],
+  "Music": ["Music Theory", "Instruments", "Music Production", "Singing", "Composition"],
 };
 
 const NavbarPage = () => {
@@ -165,21 +168,14 @@ const NavbarPage = () => {
               {openDropdown === "explore" && (
                 <div className="absolute left-0 mt-2 w-56 bg-white border rounded shadow-lg z-50">
                   <ul>
-                  {exploreItems.map((item) => (
-                     <li
-                         key={item}
-                           onClick={() => {
-                               if (item === "Personal Development") {
-                                    navigate("/personal-development");
-                 setOpenDropdown(null); // optional: closes dropdown on click
-      }
-    }}
-    className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-  >
-    {item}
-  </li>
-))}
-
+                    {exploreItems.map((item) => (
+                      <li
+                        key={item}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                      >
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               )}
