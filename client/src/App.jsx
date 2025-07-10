@@ -14,10 +14,8 @@ import ProfilePage from "./pages/ProfilePage";
 import WebDevelopmentPage from "./pages/WebDevelopmentPage";
 import Footer from "./components/FooterSection/Footer";
 import BusinessCoursePage from "./pages/BusinessCoursePage"; 
-
-// Components
-
-import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage"; // ✅ New Page
+import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage"; 
+import FinancePage from "./pages/FinancePage";
 
 
 function App() {
@@ -40,8 +38,9 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/web-development" element={<WebDevelopmentPage />} />
         <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
-        <Route path="/personal-development" element={<PersonalDevPage />} /> {/* ✅ New Route */}
+        <Route path="/personal-development" element={<PersonalDevPage />} /> 
         <Route path="/businesscourse" element={<BusinessCoursePage />} />
+        <Route path="/finance" element={<FinancePage />} />
       </Routes>
 
       <Footer /> 

@@ -129,7 +129,7 @@ const coursesData = {
   ],
 };
 
-const BusinessCourseGrid = () => {
+const FinanceCourceSection = () => {
   const [selectedTab, setSelectedTab] = useState("Most popular");
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [isLeft, setIsLeft] = useState(false);
@@ -153,7 +153,7 @@ const BusinessCourseGrid = () => {
   const currentCourses = coursesData[selectedTab];
 
   return (
-    <section className="bg-white text-gray-900 px-6 pb-10">
+    <section className="bg-white text-gray-900 px-6">
       <div className="pl-4 mb-6">
         <h1 className="text-3xl font-bold mb-1 pb-6">Top Business Courses</h1>
         <h2 className="text-xl text-black font-semibold mb-2">Courses to get you started</h2>
@@ -256,4 +256,4 @@ const BusinessCourseGrid = () => {
   );
 };
 
-export default BusinessCourseGrid;
+export default FinanceCourceSection;

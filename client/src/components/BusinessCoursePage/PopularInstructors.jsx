@@ -4,53 +4,54 @@ import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 const instructors = [
   {
     name: "Jyoti Singh",
-    title: "PMI Project Management Professional (PMP), PMI...",
+    title: "Certified Scrum Master (CSM), Agile Coach",
     rating: 4.7,
     students: "664,683",
     courses: 27,
     image: "/assets/business/testimonial-person.png",
   },
   {
-    name: "Jyoti Singh",
-    title: "Business Intelligence (BI), Microsoft Power BI",
+    name: "Ravi Kapoor",
+    title: "Data Visualization, Tableau Expert",
     rating: 4.6,
     students: "1,539,478",
     courses: 46,
     image: "/assets/business/testimonial-person.png",
   },
   {
-    name: "Jyoti Singh",
-    title: "Data Analysis, Project Management",
+    name: "Meera Rathi",
+    title: "Excel Analytics, Strategic Project Leadership",
     rating: 4.6,
     students: "3,411,614",
     courses: 122,
     image: "/assets/business/testimonial-person.png",
   },
   {
-    name: "Jyoti Singh",
-    title: "PMI PMBOK, PMI Project Management Professional...",
+    name: "Nikhil Desai",
+    title: "Six Sigma Black Belt, Operations Excellence",
     rating: 4.6,
     students: "930,001",
     courses: 40,
     image: "/assets/business/testimonial-person.png",
   },
   {
-    name: "Jyoti Singh",
-    title: "Data Analysis, Microsoft Power BI",
+    name: "Tanvi Ahuja",
+    title: "Business Strategy, Power BI Visualization",
     rating: 4.6,
     students: "532,296",
     courses: 38,
     image: "/assets/business/testimonial-person.png",
   },
   {
-    name: "Jyoti Singh",
-    title: "Real Estate Investing, Financial Modeling",
+    name: "Arjun Malhotra",
+    title: "Finance & Investment, Real Estate Analytics",
     rating: 4.7,
     students: "88,807",
     courses: 20,
     image: "/assets/business/testimonial-person.png",
   },
 ];
+
 
 const PopularInstructors = () => {
   const scrollRef = useRef();
@@ -82,7 +83,7 @@ const PopularInstructors = () => {
   };
 
   return (
-    <section className="px-6 lg:px-20 py-10 relative">
+    <section className=" px-6 xl:px-20 py-10 relative">
       <h2 className="text-3xl font-bold text-gray-800 mb-2">Popular Instructors</h2>
       <p className="text-gray-600 mb-6 text-sm">
         These real-world experts are highly rated by learners like you.
@@ -115,7 +116,7 @@ const PopularInstructors = () => {
           {instructors.map((ins, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-[297px] border border-gray-300 rounded-md p-4 bg-white"
+              className="flex-shrink-0 w-[297px] border border-gray-300 rounded-md p-4 bg-white hover:bg-gray-50 transition-colors duration-200 cursor-pointer hover:scale-[1.02]"
             >
               <div className="flex items-center gap-3 mb-2">
                 <img
