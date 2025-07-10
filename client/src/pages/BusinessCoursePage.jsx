@@ -22,3 +22,4 @@ const BusinessCoursePage = () => {
 
 export default BusinessCoursePage;
 
+ 
