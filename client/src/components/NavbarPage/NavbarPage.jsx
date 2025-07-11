@@ -544,28 +544,6 @@ const NavbarPage = () => {
             </div>
           </div>
         )}
-
-          {/* Horizontal submenu */}
-          {hoveredSecondary && secondarySubmenus[hoveredSecondary] && (
-            <div
-              className="absolute left-0 w-full bg-white border-b border-gray-200 shadow z-40"
-              onMouseLeave={() => setHoveredSecondary(null)}
-              onMouseEnter={() => setHoveredSecondary(hoveredSecondary)}
-            >
-              <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
-                <div className="flex flex-nowrap overflow-x-auto space-x-4 py-3 justify-center">
-                  {secondarySubmenus[hoveredSecondary].map((item) => (
-                    <button
-                      key={item}
-                      className="px-4 py-2 rounded text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 whitespace-nowrap transition"
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
         </nav>
 
       )}
