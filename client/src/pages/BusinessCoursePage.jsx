@@ -8,15 +8,15 @@ import AllBusinessCoursesSection from "../components/BusinessCoursePage/AllBusin
 
 const BusinessCoursePage = () => {
   return (
-    <main className="bg-white text-gray-800 py-10">
-  <div className="max-w-[1440px] w-full px-4 sm:px-8 lg:px-12 mx-auto">
-    <BusinessCourseSection />
-    <FeaturedCourses />
-    <PopularTopics />
-    <PopularInstructors />
-    <AllBusinessCoursesSection />
-  </div>
-</main>
+    <main className="bg-gradient-to-b from-[#f8fafc] to-[#f1f5f9] text-gray-800 py-16 min-h-screen">
+      <div className="max-w-[1440px] w-full px-4 sm:px-8 lg:px-12 mx-auto">
+        <BusinessCourseSection />
+        <FeaturedCourses />
+        <PopularTopics />
+        <PopularInstructors />
+        <AllBusinessCoursesSection />
+      </div>
+    </main>
   );
 };
 

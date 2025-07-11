@@ -46,25 +46,25 @@ const FocusedLearningSection = () => (
           {features.map((f, i) => (
             <div
               key={f.title}
-              className={`flex items-start gap-4 rounded-xl p-5 border transition
+              className={`flex items-start gap-4 rounded-xl p-5 border transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:border-purple-600 cursor-pointer
                 ${f.highlight ? "border-purple-500 bg-white shadow-md" : "border-gray-200 bg-gray-100"}
               `}
             >
-              <div className="text-3xl">{f.icon}</div>
+              <div className="text-3xl transition duration-300 ease-in-out transform hover:scale-125 hover:rotate-12">{f.icon}</div>
               <div>
                 <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-bold text-lg">{f.title}</h3>
+                  <h3 className="font-bold text-lg transition duration-200 hover:text-purple-700">{f.title}</h3>
                   {f.badge && (
                     <span className="ml-2 px-2 py-0.5 text-xs rounded bg-purple-100 text-purple-700 font-semibold">
                       {f.badge}
                     </span>
                   )}
                 </div>
-                <p className="text-gray-700 text-sm mb-1">{f.desc}</p>
+                <p className="text-gray-700 text-sm mb-1 transition duration-200 hover:text-gray-900">{f.desc}</p>
                 {f.cta && (
                   <a
                     href={f.cta.link}
-                    className="text-purple-700 font-semibold text-sm hover:underline flex items-center gap-1"
+                    className="text-purple-700 font-semibold text-sm hover:text-purple-800 hover:font-bold transition duration-200 flex items-center gap-1"
                   >
                     {f.cta.label} <span aria-hidden>→</span>
                   </a>
@@ -74,11 +74,11 @@ const FocusedLearningSection = () => (
           ))}
         </div>
         {/* Right: Assessment Preview */}
-        <div className="flex-1 flex justify-center w-full">
+        <div className="flex-1 flex justify-center w-full transition duration-300 ease-in-out transform hover:scale-105">
           <img
             src="assets/landingPage/desktop.jpg"
             alt="Assessment Preview"
-            className="rounded-2xl shadow-xl w-full max-w-lg border"
+            className="rounded-2xl shadow-xl w-full max-w-lg border transition duration-300 ease-in-out transform hover:shadow-2xl hover:scale-110"
           />
         </div>
       </div>

@@ -57,7 +57,7 @@ const plans = [
 ];
 
 const PricingPlansSection = () => (
-  <section className="py-16 bg-white">
+  <section className="py-20 bg-gradient-to-b from-[#f8fafc] to-[#f1f5f9]">
     <div className="max-w-7xl mx-auto px-4">
       <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">
         Accelerate growth – for you or your organization
@@ -65,15 +65,15 @@ const PricingPlansSection = () => (
       <p className="text-gray-600 mb-8">
         Reach goals faster with one of our plans or programs. Try one free today or contact sales to learn more.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
         {plans.map((plan, idx) => (
           <div
             key={plan.name}
-            className={`rounded-2xl border ${
+            className={`rounded-2xl border-2 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:border-purple-600 ${
               plan.highlight
-                ? "border-purple-500 shadow-lg"
+                ? "border-purple-600 shadow-2xl"
                 : "border-gray-200"
-            } bg-white flex flex-col p-6 pt-4`}
+            } bg-white flex flex-col p-8 pt-6`}
           >
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xl">{plan.icon}</span>

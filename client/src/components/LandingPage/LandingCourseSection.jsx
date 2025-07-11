@@ -96,7 +96,7 @@ const courses = [
 const LandingCourseSection = () => (
   <section className="w-full lg:w-[90vw] mx-auto py-12 px-4 space-y-6">
     {/* Heading */}
-    <div className="text-center space-y-2">
+    <div className="text-left space-y-2 mb-10">
       <h2 className="text-2xl md:text-4xl font-bold text-gray-900">All the skills you need in one place</h2>
       <p className="text-gray-600 text-sm md:text-base">
         From critical skills to technical topics, we support your professional development.
@@ -106,7 +106,7 @@ const LandingCourseSection = () => (
     {/* Top Filters (scrollable) */}
     <div className="flex gap-4 overflow-x-auto pb-2 border-b scrollbar-hide">
       {filters.map((f, i) => (
-        <button key={i} className="text-sm font-medium text-gray-700 hover:text-black whitespace-nowrap">
+        <button key={i} className="text-sm font-medium text-gray-700 hover:text-purple-600 hover:font-semibold transition duration-200 whitespace-nowrap">
           {f}
         </button>
       ))}
@@ -115,7 +115,7 @@ const LandingCourseSection = () => (
     {/* Sub Filters (scrollable pills) */}
     <div className="flex gap-3 overflow-x-auto py-3 scrollbar-hide">
       {subFilters.map((f, i) => (
-        <button key={i} className="flex-shrink-0 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm text-gray-800 whitespace-nowrap">
+        <button key={i} className="flex-shrink-0 bg-gray-100 hover:bg-purple-100 hover:border-purple-300 border border-transparent px-4 py-2 rounded-full text-sm text-gray-800 hover:text-purple-700 transition duration-200 whitespace-nowrap">
           <span className="font-semibold">{f.label}</span>
           <span className="ml-1 text-gray-500">{f.learners} learners</span>
         </button>
@@ -125,7 +125,7 @@ const LandingCourseSection = () => (
     {/* Course cards slider */}
     <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
       {courses.map((course) => (
-        <div key={course.id} className="min-w-[280px] max-w-[300px] bg-white rounded-xl shadow-md border border-gray-200">
+        <div key={course.id} className="min-w-[280px] max-w-[300px] bg-white rounded-xl shadow-md border border-gray-200 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:border-purple-600 cursor-pointer">
           <img src={course.img} alt={course.title} className="w-full h-40 object-cover rounded-t-xl" />
           <div className="p-4 space-y-2">
             <h3 className="text-sm font-semibold line-clamp-2">{course.title}</h3>

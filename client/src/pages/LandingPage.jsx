@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import HeroSection from '../components/LandingPage/HeroSection';
 import HeroCards from '../components/LandingPage/HeroCards';
 import LandingCourseSection from '../components/LandingPage/LandingCourseSection';
@@ -10,6 +11,16 @@ import TrendingNowSection from '../components/LandingPage/TrendingNowSection';
 import AIBusinessLeadersSection from '../components/LandingPage/AIBusinessLeadersSection';
 
 const baseClass = "w-[95vw] lg:w-[90vw] mx-auto";
+
+// Animation variants
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut" }
+  }
+};
 
 const LandingPage = () => {
   return (
@@ -33,7 +44,7 @@ const LandingPage = () => {
       <main>
         {/* 🎨 Animated Gradient Hero Section */}
         <div
-          className="w-full py-24 animate-gradient"
+          className="w-full py-24"
           style={{
             backgroundImage:
               "linear-gradient(-45deg, #0F172A, #3B82F6, #14B8A6, #A78BFA, #F9A8D4)",
@@ -45,47 +56,95 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div className="w-full py-10 bg-[#F3F4F6]">
+        <motion.div 
+          className="w-full py-10 bg-[#F3F4F6]"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <div className={`${baseClass} bg-[#F3F4F6]`}><HeroCards /></div>
-        </div>
+        </motion.div>
 
-        <div className="w-full py-10 bg-[#E0F2FE]">
+        <motion.div 
+          className="w-full py-10 bg-[#E0F2FE]"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <div className={`${baseClass} bg-[#E0F2FE]`}><LandingCourseSection /></div>
-        </div>
+        </motion.div>
 
-        <div className="w-full py-10 bg-[#F8FAFC]">
+        <motion.div 
+          className="w-full py-10 bg-[#F8FAFC]"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <div className={`${baseClass} bg-[#F8FAFC]`}><FocusedLearningSection /></div>
-        </div>
+        </motion.div>
 
-        <div className="w-full py-10 bg-[#EFF6FF]">
-  <div className={`${baseClass} bg-[#EFF6FF]`}>
-    <PricingPlansSection />
-  </div>
-</div>
+        <motion.div 
+          className="w-full py-10 bg-[#EFF6FF]"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div className={`${baseClass} bg-[#EFF6FF]`}>
+            <PricingPlansSection />
+          </div>
+        </motion.div>
 
-<div className="w-full py-10 bg-[#F1F5F9]">
-  <div className={`${baseClass} bg-[#F1F5F9]`}>
-    <TestimonialsSection />
-  </div>
-</div>
+        <motion.div 
+          className="w-full py-10 bg-[#F1F5F9]"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div className={`${baseClass} bg-[#F1F5F9]`}>
+            <TestimonialsSection />
+          </div>
+        </motion.div>
 
-<div className="w-full py-10 bg-[#E0F7FA]">
-  <div className={`${baseClass} bg-[#E0F7FA]`}>
-    <CaseStudySlider />
-  </div>
-</div>
+        <motion.div 
+          className="w-full py-10 bg-[#E0F7FA]"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div className={`${baseClass} bg-[#E0F7FA]`}>
+            <CaseStudySlider />
+          </div>
+        </motion.div>
 
-<div className="w-full py-10 bg-[#F9FAFB]">
-  <div className={`${baseClass} bg-[#F9FAFB]`}>
-    <TrendingNowSection />
-  </div>
-</div>
+        <motion.div 
+          className="w-full py-10 bg-[#F9FAFB]"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div className={`${baseClass} bg-[#F9FAFB]`}>
+            <TrendingNowSection />
+          </div>
+        </motion.div>
 
-<div className="w-full py-10 bg-[#EEF2FF]">
-  <div className={`${baseClass} bg-[#EEF2FF]`}>
-    <AIBusinessLeadersSection />
-  </div>
-</div>
+        <motion.div 
+          className="w-full py-10 bg-[#EEF2FF]"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <div className={`${baseClass} bg-[#EEF2FF]`}>
+            <AIBusinessLeadersSection />
+          </div>
+        </motion.div>
 
       </main>
     </>

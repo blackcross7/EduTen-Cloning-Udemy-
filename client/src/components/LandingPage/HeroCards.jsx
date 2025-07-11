@@ -32,12 +32,12 @@ const courses = [
 
 // Card component
 const Card = ({ course, index }) => (
-  <div className="hover:scale-[1.03]  transition-all duration-300 cursor-pointer">
+  <div className="transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:border-purple-600 cursor-pointer">
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
-      className="bg-white hover:bg-gray-100 border border-gray-200 rounded-2xl shadow-xl   p-4 flex flex-col  h-full "
+      className="bg-white border border-gray-200 rounded-2xl shadow-xl p-4 flex flex-col h-full "
     >
       <img
         src={course.img}

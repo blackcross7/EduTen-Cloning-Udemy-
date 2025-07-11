@@ -32,28 +32,41 @@ const testimonials = [
 ];
 
 const TestimonialsSection = () => (
-  <section className="bg-gray-50 py-16">
+  <section className="py-20 bg-gradient-to-b from-[#f8fafc] to-[#f1f5f9]">
     <div className="max-w-7xl mx-auto px-4">
-      <h2 className="text-3xl md:text-4xl font-bold mb-10 text-gray-900">
-        See what others are achieving through learning
-      </h2>
+      {/* Heading */}
+      <div className="text-left space-y-2">
+        <h2 className="text-2xl md:text-4xl font-bold text-gray-900">See what others are achieving through learning</h2>
+        <p className="text-gray-600 text-sm md:text-base">
+          Real stories from students who transformed their careers with our courses
+        </p>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {testimonials.map((t, i) => (
           <div
             key={i}
-            className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col h-full shadow-sm"
+            className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col h-full shadow-sm transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl hover:border-purple-600 cursor-pointer"
           >
-            <div className="text-3xl text-gray-400 mb-4">“</div>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="flex">
+                <span className="text-yellow-400">★</span>
+                <span className="text-yellow-400">★</span>
+                <span className="text-yellow-400">★</span>
+                <span className="text-yellow-400">★</span>
+                <span className="text-yellow-400">★</span>
+              </div>
+              <span className="text-gray-400 text-sm">Verified Student</span>
+            </div>
             <p className="text-gray-800 flex-1 mb-6">{t.quote}</p>
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white font-bold text-lg">
+              <div className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-lg">
                 {t.initials}
               </div>
               <span className="text-gray-700 font-medium">{t.name}</span>
             </div>
             <a
               href={t.courseLink}
-              className="text-purple-700 font-medium text-sm hover:underline flex items-center gap-1"
+              className="text-purple-700 font-medium text-sm hover:text-purple-800 hover:font-semibold transition duration-200 flex items-center gap-1"
             >
               View this {t.course} course <span aria-hidden>›</span>
             </a>
