@@ -509,19 +509,22 @@ const NavbarPage = () => {
                   onMouseEnter={() => setHoveredSecondary(link)}
                   onFocus={() => setHoveredSecondary(link)}
                    onClick={() => {
-        if (link === "Development") {
-          navigate("/web-development");
-        }
-        if (link === "Business") {
-          navigate("/businesscourse");
-        }
-        if (link === "Personal Development") {
-          navigate("/personal-development");
-        }
-        if (link === "Finance & Accounting") {
-          navigate("/finance");
-        }
-      }}
+      if (link === "Development") {
+        navigate("/web-development");
+      }
+      if (link === "Business") {
+        navigate("/businesscourse");
+      }
+      if (link === "Personal Development") {
+        navigate("/personal-development");
+      }
+      if (link === "Finance & Accounting") {
+        navigate("/finance");
+      }
+      if (link === "Marketing") {
+        navigate("/marketing");
+      }
+    }}
                 >
                   {link}
                 </button>
