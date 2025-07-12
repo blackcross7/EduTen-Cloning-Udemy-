@@ -483,46 +483,53 @@ const NavbarPage = () => {
 
       {/* Secondary Navbar */}
       {!hideSecondaryNavbar && (
-        <nav className="bg-gray-50 border-b border-gray-200 w-full relative">
-          <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
+        <nav className="bg-white border-b border-gray-200 w-full relative shadow-sm">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            {/* Left scroll indicator */}
+            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            
+            {/* Right scroll indicator */}
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+            
             <div
-              className="
-              flex
-              flex-nowrap
-              overflow-x-auto
-              space-x-2
-              py-2
-              justify-center
-            "
-            style={{ scrollbarWidth: "auto" }}
-            onMouseLeave={() => setHoveredSecondary(null)}
-          >
-            {secondaryLinks.map((link) => (
-              <button
-                key={link}
-                className="flex-shrink-0 px-3 py-1 rounded-full text-xs sm:text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 transition whitespace-nowrap"
-                onMouseEnter={() => setHoveredSecondary(link)}
-                onFocus={() => setHoveredSecondary(link)}
-                 onClick={() => {
-      if (link === "Development") {
-        navigate("/web-development");
-      }
-      if (link === "Business") {
-        navigate("/businesscourse");
-      }
-      if (link === "Personal Development") {
-        navigate("/personal-development");
-      }
-      if (link === "Finance & Accounting") {
-        navigate("/finance");
-      }
-    }}
-              >
-                {link}
-              </button>
-            ))}
+              className="flex flex-nowrap overflow-x-auto space-x-2 py-4 scrollbar-hide"
+              style={{ 
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+                scrollBehavior: "smooth"
+              }}
+              onMouseLeave={() => setHoveredSecondary(null)}
+            >
+              {/* Add some padding for better scroll experience */}
+              <div className="flex-shrink-0 w-8"></div>
+              {secondaryLinks.map((link) => (
+                <button
+                  key={link}
+                  className="flex-shrink-0 px-4 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-200 border border-transparent transition duration-200 whitespace-nowrap"
+                  onMouseEnter={() => setHoveredSecondary(link)}
+                  onFocus={() => setHoveredSecondary(link)}
+                   onClick={() => {
+        if (link === "Development") {
+          navigate("/web-development");
+        }
+        if (link === "Business") {
+          navigate("/businesscourse");
+        }
+        if (link === "Personal Development") {
+          navigate("/personal-development");
+        }
+        if (link === "Finance & Accounting") {
+          navigate("/finance");
+        }
+      }}
+                >
+                  {link}
+                </button>
+              ))}
+              {/* Add some padding for better scroll experience */}
+              <div className="flex-shrink-0 w-8"></div>
+            </div>
           </div>
-        </div>
         {/* Horizontal submenu */}
         {hoveredSecondary && secondarySubmenus[hoveredSecondary] && (
           <div
@@ -536,6 +543,11 @@ const NavbarPage = () => {
                   <button
                     key={item}
                     className="px-4 py-2 rounded text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 whitespace-nowrap transition"
+                    onClick={() => {
+                      if (item === "Interior Design") {
+                        navigate("/interior-design");
+                      }
+                    }}
                   >
                     {item}
                   </button>

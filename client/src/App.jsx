@@ -42,7 +42,7 @@ function App() {
         <Route path="/personal-development" element={<PersonalDevPage />} /> 
         <Route path="/businesscourse" element={<BusinessCoursePage />} />
         <Route path="/finance" element={<FinancePage />} />
-        <Route path="/interior" element={<InteriorDesignPage />} />
+        <Route path="/interior-design" element={<InteriorDesignPage />} />
       </Routes>
 
       <Footer /> 
