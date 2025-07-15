@@ -21,17 +21,18 @@ import MarketingPage from "./pages/MarketingPage";
 import DigitalMarketingPage from "./pages/DigitalMarketingPage";
 import SEOPage from "./pages/SEOPage";
 
+ import EduTeachPage from "./pages/EduTeachPage";
+
+
+
 import Taxation from "./components/FinanceSubPages/Taxation";
 import Invevstment from "./components/FinanceSubPages/Invevstment";
 import FinancialAnalysis from "./components/FinanceSubPages/FinancialAnalysis";
 import Accounting from "./components/FinanceSubPages/Accounting";
 import Auditing from "./components/FinanceSubPages/Auditing";
 
-import DesignPage from "./pages/DesignPage";
-import Modeling from "./components/DesignSubPages/Modeling";
-import FaashionDesign from "./components/DesignSubPages/FaashionDesign";
-import UIDesign from "./components/DesignSubPages/UIDesign";
-import GraphicDesign from "./components/DesignSubPages/GraphicDesign";
+import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage"; 
+
 
 function App() {
   const { checkAuth, user } = useAuthStore();
@@ -75,6 +76,11 @@ function App() {
         <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
         <Route path="/interior" element={<InteriorDesignPage />} />
         <Route path="/design" element={<DesignPage/>} />
+        <Route path="/personal-development" element={<PersonalDevPage />} /> 
+        <Route path="/edu-teach" element={<EduTeachPage />} />
+        
+       
+
       </Routes>
 
       <Footer /> 

@@ -289,32 +289,53 @@ const NavbarPage = () => {
               )}
             </div>
             {/* EDU Teach Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => handleDropdownEnter("teach")}
-              onMouseLeave={handleDropdownLeave}
-            >
-              <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
-                EDU Teach
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {openDropdown === "teach" && (
-                <div className="absolute left-0 mt-2 w-56 bg-white border rounded shadow-lg z-50">
-                  <ul>
-                    {teachItems.map((item) => (
-                      <li
-                        key={item}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+           {/* EDU Teach Dropdown */}
+<div
+  className="relative"
+  onMouseEnter={() => handleDropdownEnter("teach")}
+  onMouseLeave={handleDropdownLeave}
+>
+  <button
+    className="text-sm font-semibold hover:text-purple-700 flex items-center"
+    onClick={() => navigate("/edu-teach")}
+  >
+    EDU Teach
+    <svg
+      className="w-4 h-4 ml-1"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+    >
+      <path d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
+
+  {openDropdown === "teach" && (
+    <div className="absolute left-0 mt-0 w-56 bg-white border rounded shadow-lg z-50">
+      <ul>
+        {teachItems.map((item) => (
+          <li
+            key={item}
+            className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+            onClick={() => {
+              if (item === "Become an Instructor") {
+                navigate("/edu-teach"); // Send to EduTeach main page
+              } else {
+                alert(`${item} page coming soon`);
+              }
+              setOpenDropdown(null); // close dropdown
+            }}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>
+
+
 
             {/* Wishlist Icon */}
             {isLoggedIn && (
