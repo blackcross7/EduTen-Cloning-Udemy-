@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 import { Link } from "react-router-dom";
@@ -121,6 +121,37 @@ const NavbarPage = () => {
     };
   }, [mobileMenu]);
 
+  const secondaryNavRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  // Check scroll position for showing/hiding arrows
+  useEffect(() => {
+    const checkScroll = () => {
+      const el = secondaryNavRef.current;
+      if (!el) return;
+      setCanScrollLeft(el.scrollLeft > 0);
+      setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 1);
+    };
+    checkScroll();
+    const el = secondaryNavRef.current;
+    if (el) {
+      el.addEventListener('scroll', checkScroll);
+      window.addEventListener('resize', checkScroll);
+    }
+    return () => {
+      if (el) el.removeEventListener('scroll', checkScroll);
+      window.removeEventListener('resize', checkScroll);
+    };
+  }, []);
+
+  const scrollSecondaryNav = (dir) => {
+    const el = secondaryNavRef.current;
+    if (!el) return;
+    const scrollAmount = 200;
+    el.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+  };
+
   return (
     <>
       {/* Primary Navbar */}
@@ -233,9 +264,7 @@ const NavbarPage = () => {
               onMouseEnter={() => handleDropdownEnter("business")}
               onMouseLeave={handleDropdownLeave}
             >
-              <button className="text-sm font-semibold hover:text-purple-700 flex items-center"
-                onClick={() => navigate("/business")}
-              >
+              <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
                 EDU Business
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M19 9l-7 7-7-7" />
@@ -248,6 +277,9 @@ const NavbarPage = () => {
                       <li
                         key={item}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                        onClick={() => {
+                          if (item === "Overview") navigate("/business");
+                        }}
                       >
                         {item}
                       </li>
@@ -486,18 +518,38 @@ const NavbarPage = () => {
         <nav className="bg-white border-b border-gray-200 w-full relative shadow-sm">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             {/* Left scroll indicator */}
-            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-            
+            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none flex items-center">
+              {canScrollLeft && (
+                <button
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-white border rounded-full shadow p-1 z-20 hover:bg-purple-50"
+                  style={{ pointerEvents: 'auto' }}
+                  onClick={() => scrollSecondaryNav('left')}
+                  aria-label="Scroll left"
+                >
+                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              )}
+            </div>
             {/* Right scroll indicator */}
-            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-            
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none flex items-center justify-end">
+              {canScrollRight && (
+                <button
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-white border rounded-full shadow p-1 z-20 hover:bg-purple-50"
+                  style={{ pointerEvents: 'auto' }}
+                  onClick={() => scrollSecondaryNav('right')}
+                  aria-label="Scroll right"
+                >
+                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
+            </div>
             <div
-              className="flex flex-nowrap overflow-x-auto space-x-2 py-4 scrollbar-hide"
-              style={{ 
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
-                scrollBehavior: "smooth"
-              }}
+              ref={secondaryNavRef}
+              className="flex flex-nowrap overflow-x-auto space-x-2 py-4 no-scrollbar"
               onMouseLeave={() => setHoveredSecondary(null)}
             >
               {/* Add some padding for better scroll experience */}
@@ -549,6 +601,13 @@ const NavbarPage = () => {
                     onClick={() => {
                       if (item === "Interior Design") {
                         navigate("/interior-design");
+                      }
+                      if (hoveredSecondary === "Marketing") {
+                        if (item === "Digital Marketing") navigate("/marketing/digital-marketing");
+                        if (item === "SEO") navigate("/marketing/seo");
+                        if (item === "Content Marketing") navigate("/marketing/content-marketing");
+                        if (item === "Social Media") navigate("/marketing/social-media");
+                        if (item === "Branding") navigate("/marketing/branding");
                       }
                     }}
                   >

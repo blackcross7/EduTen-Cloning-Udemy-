@@ -39,12 +39,12 @@ function App() {
         <Route path="/business" element={<EduBusinessPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/web-development" element={<WebDevelopmentPage />} />
-        <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
         <Route path="/personal-development" element={<PersonalDevPage />} /> 
         <Route path="/businesscourse" element={<BusinessCoursePage />} />
         <Route path="/finance" element={<FinancePage />} />
         <Route path="/interior-design" element={<InteriorDesignPage />} />
         <Route path="/marketing" element={<MarketingPage />} />
+        <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
       </Routes>
 
       <Footer /> 
