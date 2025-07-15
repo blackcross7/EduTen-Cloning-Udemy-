@@ -21,6 +21,12 @@ import MarketingPage from "./pages/MarketingPage";
 import DigitalMarketingPage from "./pages/DigitalMarketingPage";
 import SEOPage from "./pages/SEOPage";
 
+import Taxation from "./components/FinanceSubPages/Taxation";
+import Invevstment from "./components/FinanceSubPages/Invevstment";
+import FinancialAnalysis from "./components/FinanceSubPages/FinancialAnalysis";
+import Accounting from "./components/FinanceSubPages/Accounting";
+import Auditing from "./components/FinanceSubPages/Auditing";
+
 
 function App() {
   const { checkAuth, user } = useAuthStore();
@@ -48,6 +54,15 @@ function App() {
         <Route path="/marketing" element={<MarketingPage />} />
         <Route path="/marketing/digital-marketing" element={<DigitalMarketingPage />} />
         <Route path="/marketing/seo" element={<SEOPage />} />
+
+        {/* Finance Sub Pages */}
+        <Route path="/finance/taxation" element={<Taxation />} />
+        <Route path="/finance/investment" element={<Invevstment />} />
+        <Route path="/finance/financial-analysis" element={<FinancialAnalysis />} />
+        <Route path="/finance/accounting" element={<Accounting />} />
+        <Route path= "/finance/auditing" element={ <Auditing /> } />
+        {/* ========= */}
+
         <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
       </Routes>
 

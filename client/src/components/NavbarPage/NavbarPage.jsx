@@ -609,6 +609,13 @@ const NavbarPage = () => {
                         if (item === "Social Media") navigate("/marketing/social-media");
                         if (item === "Branding") navigate("/marketing/branding");
                       }
+                      if (hoveredSecondary === "Finance & Accounting") {
+                        if (item === "Accounting") navigate("/finance/accounting");
+                        if (item === "Financial Analysis") navigate("/finance/financial-analysis");
+                        if (item === "Investment") navigate("/finance/investment");
+                        if (item === "Taxation") navigate("/finance/taxation");
+                        }
+                        if (item === "Auditing") navigate("/finance/auditing");
                     }}
                   >
                     {item}
