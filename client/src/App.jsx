@@ -18,6 +18,8 @@ import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage";
 import FinancePage from "./pages/FinancePage";
 import InteriorDesignPage from "./pages/InteriorDesignPage";
 import MarketingPage from "./pages/MarketingPage";
+import DigitalMarketingPage from "./pages/DigitalMarketingPage";
+import SEOPage from "./pages/SEOPage";
 
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
         <Route path="/finance" element={<FinancePage />} />
         <Route path="/interior-design" element={<InteriorDesignPage />} />
         <Route path="/marketing" element={<MarketingPage />} />
+        <Route path="/marketing/digital-marketing" element={<DigitalMarketingPage />} />
+        <Route path="/marketing/seo" element={<SEOPage />} />
         <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
       </Routes>
 
