@@ -27,6 +27,11 @@ import FinancialAnalysis from "./components/FinanceSubPages/FinancialAnalysis";
 import Accounting from "./components/FinanceSubPages/Accounting";
 import Auditing from "./components/FinanceSubPages/Auditing";
 
+import DesignPage from "./pages/DesignPage";
+import Modeling from "./components/DesignSubPages/Modeling";
+import FaashionDesign from "./components/DesignSubPages/FaashionDesign";
+import UIDesign from "./components/DesignSubPages/UIDesign";
+import GraphicDesign from "./components/DesignSubPages/GraphicDesign";
 
 function App() {
   const { checkAuth, user } = useAuthStore();
@@ -54,6 +59,10 @@ function App() {
         <Route path="/marketing" element={<MarketingPage />} />
         <Route path="/marketing/digital-marketing" element={<DigitalMarketingPage />} />
         <Route path="/marketing/seo" element={<SEOPage />} />
+        <Route path="design/3d-modeling" element={<Modeling />} />
+        <Route path="design/fashion-design" element={<FaashionDesign />} />
+        <Route path="design/UI-design" element={<UIDesign />} />
+        <Route path="design/graphic-design" element={<GraphicDesign />} />
 
         {/* Finance Sub Pages */}
         <Route path="/finance/taxation" element={<Taxation />} />
@@ -64,6 +73,8 @@ function App() {
         {/* ========= */}
 
         <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
+        <Route path="/interior" element={<InteriorDesignPage />} />
+        <Route path="/design" element={<DesignPage/>} />
       </Routes>
 
       <Footer /> 

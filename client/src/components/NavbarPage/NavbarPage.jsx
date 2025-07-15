@@ -560,23 +560,26 @@ const NavbarPage = () => {
                   className="flex-shrink-0 px-4 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-200 border border-transparent transition duration-200 whitespace-nowrap"
                   onMouseEnter={() => setHoveredSecondary(link)}
                   onFocus={() => setHoveredSecondary(link)}
-                   onClick={() => {
-      if (link === "Development") {
-        navigate("/web-development");
-      }
-      if (link === "Business") {
-        navigate("/businesscourse");
-      }
-      if (link === "Personal Development") {
-        navigate("/personal-development");
-      }
-      if (link === "Finance & Accounting") {
-        navigate("/finance");
-      }
-      if (link === "Marketing") {
-        navigate("/marketing");
-      }
-    }}
+                  onClick={() => {
+                    if (link === "Development") {
+                      navigate("/web-development");
+                    }
+                    if (link === "Business") {
+                      navigate("/businesscourse");
+                    }
+                    if (link === "Personal Development") {
+                      navigate("/personal-development");
+                    }
+                    if (link === "Finance & Accounting") {
+                      navigate("/finance");
+                    }
+                    if (link === "Marketing") {
+                      navigate("/marketing");
+                    }
+                    if (link === "Design") {
+                      navigate("/design");
+                    }
+                  }}
                 >
                   {link}
                 </button>
@@ -602,6 +605,12 @@ const NavbarPage = () => {
                       if (item === "Interior Design") {
                         navigate("/interior-design");
                       }
+                      if (hoveredSecondary === "Design") {
+                        if (item === "Graphic Design") navigate("/design/graphic-design");
+                        if (item === "UX/UI Design") navigate("/design/ui-design");
+                        if (item === "Fashion Design") navigate("/design/fashion-design");
+                        if (item === "3D Modeling") navigate("/design/3d-modeling");
+                      }
                       if (hoveredSecondary === "Marketing") {
                         if (item === "Digital Marketing") navigate("/marketing/digital-marketing");
                         if (item === "SEO") navigate("/marketing/seo");
@@ -614,8 +623,8 @@ const NavbarPage = () => {
                         if (item === "Financial Analysis") navigate("/finance/financial-analysis");
                         if (item === "Investment") navigate("/finance/investment");
                         if (item === "Taxation") navigate("/finance/taxation");
-                        }
-                        if (item === "Auditing") navigate("/finance/auditing");
+                      }
+                      if (item === "Auditing") navigate("/finance/auditing");
                     }}
                   >
                     {item}
