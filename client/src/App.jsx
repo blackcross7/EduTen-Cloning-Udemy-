@@ -24,14 +24,17 @@ import SEOPage from "./pages/SEOPage";
  import EduTeachPage from "./pages/EduTeachPage";
 
 
-
 import Taxation from "./components/FinanceSubPages/Taxation";
 import Invevstment from "./components/FinanceSubPages/Invevstment";
 import FinancialAnalysis from "./components/FinanceSubPages/FinancialAnalysis";
 import Accounting from "./components/FinanceSubPages/Accounting";
 import Auditing from "./components/FinanceSubPages/Auditing";
 
-import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage"; 
+import Modeling from "./components/DesignSubPages/Modeling";
+import FaashionDesign from "./components/DesignSubPages/FaashionDesign";
+import UIDesign from "./components/DesignSubPages/UIDesign";
+import GraphicDesign from "./components/DesignSubPages/GraphicDesign";
+import DesignPage from "./pages/DesignPage";
 
 
 function App() {
