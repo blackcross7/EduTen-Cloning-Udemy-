@@ -18,10 +18,15 @@ import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage";
 import FinancePage from "./pages/FinancePage";
 import InteriorDesignPage from "./pages/InteriorDesignPage";
 import MarketingPage from "./pages/MarketingPage";
-import DigitalMarketingPage from "./pages/DigitalMarketingPage";
-import SEOPage from "./pages/SEOPage";
+import DigitalMarketing from "./components/MarketingCoursePage/DigitalMarketing";
+import SEO from "./components/MarketingCoursePage/SEO";
+import ContentMarketing from "./components/MarketingCoursePage/ContentMarketing";
+import SocialMedia from "./components/MarketingCoursePage/SocialMedia";
+import DesignPage from "./pages/DesignPage";
+import Branding from "./components/MarketingCoursePage/Branding";
 
- import EduTeachPage from "./pages/EduTeachPage";
+
+import EduTeachPage from "./pages/EduTeachPage";
 
 
 import Taxation from "./components/FinanceSubPages/Taxation";
@@ -34,7 +39,6 @@ import Modeling from "./components/DesignSubPages/Modeling";
 import FaashionDesign from "./components/DesignSubPages/FaashionDesign";
 import UIDesign from "./components/DesignSubPages/UIDesign";
 import GraphicDesign from "./components/DesignSubPages/GraphicDesign";
-import DesignPage from "./pages/DesignPage";
 
 
 function App() {
@@ -61,8 +65,11 @@ function App() {
         <Route path="/finance" element={<FinancePage />} />
         <Route path="/interior-design" element={<InteriorDesignPage />} />
         <Route path="/marketing" element={<MarketingPage />} />
-        <Route path="/marketing/digital-marketing" element={<DigitalMarketingPage />} />
-        <Route path="/marketing/seo" element={<SEOPage />} />
+        <Route path="/marketing/digital-marketing" element={<DigitalMarketing />} />
+        <Route path="/marketing/seo" element={<SEO />} />
+        <Route path="/marketing/content-marketing" element={<ContentMarketing />} />
+        <Route path="/marketing/social-media" element={<SocialMedia />} />
+        <Route path="/marketing/branding" element={<Branding />} />
         <Route path="design/3d-modeling" element={<Modeling />} />
         <Route path="design/fashion-design" element={<FaashionDesign />} />
         <Route path="design/UI-design" element={<UIDesign />} />

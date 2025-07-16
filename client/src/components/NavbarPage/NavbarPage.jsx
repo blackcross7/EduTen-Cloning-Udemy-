@@ -68,6 +68,37 @@ const secondarySubmenus = {
   "Music": ["Music Theory", "Instruments", "Music Production", "Singing", "Composition"],
 };
 
+const navDialogContent = {
+  business: {
+    headline: "Upskill your team with EDU Business",
+    button: "Learn more",
+  },
+  teach: {
+    headline: "Turn what you know into an opportunity and reach millions around the world.",
+    button: "Learn more",
+  },
+  learning: {
+    headline: "Keep learning, keep growing",
+    button: "Go to My Learning",
+  },
+  wishlist: {
+    headline: "Save courses you love for later",
+    button: "View Wishlist",
+  },
+  notifications: {
+    headline: "Stay up to date with your learning",
+    button: "View Notifications",
+  },
+  cart: {
+    headline: "Courses in your cart are waiting!",
+    button: "Go to Cart",
+  },
+  profile: {
+    headline: "Manage your account and settings",
+    button: "Go to Profile",
+  },
+};
+
 const NavbarPage = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [dropdownTimeout, setDropdownTimeout] = useState(null);
@@ -238,25 +269,12 @@ const NavbarPage = () => {
               onMouseLeave={handleDropdownLeave}
             >
               <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
-                Plans &amp; Pricing
+                Plans & Pricing
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {openDropdown === "plans" && (
-                <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-50">
-                  <ul>
-                    {plansItems.map((item) => (
-                      <li
-                        key={item}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              {/* No dropdown for plans */}
             </div>
             {/* EDU Business Dropdown */}
             <div
@@ -264,118 +282,165 @@ const NavbarPage = () => {
               onMouseEnter={() => handleDropdownEnter("business")}
               onMouseLeave={handleDropdownLeave}
             >
-              <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
+              <button className="text-sm font-semibold hover:text-purple-700 flex items-center" onClick={() => navigate("/business")}> 
                 EDU Business
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
               {openDropdown === "business" && (
-                <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-50">
-                  <ul>
-                    {businessItems.map((item) => (
-                      <li
-                        key={item}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-                        onClick={() => {
-                          if (item === "Overview") navigate("/business");
-                        }}
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <>
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-100 z-50 flex flex-col items-center p-4 animate-fade-in">
+                    <div className="text-xl font-bold text-center mb-3 text-gray-900">
+                      {navDialogContent[openDropdown]?.headline}
+                    </div>
+                    <button className="w-full py-2 rounded-md bg-purple-700 text-white font-bold text-lg hover:bg-purple-800 transition mb-1">
+                      {navDialogContent[openDropdown]?.button}
+                    </button>
+                  </div>
+                  <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-40">
+                    <ul>
+                      {businessItems.map((item) => (
+                        <li
+                          key={item}
+                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                          onClick={() => {
+                            if (item === "Overview") navigate("/business");
+                          }}
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </>
               )}
             </div>
             {/* EDU Teach Dropdown */}
-           {/* EDU Teach Dropdown */}
-<div
-  className="relative"
-  onMouseEnter={() => handleDropdownEnter("teach")}
-  onMouseLeave={handleDropdownLeave}
->
-  <button
-    className="text-sm font-semibold hover:text-purple-700 flex items-center"
-    onClick={() => navigate("/edu-teach")}
-  >
-    EDU Teach
-    <svg
-      className="w-4 h-4 ml-1"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      viewBox="0 0 24 24"
-    >
-      <path d="M19 9l-7 7-7-7" />
-    </svg>
-  </button>
-
-  {openDropdown === "teach" && (
-    <div className="absolute left-0 mt-0 w-56 bg-white border rounded shadow-lg z-50">
-      <ul>
-        {teachItems.map((item) => (
-          <li
-            key={item}
-            className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
-            onClick={() => {
-              if (item === "Become an Instructor") {
-                navigate("/edu-teach"); // Send to EduTeach main page
-              } else {
-                alert(`${item} page coming soon`);
-              }
-              setOpenDropdown(null); // close dropdown
-            }}
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
-  )}
-</div>
-
+            <div
+              className="relative"
+              onMouseEnter={() => handleDropdownEnter("teach")}
+              onMouseLeave={handleDropdownLeave}
+            >
+              <button className="text-sm font-semibold hover:text-purple-700 flex items-center" onClick={() => navigate("/edu-teach")}> 
+                EDU Teach
+                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {openDropdown === "teach" && (
+                <>
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-100 z-50 flex flex-col items-center p-4 animate-fade-in">
+                    <div className="text-xl font-bold text-center mb-3 text-gray-900">
+                      {navDialogContent[openDropdown]?.headline}
+                    </div>
+                    <button className="w-full py-2 rounded-md bg-purple-700 text-white font-bold text-lg hover:bg-purple-800 transition mb-1">
+                      {navDialogContent[openDropdown]?.button}
+                    </button>
+                  </div>
+                  <div className="absolute left-0 mt-2 w-56 bg-white border rounded shadow-lg z-40">
+                    <ul>
+                      {teachItems.map((item) => (
+                        <li
+                          key={item}
+                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </>
+              )}
+            </div>
 
 
             {/* Wishlist Icon */}
             {isLoggedIn && (
-              <button className="p-2 hover:bg-gray-100 rounded-full" title="Wishlist">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                </svg>
-              </button>
+              <div className="relative" onMouseEnter={() => handleDropdownEnter("wishlist")} onMouseLeave={handleDropdownLeave}>
+                <button className="p-2 hover:bg-gray-100 rounded-full" title="Wishlist">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                  </svg>
+                </button>
+                {openDropdown === "wishlist" && (
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-100 z-50 flex flex-col items-center p-4 animate-fade-in">
+                    <div className="text-xl font-bold text-center mb-3 text-gray-900">
+                      {navDialogContent[openDropdown]?.headline}
+                    </div>
+                    <button className="w-full py-2 rounded-md bg-purple-700 text-white font-bold text-lg hover:bg-purple-800 transition mb-1">
+                      {navDialogContent[openDropdown]?.button}
+                    </button>
+                  </div>
+                )}
+              </div>
             )}
 
             {/* Cart Icon */}
-            <button className="p-2 hover:bg-gray-100 rounded-full">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
-                viewBox="0 0 24 24">
-                <circle cx="9" cy="21" r="1" />
-                <circle cx="20" cy="21" r="1" />
-                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
-              </svg>
-            </button>
+            <div className="relative" onMouseEnter={() => handleDropdownEnter("cart")} onMouseLeave={handleDropdownLeave}>
+              <button className="p-2 hover:bg-gray-100 rounded-full">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
+                  viewBox="0 0 24 24">
+                  <circle cx="9" cy="21" r="1" />
+                  <circle cx="20" cy="21" r="1" />
+                  <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+                </svg>
+              </button>
+              {openDropdown === "cart" && (
+                <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-100 z-50 flex flex-col items-center p-4 animate-fade-in">
+                  <div className="text-xl font-bold text-center mb-3 text-gray-900">
+                    {navDialogContent[openDropdown]?.headline}
+                  </div>
+                  <button className="w-full py-2 rounded-md bg-purple-700 text-white font-bold text-lg hover:bg-purple-800 transition mb-1">
+                    {navDialogContent[openDropdown]?.button}
+                  </button>
+                </div>
+              )}
+            </div>
 
             {/* Notification Icon */}
             {isLoggedIn && (
-              <button className="p-2 hover:bg-gray-100 rounded-full" title="Notifications">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
-                  <path d="M13.73 21a2 2 0 01-3.46 0" />
-                </svg>
-                {/* Notification dot */}
-                <span className="absolute top-2 right-2 w-2 h-2 bg-purple-600 rounded-full"></span>
-              </button>
+              <div className="relative" onMouseEnter={() => handleDropdownEnter("notifications")} onMouseLeave={handleDropdownLeave}>
+                <button className="p-2 hover:bg-gray-100 rounded-full" title="Notifications">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+                    <path d="M13.73 21a2 2 0 01-3.46 0" />
+                  </svg>
+                  <span className="absolute top-2 right-2 w-2 h-2 bg-purple-600 rounded-full"></span>
+                </button>
+                {openDropdown === "notifications" && (
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-100 z-50 flex flex-col items-center p-4 animate-fade-in">
+                    <div className="text-xl font-bold text-center mb-3 text-gray-900">
+                      {navDialogContent[openDropdown]?.headline}
+                    </div>
+                    <button className="w-full py-2 rounded-md bg-purple-700 text-white font-bold text-lg hover:bg-purple-800 transition mb-1">
+                      {navDialogContent[openDropdown]?.button}
+                    </button>
+                  </div>
+                )}
+              </div>
             )}
 
             {/* My Learning */}
             {isLoggedIn && (
-              <button
-                className="text-sm font-semibold hover:text-purple-700"
-                onClick={() => navigate("/my-learning")}
-              >
-                My learning
-              </button>
+              <div className="relative" onMouseEnter={() => handleDropdownEnter("learning")} onMouseLeave={handleDropdownLeave}>
+                <button
+                  className="text-sm font-semibold hover:text-purple-700"
+                  onClick={() => navigate("/my-learning")}
+                >
+                  My learning
+                </button>
+                {openDropdown === "learning" && (
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-100 z-50 flex flex-col items-center p-4 animate-fade-in">
+                    <div className="text-xl font-bold text-center mb-3 text-gray-900">
+                      {navDialogContent[openDropdown]?.headline}
+                    </div>
+                    <button className="w-full py-2 rounded-md bg-purple-700 text-white font-bold text-lg hover:bg-purple-800 transition mb-1">
+                      {navDialogContent[openDropdown]?.button}
+                    </button>
+                  </div>
+                )}
+              </div>
             )}
 
             {/* Conditional: Log in/Sign up or User Avatar */}
@@ -395,7 +460,7 @@ const NavbarPage = () => {
                 </button>
               </>
             ) : (
-              <div className="relative group">
+              <div className="relative group" onMouseEnter={() => handleDropdownEnter("profile")} onMouseLeave={handleDropdownLeave}>
                 <Link to="/profile">
                   <button className="flex items-center space-x-2 focus:outline-none relative">
                     <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm">
@@ -406,6 +471,16 @@ const NavbarPage = () => {
                     <span className="absolute top-0 right-0 w-2 h-2 bg-purple-500 rounded-full border-2 border-white"></span>
                   </button>
                 </Link>
+                {openDropdown === "profile" && (
+                  <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-100 z-50 flex flex-col items-center p-4 animate-fade-in">
+                    <div className="text-xl font-bold text-center mb-3 text-gray-900">
+                      {navDialogContent[openDropdown]?.headline}
+                    </div>
+                    <button className="w-full py-2 rounded-md bg-purple-700 text-white font-bold text-lg hover:bg-purple-800 transition mb-1">
+                      {navDialogContent[openDropdown]?.button}
+                    </button>
+                  </div>
+                )}
                 {/* Dropdown */}
                 <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-50 hidden group-hover:block">
                   <ul>
