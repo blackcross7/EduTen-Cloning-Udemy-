@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 const leftImages = [
   { src: "/assets/business/left1.jpg", top: "-100px", left: "80px", size: "w-48 h-48" },
   { src: "/assets/business/left2.jpg", top: "200px", left: "20px", size: "w-48 h-48" },
-  { src: "/assets/business/left3.jpg", top: "390px", left: "90px", size: "w-48 h-48" },
+  { src: "/assets/business/left3.jpg", top: "450px", left: "90px", size: "w-48 h-48" },
 ];
 
 const rightImages = [
   { src: "/assets/business/right1.webp", top: "-100px", right: "80px", size: "w-48 h-48" },
   { src: "/assets/business/right2.webp", top: "200px", right: "20px", size: "w-48 h-48" },
-  { src: "/assets/business/right3.webp", top: "390px", right: "60px", size: "w-48 h-48" },
+  { src: "/assets/business/right3.webp", top: "450px", right: "60px", size: "w-48 h-48" },
 ];
 
 const fadeInLeft = {

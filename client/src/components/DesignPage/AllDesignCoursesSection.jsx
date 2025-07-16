@@ -312,7 +312,7 @@ const AllDesignCoursesSection = () => {
   );
 
   return (
-    <div className="px-4 sm:px-6 xl:px-16 pt-10 relative">
+    <div className="px-4 sm:px-6 xl:px-16 pt-10 pb-20 relative">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
         <h2 className="text-[24px] sm:text-[28px] font-extrabold text-gray-900">All Business courses</h2>
         <span className="text-sm font-semibold text-gray-700">{designCourses.length} results</span>

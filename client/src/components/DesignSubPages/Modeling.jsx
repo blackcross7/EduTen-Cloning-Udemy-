@@ -24,7 +24,7 @@ const dummyCourses = [
   },
   {
     id: 3,
-    image: "/assets/design/3dmodeling3.jpg",
+    image: "/assets/design/3dmodeling3.webp",
     title: "Cinema 4D: Complete 3D Design Guide",
     instructor: "Rohit Singh",
     rating: 4.6,
