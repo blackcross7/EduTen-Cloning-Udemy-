@@ -675,6 +675,9 @@ const NavbarPage = () => {
                     if (link === "Design") {
                       navigate("/design");
                     }
+                    if (link === "Health & Fitness") {
+                      navigate("/health-and-fitness");
+                    }
                   }}
                 >
                   {link}
@@ -721,6 +724,13 @@ const NavbarPage = () => {
                         if (item === "Taxation") navigate("/finance/taxation");
                       }
                       if (item === "Auditing") navigate("/finance/auditing");
+                      if (hoveredSecondary === "Health & Fitness") {
+                        if (item === "Yoga") navigate("/health-and-fitness/yoga");
+                        if (item === "Nutrition") navigate("/health-and-fitness/nutrition");
+                        if (item === "Mental Health") navigate("/health-and-fitness/mental-health");
+                        if (item === "Workout") navigate("/health-and-fitness/workout");
+                        if (item === "Meditation") navigate("/health-and-fitness/meditation");
+                      }
                     }}
                   >
                     {item}

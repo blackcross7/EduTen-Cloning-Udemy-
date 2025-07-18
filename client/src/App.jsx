@@ -24,6 +24,7 @@ import ContentMarketing from "./components/MarketingCoursePage/ContentMarketing"
 import SocialMedia from "./components/MarketingCoursePage/SocialMedia";
 import DesignPage from "./pages/DesignPage";
 import Branding from "./components/MarketingCoursePage/Branding";
+import HealthAndFitnessPage from "./pages/HealthAndFitnessPage";
 
 
 import EduTeachPage from "./pages/EduTeachPage";
@@ -39,6 +40,12 @@ import Modeling from "./components/DesignSubPages/Modeling";
 import FaashionDesign from "./components/DesignSubPages/FaashionDesign";
 import UIDesign from "./components/DesignSubPages/UIDesign";
 import GraphicDesign from "./components/DesignSubPages/GraphicDesign";
+
+import HealthYogaPage from "./pages/HealthYogaPage";
+import HealthNutritionPage from "./pages/HealthNutritionPage";
+import HealthMentalHealthPage from "./pages/HealthMentalHealthPage";
+import HealthWorkoutPage from "./pages/HealthWorkoutPage";
+import HealthMeditationPage from "./pages/HealthMeditationPage";
 
 
 function App() {
@@ -74,6 +81,12 @@ function App() {
         <Route path="design/fashion-design" element={<FaashionDesign />} />
         <Route path="design/UI-design" element={<UIDesign />} />
         <Route path="design/graphic-design" element={<GraphicDesign />} />
+        <Route path="/health-and-fitness" element={<HealthAndFitnessPage />} />
+        <Route path="/health-and-fitness/yoga" element={<HealthYogaPage />} />
+        <Route path="/health-and-fitness/nutrition" element={<HealthNutritionPage />} />
+        <Route path="/health-and-fitness/mental-health" element={<HealthMentalHealthPage />} />
+        <Route path="/health-and-fitness/workout" element={<HealthWorkoutPage />} />
+        <Route path="/health-and-fitness/meditation" element={<HealthMeditationPage />} />
 
         {/* Finance Sub Pages */}
         <Route path="/finance/taxation" element={<Taxation />} />
