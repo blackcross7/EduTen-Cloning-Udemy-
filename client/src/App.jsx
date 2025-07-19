@@ -46,6 +46,7 @@ import HealthNutritionPage from "./pages/HealthNutritionPage";
 import HealthMentalHealthPage from "./pages/HealthMentalHealthPage";
 import HealthWorkoutPage from "./pages/HealthWorkoutPage";
 import HealthMeditationPage from "./pages/HealthMeditationPage";
+import PricingPage from "./pages/PricingPage";
 
 
 function App() {
@@ -87,6 +88,7 @@ function App() {
         <Route path="/health-and-fitness/mental-health" element={<HealthMentalHealthPage />} />
         <Route path="/health-and-fitness/workout" element={<HealthWorkoutPage />} />
         <Route path="/health-and-fitness/meditation" element={<HealthMeditationPage />} />
+        <Route path="/plans" element={<PricingPage />} />
 
         {/* Finance Sub Pages */}
         <Route path="/finance/taxation" element={<Taxation />} />

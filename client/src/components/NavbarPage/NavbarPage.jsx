@@ -262,20 +262,13 @@ const NavbarPage = () => {
           </div>
           {/* Links & Icons (lg+ only) */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* Plans & Pricing Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => handleDropdownEnter("plans")}
-              onMouseLeave={handleDropdownLeave}
+            {/* Plans & Pricing */}
+            <button 
+              className="text-sm font-semibold hover:text-purple-700"
+              onClick={() => navigate("/plans")}
             >
-              <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
-                Plans & Pricing
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                  <path d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {/* No dropdown for plans */}
-            </div>
+              Plans & Pricing
+            </button>
             {/* EDU Business Dropdown */}
             <div
               className="relative"
