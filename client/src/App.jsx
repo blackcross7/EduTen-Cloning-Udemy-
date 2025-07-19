@@ -49,6 +49,14 @@ import HealthMeditationPage from "./pages/HealthMeditationPage";
 import PricingPage from "./pages/PricingPage";
 
 
+// Development SubPages 
+import Mobiledev from "./components/DevelopmentSubPages/Mobiledev";
+import DevOps from "./components/DevelopmentSubPages/DevOps";
+import Softwaretesting from "./components/DevelopmentSubPages/Softwaretesting";
+import WebDev from "./components/DevelopmentSubPages/WebDev";
+import Gamedev from "./components/DevelopmentSubPages/Gamedev";
+
+
 function App() {
   const { checkAuth, user } = useAuthStore();
 
@@ -103,6 +111,15 @@ function App() {
         <Route path="/design" element={<DesignPage/>} />
         <Route path="/personal-development" element={<PersonalDevPage />} /> 
         <Route path="/edu-teach" element={<EduTeachPage />} />
+
+
+        {/* Development SubPage  */}
+        <Route path="/development/mobile-dev" element={<Mobiledev />} />
+        <Route path="/development/devops" element={<DevOps />} />
+        <Route path="/development/software-testing" element={<Softwaretesting />} />
+        <Route path="/development/web-dev" element={<WebDev />} />
+        <Route path="/development/game-dev" element={<Gamedev />} />
+        {/* ========== */}
         
        
 

@@ -716,6 +716,13 @@ const NavbarPage = () => {
                         if (item === "Investment") navigate("/finance/investment");
                         if (item === "Taxation") navigate("/finance/taxation");
                       }
+                      if (hoveredSecondary === "Development") {
+                        if (item === "Web Development") navigate("/development/web-dev");
+                        if (item === "Mobile Development") navigate("/development/mobile-dev");
+                        if (item === "Game Development") navigate("/development/game-dev");
+                        if (item === "Software Testing") navigate("/development/software-testing");
+                        if (item === "DevOps") navigate("/development/devops");
+                      }
                       if (item === "Auditing") navigate("/finance/auditing");
                       if (hoveredSecondary === "Health & Fitness") {
                         if (item === "Yoga") navigate("/health-and-fitness/yoga");
