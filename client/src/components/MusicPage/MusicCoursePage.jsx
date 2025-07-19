@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp, Star } from "lucide-react"; // Add icons if you're using lucide-react
+import { ChevronDown, ChevronUp, Star } from "lucide-react"; 
 
 const courses = [
   {
