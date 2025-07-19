@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 const instructors = [
   {
@@ -52,8 +53,6 @@ const instructors = [
   },
 ];
 
-
-
 const PopularInstructors = () => {
   const scrollRef = useRef();
   const [showLeft, setShowLeft] = useState(false);
@@ -84,29 +83,48 @@ const PopularInstructors = () => {
   };
 
   return (
-    <section className=" px-6 xl:px-20 py-10 relative">
-      <h2 className="text-3xl font-bold text-gray-800 mb-2">Popular Instructors</h2>
-      <p className="text-gray-600 mb-6 text-sm">
+    <section className="px-6 xl:px-20 py-10 relative">
+      <motion.h2
+        className="text-3xl font-bold text-gray-800 mb-2"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Popular Instructors
+      </motion.h2>
+
+      <motion.p
+        className="text-gray-600 mb-6 text-sm"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
         These real-world experts are highly rated by learners like you.
-      </p>
+      </motion.p>
 
       <div className="relative">
         {showLeft && (
-          <button
+          <motion.button
             onClick={() => scroll("left")}
             className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg hover:bg-gray-300 rounded-full p-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
           >
             <ChevronLeft className="w-7 h-7" />
-          </button>
+          </motion.button>
         )}
 
         {showRight && (
-          <button
+          <motion.button
             onClick={() => scroll("right")}
             className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg hover:bg-gray-300 rounded-full p-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
           >
             <ChevronRight className="w-7 h-7" />
-          </button>
+          </motion.button>
         )}
 
         <div
@@ -115,9 +133,13 @@ const PopularInstructors = () => {
           style={{ maxWidth: "1240px", margin: "0 auto" }}
         >
           {instructors.map((ins, index) => (
-            <div
+            <motion.div
               key={index}
-              className="flex-shrink-0 w-[297px] border border-gray-300 rounded-md p-4 bg-white hover:bg-gray-50 transition-colors duration-200 cursor-pointer hover:scale-[1.02]"
+              className="flex-shrink-0 w-[297px] border border-gray-300 rounded-md p-4 bg-white hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.03 }}
             >
               <div className="flex items-center gap-3 mb-2">
                 <img
@@ -145,7 +167,7 @@ const PopularInstructors = () => {
                   {ins.courses} <span className="font-normal text-gray-700">courses</span>
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,7 +1,6 @@
-// AllBusinessCoursesSection.jsx
-
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 
 const filters = [
   { label: "4.5", count: "(10,000)" },
@@ -212,14 +211,13 @@ const courses = [
   },
 ];
 
-
+// ✅ Reusable FilterSection Component
 const FilterSection = ({ title, options, show, toggle }) => (
   <div className="mb-6">
     <div className="flex justify-between items-center mb-3 cursor-pointer text-lg font-semibold" onClick={toggle}>
       <h4>{title}</h4>
       {show ? <ChevronUp className="w-5 h-5 text-gray-500" /> : <ChevronDown className="w-5 h-5 text-gray-500" />}
     </div>
-
     {show &&
       options.map((item, idx) => (
         <div
@@ -227,12 +225,8 @@ const FilterSection = ({ title, options, show, toggle }) => (
           className={`flex items-center gap-2 mb-2 text-[15px] ${item.disabled ? "opacity-50" : ""}`}
         >
           <input type="checkbox" disabled={item.disabled} className="accent-purple-600" />
-
-          {/* Label and stars (only for Ratings) */}
           <div className="flex items-center gap-1">
             <span className="text-gray-700 font-medium">{item.label}</span>
-
-            {/* ⭐ Only show stars if section title is Ratings */}
             {title === "Ratings" && (
               <div className="flex">
                 {[1, 2, 3, 4, 5].map((star) => {
@@ -263,47 +257,41 @@ const FilterSection = ({ title, options, show, toggle }) => (
                 })}
               </div>
             )}
-
             {title === "Ratings" && (
               <span className="text-gray-600 text-sm ml-1">& up</span>
             )}
           </div>
-
           <span className="text-gray-500">{item.count}</span>
         </div>
       ))}
-
     {show && <button className="mt-2 text-purple-600 font-medium text-[15px]">Show more</button>}
     <hr className="mt-4 border-gray-300" />
   </div>
 );
 
-
 // ✅ Pagination component
-const Pagination = ({ totalPages, currentPage, onPageChange }) => {
-  return (
-    <div className="flex justify-center mt-10 mb-16">
-      <div className="flex gap-2">
-        {[...Array(totalPages)].map((_, idx) => {
-          const page = idx + 1;
-          const isActive = page === currentPage;
-          return (
-            <button
-              key={page}
-              onClick={() => onPageChange(page)}
-              className={`w-10 h-10 rounded-md border text-sm font-semibold ${isActive
-                ? "bg-purple-600 text-white"
-                : "bg-white border-gray-300 text-gray-800 hover:bg-gray-100"
-                }`}
-            >
-              {page}
-            </button>
-          );
-        })}
-      </div>
+const Pagination = ({ totalPages, currentPage, onPageChange }) => (
+  <div className="flex justify-center mt-10 mb-16">
+    <div className="flex gap-2">
+      {[...Array(totalPages)].map((_, idx) => {
+        const page = idx + 1;
+        const isActive = page === currentPage;
+        return (
+          <button
+            key={page}
+            onClick={() => onPageChange(page)}
+            className={`w-10 h-10 rounded-md border text-sm font-semibold ${isActive
+              ? "bg-purple-600 text-white"
+              : "bg-white border-gray-300 text-gray-800 hover:bg-gray-100"
+              }`}
+          >
+            {page}
+          </button>
+        );
+      })}
     </div>
-  );
-};
+  </div>
+);
 
 const AllBusinessCoursesSection = () => {
   const [visibleHoverIndex, setVisibleHoverIndex] = useState(null);
@@ -318,7 +306,6 @@ const AllBusinessCoursesSection = () => {
   const [showSubtitles, setShowSubtitles] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
-  // ✅ Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const coursesPerPage = 3;
   const totalPages = Math.ceil(courses.length / coursesPerPage);
@@ -339,7 +326,7 @@ const AllBusinessCoursesSection = () => {
         <p>Not sure? All courses have a 30-day money-back guarantee</p>
       </div>
 
-      {/* Filter + Sort */}
+      {/* Filter and Sort Buttons */}
       <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 mb-8">
         <button
           className="flex items-center gap-2 border px-4 py-2 rounded-md font-semibold text-base"
@@ -349,7 +336,7 @@ const AllBusinessCoursesSection = () => {
         </button>
         <div className="flex items-center gap-2 border px-4 py-2 rounded-md">
           <span className="text-base font-semibold text-gray-800">Sort by</span>
-          <select className="bg-whitetext-base focus:outline-none">
+          <select className="bg-white text-base focus:outline-none">
             <option>Most Popular</option>
             <option>Highest Rated</option>
             <option>Newest</option>
@@ -358,57 +345,49 @@ const AllBusinessCoursesSection = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row gap-10">
-       {showFilters && (
-  <>
-    <aside
-      className="
-        fixed top-0 left-0 z-50 h-full w-[85vw] max-w-xs
-        xl:static xl:block lg:w-1/3 lg:min-w-[220px]
-        bg-white shadow-2xl p-5 overflow-y-auto transition-transform duration-300 ease-in-out
-        rounded-tr-xl rounded-br-xl
-      "
-    >
-      <button
-        className="xl:hidden absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl"
-        onClick={() => setShowFilters(false)}
-        aria-label="Close filters"
-      >
-        ✕
-      </button>
-
-      {/* Optional heading for mobile */}
-      <h3 className="text-xl font-bold mb-4 xl:hidden">Filters</h3>
-
-      <FilterSection title="Ratings" show={showRatings} toggle={() => setShowRatings(!showRatings)} options={filters} />
-      <FilterSection title="Video Duration" show={showDurations} toggle={() => setShowDurations(!showDurations)} options={durations} />
-      <FilterSection title="Topic" show={showTopics} toggle={() => setShowTopics(!showTopics)} options={topicOptions} />
-      <FilterSection title="Subcategory" show={showSubcategories} toggle={() => setShowSubcategories(!showSubcategories)} options={subcategoryOptions} />
-      <FilterSection title="Level" show={showLevels} toggle={() => setShowLevels(!showLevels)} options={levelOptions} />
-      <FilterSection title="Language" show={showLanguages} toggle={() => setShowLanguages(!showLanguages)} options={languageOptions} />
-      <FilterSection title="Price" show={showPaids} toggle={() => setShowPaids(!showPaids)} options={priceOptions} />
-      <FilterSection title="Practice" show={showPractices} toggle={() => setShowPractices(!showPractices)} options={practiceOptions} />
-      <FilterSection title="Subtitle" show={showSubtitles} toggle={() => setShowSubtitles(!showSubtitles)} options={subtitleOptions} />
-    </aside>
-
-    {/* Backdrop */}
-    <div
-      className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm xl:hidden"
-      onClick={() => setShowFilters(false)}
-    />
-  </>
-)}
-
-
+        {showFilters && (
+          <>
+            <aside
+              className="fixed top-0 left-0 z-50 h-full w-[85vw] max-w-xs xl:static xl:block lg:w-1/3 lg:min-w-[220px] bg-white shadow-2xl p-5 overflow-y-auto transition-transform duration-300 ease-in-out rounded-tr-xl rounded-br-xl"
+            >
+              <button
+                className="xl:hidden absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl"
+                onClick={() => setShowFilters(false)}
+                aria-label="Close filters"
+              >
+                ✕
+              </button>
+              <h3 className="text-xl font-bold mb-4 xl:hidden">Filters</h3>
+              <FilterSection title="Ratings" show={showRatings} toggle={() => setShowRatings(!showRatings)} options={filters} />
+              <FilterSection title="Video Duration" show={showDurations} toggle={() => setShowDurations(!showDurations)} options={durations} />
+              <FilterSection title="Topic" show={showTopics} toggle={() => setShowTopics(!showTopics)} options={topicOptions} />
+              <FilterSection title="Subcategory" show={showSubcategories} toggle={() => setShowSubcategories(!showSubcategories)} options={subcategoryOptions} />
+              <FilterSection title="Level" show={showLevels} toggle={() => setShowLevels(!showLevels)} options={levelOptions} />
+              <FilterSection title="Language" show={showLanguages} toggle={() => setShowLanguages(!showLanguages)} options={languageOptions} />
+              <FilterSection title="Price" show={showPaids} toggle={() => setShowPaids(!showPaids)} options={priceOptions} />
+              <FilterSection title="Practice" show={showPractices} toggle={() => setShowPractices(!showPractices)} options={practiceOptions} />
+              <FilterSection title="Subtitle" show={showSubtitles} toggle={() => setShowSubtitles(!showSubtitles)} options={subtitleOptions} />
+            </aside>
+            <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm xl:hidden" onClick={() => setShowFilters(false)} />
+          </>
+        )}
 
         <main className="flex-1 space-y-6 relative z-0">
           {paginatedCourses.map((course, i) => (
             <React.Fragment key={i}>
-              <div
+              <motion.div
                 className="relative"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.1 }}
                 onMouseEnter={() => setVisibleHoverIndex(i)}
                 onMouseLeave={() => setVisibleHoverIndex(null)}
               >
-                <div className="flex flex-col sm:flex-row gap-4 border-b border-gray-300 pb-6 bg-white">
+                <motion.div
+                  whileHover={{ scale: 1.015 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="flex flex-col sm:flex-row gap-4 border-b border-gray-300 pb-6 bg-white"
+                >
                   <img src={course.image} alt={course.title} className="w-full sm:w-[332px] h-auto sm:h-[230px] object-center rounded border" />
                   <div className="flex-1">
                     <h3 className="font-bold text-lg text-gray-900">{course.title}</h3>
@@ -427,7 +406,7 @@ const AllBusinessCoursesSection = () => {
                     )}
                   </div>
                   <div className="text-right font-bold text-[15px] text-gray-900 mt-2 sm:mt-0">{course.price}</div>
-                </div>
+                </motion.div>
 
                 {visibleHoverIndex === i && (
                   <div className="hidden sm:block absolute -top-[140px] left-[260px] w-[360px] shadow-2xl rounded-md bg-white border border-gray-300 px-5 py-4 z-50">
@@ -447,23 +426,15 @@ const AllBusinessCoursesSection = () => {
                     </div>
                   </div>
                 )}
-              </div>
+              </motion.div>
 
-              {/* Trust Eduten Section – only on first page after 2nd course */}
               {currentPage === 1 && i === 1 && (
                 <div className="border border-gray-300 bg-white rounded-xl px-6 py-6 text-left space-y-4 mt-6 shadow-sm">
                   <h3 className="text-lg md:text-xl font-bold text-gray-900">Top companies trust Eduten</h3>
-                  <p className="text-sm text-gray-700">
-                    Get your team access to Eduten’s top 250,000+ courses
-                  </p>
+                  <p className="text-sm text-gray-700">Get your team access to Eduten’s top 250,000+ courses</p>
                   <div className="flex justify-start flex-wrap gap-6 mt-2">
                     {["logo1.svg", "logo2.svg", "logo3.svg", "logo4.svg"].map((logo, idx) => (
-                      <img
-                        key={idx}
-                        src={`/assets/business/${logo}`}
-                        alt={`Logo ${idx}`}
-                        className="h-8 object-contain"
-                      />
+                      <img key={idx} src={`/assets/business/${logo}`} alt={`Logo ${idx}`} className="h-8 object-contain" />
                     ))}
                   </div>
                   <div className="pt-2">
@@ -473,11 +444,9 @@ const AllBusinessCoursesSection = () => {
                   </div>
                 </div>
               )}
-
             </React.Fragment>
           ))}
 
-          {/* ✅ Pagination rendered below course list */}
           <Pagination
             totalPages={totalPages}
             currentPage={currentPage}
