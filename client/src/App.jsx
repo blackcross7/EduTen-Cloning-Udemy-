@@ -18,6 +18,7 @@ import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage";
 import FinancePage from "./pages/FinancePage";
 import InteriorDesignPage from "./pages/InteriorDesignPage";
 import MarketingPage from "./pages/MarketingPage";
+import MusicCoursePage from './components/MusicPage/MusicCoursePage';
 
 
 function App() {
@@ -45,6 +46,7 @@ function App() {
         <Route path="/finance" element={<FinancePage />} />
         <Route path="/interior-design" element={<InteriorDesignPage />} />
         <Route path="/marketing" element={<MarketingPage />} />
+        <Route path="/music" element={<MusicCoursePage />} />
       </Routes>
 
       <Footer /> 
