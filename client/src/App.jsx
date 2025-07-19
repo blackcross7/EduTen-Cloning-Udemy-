@@ -1,3 +1,4 @@
+import ITSoftware from "./pages/ITSoftware";
 import React, { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
@@ -18,7 +19,6 @@ import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage";
 import FinancePage from "./pages/FinancePage";
 import InteriorDesignPage from "./pages/InteriorDesignPage";
 import MarketingPage from "./pages/MarketingPage";
-import MusicCoursePage from './components/MusicPage/MusicCoursePage';
 
 
 function App() {
@@ -40,13 +40,11 @@ function App() {
         <Route path="/business" element={<EduBusinessPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/web-development" element={<WebDevelopmentPage />} />
-        <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
         <Route path="/personal-development" element={<PersonalDevPage />} /> 
         <Route path="/businesscourse" element={<BusinessCoursePage />} />
         <Route path="/finance" element={<FinancePage />} />
         <Route path="/interior-design" element={<InteriorDesignPage />} />
         <Route path="/marketing" element={<MarketingPage />} />
-        <Route path="/music" element={<MusicCoursePage />} />
       </Routes>
 
       <Footer /> 
