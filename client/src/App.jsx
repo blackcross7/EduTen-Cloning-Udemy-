@@ -1,3 +1,4 @@
+import ITSoftware from "./pages/ITSoftware";
 import React, { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
@@ -106,6 +107,7 @@ function App() {
         <Route path= "/finance/auditing" element={ <Auditing /> } />
         {/* ========= */}
 
+        <Route path="/it-software" element={<ITSoftware />} />
         <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
         <Route path="/interior" element={<InteriorDesignPage />} />
         <Route path="/design" element={<DesignPage/>} />

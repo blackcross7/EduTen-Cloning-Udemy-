@@ -668,8 +668,8 @@ const NavbarPage = () => {
                     if (link === "Design") {
                       navigate("/design");
                     }
-                    if (link === "Health & Fitness") {
-                      navigate("/health-and-fitness");
+                    if (link === "IT & Software") {
+                      navigate("/it-software");
                     }
                   }}
                 >
