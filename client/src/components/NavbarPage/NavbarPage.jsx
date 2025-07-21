@@ -885,7 +885,16 @@ const NavbarPage = () => {
                     key={item}
                     className="px-4 py-2 rounded text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 whitespace-nowrap transition"
                     onClick={() => {
-                      if (item === "Interior Design") {
+                      // IT & Software subpages
+                      if (hoveredSecondary === "IT & Software") {
+                        if (item === "Network & Security") navigate("/it-software/network-security");
+                        else if (item === "Hardware") navigate("/it-software/hardware");
+                        else if (item === "Operating Systems") navigate("/it-software/operating-systems");
+                        else if (item === "Cloud Computing") navigate("/it-software/cloud-computing");
+                        else if (item === "Databases") navigate("/it-software/databases");
+                      }
+                      // Add other submenu navigations as needed
+                      else if (item === "Interior Design") {
                         navigate("/interior-design");
                       }
                     }}

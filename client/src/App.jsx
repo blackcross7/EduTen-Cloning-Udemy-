@@ -59,6 +59,11 @@ import Gamedev from "./components/DevelopmentSubPages/Gamedev";
 
 
 import MusicCoursePage from "./components/MusicPage/MusicCoursePage"
+import CloudComputing from "./components/ITSoftwareSubPages/CloudComputing";
+import Databases from "./components/ITSoftwareSubPages/Databases";
+import Hardware from "./components/ITSoftwareSubPages/Hardware";
+import NetworkSecurity from "./components/ITSoftwareSubPages/Network&Security";
+import OperatingSystems from "./components/ITSoftwareSubPages/OperatingSystems";
 
 
 function App() {
@@ -132,6 +137,11 @@ function App() {
         
        
 
+        <Route path="/it-software/cloud-computing" element={<CloudComputing />} />
+        <Route path="/it-software/databases" element={<Databases />} />
+        <Route path="/it-software/hardware" element={<Hardware />} />
+        <Route path="/it-software/network-security" element={<NetworkSecurity />} />
+        <Route path="/it-software/operating-systems" element={<OperatingSystems />} />
       </Routes>
 
       <Footer /> 
