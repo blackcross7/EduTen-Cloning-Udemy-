@@ -1,47 +1,10 @@
-import React, { useState } from "react";
-import PricingHero from "../components/Plan&PricingPage/PricingHero";
-import PricingCard from "../components/Plan&PricingPage/PricingCard";
-import PricingComparison from "../components/Plan&PricingPage/PricingComparison";
-import PricingFAQ from "../components/Plan&PricingPage/PricingFAQ";
-import PricingCTA from "../components/Plan&PricingPage/PricingCTA";
-import { plans } from "../components/Plan&PricingPage/pricingData";
+import React from "react";
 
-const PricingPage = () => {
-  const [billingCycle, setBillingCycle] = useState("monthly");
-  const [selectedPlan, setSelectedPlan] = useState("personal");
-
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <PricingHero billingCycle={billingCycle} setBillingCycle={setBillingCycle} />
-
-      {/* Pricing Cards */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {plans.map((plan) => (
-              <PricingCard
-                key={plan.id}
-                plan={plan}
-                billingCycle={billingCycle}
-                isSelected={selectedPlan === plan.id}
-                onSelect={setSelectedPlan}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison Table */}
-      <PricingComparison />
-
-      {/* FAQ Section */}
-      <PricingFAQ />
-
-      {/* CTA Section */}
-      <PricingCTA />
-    </div>
-  );
-};
+const PricingPage = () => (
+  <main className="py-12 px-4 max-w-3xl mx-auto">
+    <h1 className="text-3xl font-bold text-purple-700 mb-6">Plans & Pricing</h1>
+    <p className="text-gray-700 mb-8">This is the pricing page. Add your pricing plans and details here.</p>
+  </main>
+);
 
 export default PricingPage; 

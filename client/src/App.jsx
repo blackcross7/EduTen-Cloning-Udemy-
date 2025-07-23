@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { useAuthStore } from "./store/authStore";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 // Pages
 import LoginPage from "./pages/LoginPage";
@@ -68,6 +68,7 @@ import OperatingSystems from "./components/ITSoftwareSubPages/OperatingSystems";
 
 function App() {
   const { checkAuth, user } = useAuthStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     checkAuth();
@@ -100,11 +101,11 @@ function App() {
         <Route path="design/UI-design" element={<UIDesign />} />
         <Route path="design/graphic-design" element={<GraphicDesign />} />
         <Route path="/health-and-fitness" element={<HealthAndFitnessPage />} />
-        <Route path="/health-and-fitness/yoga" element={<HealthYogaPage />} />
-        <Route path="/health-and-fitness/nutrition" element={<HealthNutritionPage />} />
-        <Route path="/health-and-fitness/mental-health" element={<HealthMentalHealthPage />} />
-        <Route path="/health-and-fitness/workout" element={<HealthWorkoutPage />} />
-        <Route path="/health-and-fitness/meditation" element={<HealthMeditationPage />} />
+        <Route path="/health-yoga" element={<HealthYogaPage />} />
+        <Route path="/health-nutrition" element={<HealthNutritionPage />} />
+        <Route path="/health-mental-health" element={<HealthMentalHealthPage />} />
+        <Route path="/health-workout" element={<HealthWorkoutPage />} />
+        <Route path="/health-meditation" element={<HealthMeditationPage />} />
         <Route path="/plans" element={<PricingPage />} />
 
         {/* Finance Sub Pages */}

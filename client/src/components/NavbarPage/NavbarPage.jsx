@@ -357,14 +357,14 @@ const NavbarPage = () => {
           </div>
           {/* Links & Icons (lg+ only) */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* Plans & Pricing Dropdown */}
+            {/* Plans & Pricing Dropdown (restored) */}
             <div
               className="relative"
               onMouseEnter={() => handleDropdownEnter("plans")}
               onMouseLeave={handleDropdownLeave}
             >
               <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
-                Plans &amp; Pricing
+                Plans & Pricing
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
@@ -847,22 +847,35 @@ const NavbarPage = () => {
                   onMouseEnter={() => setHoveredSecondary(link)}
                   onFocus={() => setHoveredSecondary(link)}
                    onClick={() => {
-      if (link === "Development") {
-        navigate("/web-development");
-      }
-      if (link === "Business") {
-        navigate("/businesscourse");
-      }
-      if (link === "Personal Development") {
-        navigate("/personal-development");
-      }
-      if (link === "Finance & Accounting") {
-        navigate("/finance");
-      }
-      if (link === "Marketing") {
-        navigate("/marketing");
-      }
-    }}
+                    if (link === "Development") {
+                      navigate("/web-development");
+                    } else if (link === "Business") {
+                      navigate("/businesscourse");
+                    } else if (link === "Finance & Accounting") {
+                      navigate("/finance");
+                    } else if (link === "IT & Software") {
+                      navigate("/it-software");
+                    } else if (link === "Office Productivity") {
+                      // Route not implemented yet
+                      // navigate("/office-productivity");
+                    } else if (link === "Personal Development") {
+                      navigate("/personal-development");
+                    } else if (link === "Design") {
+                      navigate("/design");
+                    } else if (link === "Marketing") {
+                      navigate("/marketing");
+                    } else if (link === "Lifestyle") {
+                      // Route not implemented yet
+                      // navigate("/lifestyle");
+                    } else if (link === "Photography & Video") {
+                      // Route not implemented yet
+                      // navigate("/photography-video");
+                    } else if (link === "Health & Fitness") {
+                      navigate("/health-fitness");
+                    } else if (link === "Music") {
+                      navigate("/music");
+                    }
+                  }}
                 >
                   {link}
                 </button>
@@ -896,6 +909,21 @@ const NavbarPage = () => {
                       // Add other submenu navigations as needed
                       else if (item === "Interior Design") {
                         navigate("/interior-design");
+                      }
+                      // Marketing subpages
+                      else if (hoveredSecondary === "Marketing") {
+                        if (item === "Digital Marketing") navigate("/marketing/digital-marketing");
+                        else if (item === "SEO") navigate("/marketing/seo");
+                        else if (item === "Content Marketing") navigate("/marketing/content-marketing");
+                        else if (item === "Social Media") navigate("/marketing/social-media");
+                        else if (item === "Branding") navigate("/marketing/branding");
+                      }
+                      else if (hoveredSecondary === "Health & Fitness") {
+                        if (item === "Yoga") navigate("/health-yoga");
+                        else if (item === "Nutrition") navigate("/health-nutrition");
+                        else if (item === "Mental Health") navigate("/health-mental-health");
+                        else if (item === "Workout") navigate("/health-workout");
+                        else if (item === "Meditation") navigate("/health-meditation");
                       }
                     }}
                   >
