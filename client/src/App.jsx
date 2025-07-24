@@ -99,7 +99,6 @@ function App() {
         <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
         <Route path="/interior" element={<InteriorDesignPage />} />
         <Route path="/design" element={<DesignPage/>} />
-        <Route path="/personal-development" element={<PersonalDevPage />} /> 
         <Route path="/edu-teach" element={<EduTeachPage />} />
         
        

@@ -216,7 +216,7 @@
   }
   
   .featured-thumbnail {
-    width: 300px;
+    width: 450px;
     height: auto;
     border-radius: 6px;
     object-fit: cover;
@@ -305,7 +305,14 @@
     color: #4b0082;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   }
-  
+  .instructor-thumbnail {
+    width: 200px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+  }
 
   /* ---------- popular instructors ---------- */
   
