@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const coursesData = {
   "Most popular": [
@@ -130,6 +131,7 @@ const coursesData = {
 };
 
 
+
 const FinanceCourceSection = () => {
   const [selectedTab, setSelectedTab] = useState("Most popular");
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -156,7 +158,9 @@ const FinanceCourceSection = () => {
   return (
     <section className="bg-white text-gray-900 px-6">
       <div className="pl-4 mb-6">
-        <h1 className="text-3xl font-bold mb-1 pb-6">Finance & Accounting Courses</h1>
+        <h1 className="text-3xl font-bold mb-1 pb-6">
+          Finance & Accounting Courses
+        </h1>
         <h2 className="text-xl text-black font-semibold mb-2">Courses to get you started</h2>
         <p className="text-gray-500 mb-6">Explore courses from experienced, real-world experts.</p>
         <div className="flex gap-4 mt-2">
@@ -185,8 +189,15 @@ const FinanceCourceSection = () => {
             onMouseLeave={() => setHoveredIndex(null)}
             ref={hoveredIndex === index ? cardRef : null}
           >
-            {/* Course Card */}
-            <div className="border rounded-lg shadow-md overflow-hidden transition-all h-fit w-full flex flex-col">
+            {/* Animated Course Card */}
+            <motion.div
+              className="border rounded-lg shadow-md overflow-hidden transition-all h-fit w-full flex flex-col"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.4 }}
+            >
               <div className="w-full h-48 overflow-hidden rounded-t">
                 <img
                   src={course.image}
@@ -226,31 +237,36 @@ const FinanceCourceSection = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Hover Overlay */}
-           {hoveredIndex === index && (
-  <div
-    className={`
-      absolute z-30 w-[330px] bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 transition-all duration-300
-      ${isLeft ? "md:right-full md:mr-4" : "md:left-full md:ml-4"} 
-      md:top-0 top-full mt-2
-    `}
-  >
-    <h2 className="text-lg font-bold text-gray-900 mb-2">{course.title}</h2>
-    <p className="text-sm text-gray-700 mb-1">{course.instructor}</p>
-    <p className="text-xs text-gray-600 mb-2">Updated 2025 • All Levels • Subtitles</p>
-    <ul className="text-sm text-gray-700 space-y-1">
-      <li className="flex gap-2"><span className="text-green-500">✓</span> Real-world learning</li>
-      <li className="flex gap-2"><span className="text-green-500">✓</span> Business essentials</li>
-      <li className="flex gap-2"><span className="text-green-500">✓</span> Lifetime access</li>
-    </ul>
-    <button className="mt-4 bg-indigo-600 text-white py-2 px-4 w-full rounded hover:bg-indigo-700 transition">
-      Add to Cart
-    </button>
-  </div>
-)}
-
+            {hoveredIndex === index && (
+              <div
+                className={`
+                  absolute z-30 w-[330px] bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 transition-all duration-300
+                  ${isLeft ? "md:right-full md:mr-4" : "md:left-full md:ml-4"} 
+                  md:top-0 top-full mt-2
+                `}
+              >
+                <h2 className="text-lg font-bold text-gray-900 mb-2">{course.title}</h2>
+                <p className="text-sm text-gray-700 mb-1">{course.instructor}</p>
+                <p className="text-xs text-gray-600 mb-2">Updated 2025 • All Levels • Subtitles</p>
+                <ul className="text-sm text-gray-700 space-y-1">
+                  <li className="flex gap-2">
+                    <span className="text-green-500">✓</span> Real-world learning
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-green-500">✓</span> Business essentials
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-green-500">✓</span> Lifetime access
+                  </li>
+                </ul>
+                <button className="mt-4 bg-indigo-600 text-white py-2 px-4 w-full rounded hover:bg-indigo-700 transition">
+                  Add to Cart
+                </button>
+              </div>
+            )}
           </div>
         ))}
       </div>

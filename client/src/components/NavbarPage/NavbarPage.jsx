@@ -18,19 +18,9 @@ const exploreItems = [
   "Music",
 ];
 
-const plansItems = [
-  "Individual",
-  "Team",
-  "Enterprise",
-  "Student Discount",
-];
+const plansItems = ["Individual", "Team", "Enterprise", "Student Discount"];
 
-const businessItems = [
-  "Overview",
-  "Features",
-  "Pricing",
-  "Customer Stories",
-];
+const businessItems = ["Overview", "Features", "Pricing", "Customer Stories"];
 
 const teachItems = [
   "Become an Instructor",
@@ -50,22 +40,95 @@ const secondaryLinks = [
   "Lifestyle",
   "Photography & Video",
   "Health & Fitness",
-  "Music",];
+  "Music",
+];
 
 // Dummy submenu items for demonstration
 const secondarySubmenus = {
-  "Development": ["Web Development", "Mobile Development", "Game Development", "Software Testing", "DevOps"],
-  "Business": ["Entrepreneurship", "Management", "Sales", "Operations", "Business Strategy"],
-  "Finance & Accounting": ["Accounting", "Financial Analysis", "Investment", "Taxation", "Auditing"],
-  "IT & Software": ["Network & Security", "Hardware", "Operating Systems", "Cloud Computing", "Databases"],
-  "Office Productivity": ["Microsoft Office", "Google Workspace", "Time Management", "Project Management", "Communication"],
-  "Personal Development": ["Leadership", "Productivity", "Career Development", "Emotional Intelligence", "Stress Management"],
-  "Design": ["Graphic Design", "UX/UI Design", "Fashion Design", "Interior Design", "3D Modeling"],
-  "Marketing": ["Digital Marketing", "SEO", "Content Marketing", "Social Media", "Branding"],
-  "Lifestyle": ["Cooking", "Travel", "Gardening", "Home Improvement", "Fashion & Style"],
-  "Photography & Video": ["Photography Basics", "Video Editing", "Drone Photography", "Lighting Techniques", "Photo Editing"],
-  "Health & Fitness": ["Yoga", "Nutrition", "Mental Health", "Workout", "Meditation"],
-  "Music": ["Music Theory", "Instruments", "Music Production", "Singing", "Composition"],
+  Development: [
+    "Web Development",
+    "Mobile Development",
+    "Game Development",
+    "Software Testing",
+    "DevOps",
+  ],
+  Business: [
+    "Entrepreneurship",
+    "Management",
+    "Sales",
+    "Operations",
+    "Business Strategy",
+  ],
+  "Finance & Accounting": [
+    "Accounting",
+    "Financial Analysis",
+    "Investment",
+    "Taxation",
+    "Auditing",
+  ],
+  "IT & Software": [
+    "Network & Security",
+    "Hardware",
+    "Operating Systems",
+    "Cloud Computing",
+    "Databases",
+  ],
+  "Office Productivity": [
+    "Microsoft Office",
+    "Google Workspace",
+    "Time Management",
+    "Project Management",
+    "Communication",
+  ],
+  "Personal Development": [
+    "Leadership",
+    "Productivity",
+    "Career Development",
+    "Emotional Intelligence",
+    "Stress Management",
+  ],
+  Design: [
+    "Graphic Design",
+    "UX/UI Design",
+    "Fashion Design",
+    "Interior Design",
+    "3D Modeling",
+  ],
+  Marketing: [
+    "Digital Marketing",
+    "SEO",
+    "Content Marketing",
+    "Social Media",
+    "Branding",
+  ],
+  Lifestyle: [
+    "Cooking",
+    "Travel",
+    "Gardening",
+    "Home Improvement",
+    "Fashion & Style",
+  ],
+  "Photography & Video": [
+    "Photography Basics",
+    "Video Editing",
+    "Drone Photography",
+    "Lighting Techniques",
+    "Photo Editing",
+  ],
+  "Health & Fitness": [
+    "Yoga",
+    "Nutrition",
+    "Mental Health",
+    "Workout",
+    "Meditation",
+  ],
+  Music: [
+    "Music Theory",
+    "Instruments",
+    "Music Production",
+    "Singing",
+    "Composition",
+  ],
 };
 
 const navDialogContent = {
@@ -116,19 +179,16 @@ const NavbarPage = () => {
 
   const confirmLogout = () => {
     logout();
-    navigate('/');
+    navigate("/");
   };
-
 
   const initials = user?.name
     ? user.name
-      .split(' ')
-      .map((n) => n[0])
-      .join('')
-      .toUpperCase()
-    : '';
-
-
+        .split(" ")
+        .map((n) => n[0])
+        .join("")
+        .toUpperCase()
+    : "";
 
   // Dropdown helpers for delay
   const handleDropdownEnter = (name) => {
@@ -195,7 +255,13 @@ const NavbarPage = () => {
               onClick={() => setMobileMenu(!mobileMenu)}
               aria-label="Open menu"
             >
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <svg
+                className="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
                 <path d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
@@ -211,7 +277,10 @@ const NavbarPage = () => {
             </Link>
             <span
               className="ml-1 text-xl font-black font-sans text-purple-700 tracking-tight select-none drop-shadow-sm"
-              style={{ letterSpacing: "0.01em", fontFamily: "'Montserrat', 'Segoe UI', 'Arial', sans-serif" }}
+              style={{
+                letterSpacing: "0.01em",
+                fontFamily: "'Montserrat', 'Segoe UI', 'Arial', sans-serif",
+              }}
             >
               EduTen
             </span>
@@ -223,7 +292,13 @@ const NavbarPage = () => {
             >
               <button className="font-semibold text-sm hover:text-purple-700 flex items-center">
                 Explore
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -234,6 +309,21 @@ const NavbarPage = () => {
                       <li
                         key={item}
                         className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                        onClick={() => {
+                          if (item === "Music") {
+                            navigate("/music");
+                          } else if (item === "Development") {
+                            navigate("/web-development");
+                          } else if (item === "Business") {
+                            navigate("/businesscourse");
+                          } else if (item === "Finance & Accounting") {
+                            navigate("/finance");
+                          } else if (item === "Marketing") {
+                            navigate("/marketing");
+                          } else if (item === "Personal Development") {
+                            navigate("/personal-development");
+                          }
+                        }}
                       >
                         {item}
                       </li>
@@ -247,8 +337,13 @@ const NavbarPage = () => {
           <div className="flex-1 min-w-0 mx-2">
             <div className="relative">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2"
-                  viewBox="0 0 24 24">
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
                   <circle cx="11" cy="11" r="8" />
                   <path d="M21 21l-4.35-4.35" />
                 </svg>
@@ -262,7 +357,7 @@ const NavbarPage = () => {
           </div>
           {/* Links & Icons (lg+ only) */}
           <div className="hidden lg:flex items-center space-x-4">
-            {/* Plans & Pricing Dropdown */}
+            {/* Plans & Pricing Dropdown (restored) */}
             <div
               className="relative"
               onMouseEnter={() => handleDropdownEnter("plans")}
@@ -274,7 +369,20 @@ const NavbarPage = () => {
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              {/* No dropdown for plans */}
+              {openDropdown === "plans" && (
+                <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-50">
+                  <ul>
+                    {plansItems.map((item) => (
+                      <li
+                        key={item}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-sm"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
             {/* EDU Business Dropdown */}
             <div
@@ -282,9 +390,17 @@ const NavbarPage = () => {
               onMouseEnter={() => handleDropdownEnter("business")}
               onMouseLeave={handleDropdownLeave}
             >
-              <button className="text-sm font-semibold hover:text-purple-700 flex items-center" onClick={() => navigate("/business")}> 
+              <button className="text-sm font-semibold hover:text-purple-700 flex items-center"
+                onClick={() => navigate("/business")}
+              >
                 EDU Business
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -324,7 +440,13 @@ const NavbarPage = () => {
             >
               <button className="text-sm font-semibold hover:text-purple-700 flex items-center" onClick={() => navigate("/edu-teach")}> 
                 EDU Teach
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -357,68 +479,33 @@ const NavbarPage = () => {
 
             {/* Wishlist Icon */}
             {isLoggedIn && (
-              <div className="relative" onMouseEnter={() => handleDropdownEnter("wishlist")} onMouseLeave={handleDropdownLeave}>
-                <button className="p-2 hover:bg-gray-100 rounded-full" title="Wishlist">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                  </svg>
-                </button>
-                {openDropdown === "wishlist" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-100 z-50 flex flex-col items-center p-4 animate-fade-in">
-                    <div className="text-xl font-bold text-center mb-3 text-gray-900">
-                      {navDialogContent[openDropdown]?.headline}
-                    </div>
-                    <button className="w-full py-2 rounded-md bg-purple-700 text-white font-bold text-lg hover:bg-purple-800 transition mb-1">
-                      {navDialogContent[openDropdown]?.button}
-                    </button>
-                  </div>
-                )}
-              </div>
+              <button className="p-2 hover:bg-gray-100 rounded-full" title="Wishlist">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                </svg>
+              </button>
             )}
 
             {/* Cart Icon */}
-            <div className="relative" onMouseEnter={() => handleDropdownEnter("cart")} onMouseLeave={handleDropdownLeave}>
-              <button className="p-2 hover:bg-gray-100 rounded-full">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
-                  viewBox="0 0 24 24">
-                  <circle cx="9" cy="21" r="1" />
-                  <circle cx="20" cy="21" r="1" />
-                  <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
-                </svg>
-              </button>
-              {openDropdown === "cart" && (
-                <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-100 z-50 flex flex-col items-center p-4 animate-fade-in">
-                  <div className="text-xl font-bold text-center mb-3 text-gray-900">
-                    {navDialogContent[openDropdown]?.headline}
-                  </div>
-                  <button className="w-full py-2 rounded-md bg-purple-700 text-white font-bold text-lg hover:bg-purple-800 transition mb-1">
-                    {navDialogContent[openDropdown]?.button}
-                  </button>
-                </div>
-              )}
-            </div>
+            <button className="p-2 hover:bg-gray-100 rounded-full">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
+                viewBox="0 0 24 24">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+              </svg>
+            </button>
 
             {/* Notification Icon */}
             {isLoggedIn && (
-              <div className="relative" onMouseEnter={() => handleDropdownEnter("notifications")} onMouseLeave={handleDropdownLeave}>
-                <button className="p-2 hover:bg-gray-100 rounded-full" title="Notifications">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
-                    <path d="M13.73 21a2 2 0 01-3.46 0" />
-                  </svg>
-                  <span className="absolute top-2 right-2 w-2 h-2 bg-purple-600 rounded-full"></span>
-                </button>
-                {openDropdown === "notifications" && (
-                  <div className="absolute left-1/2 -translate-x-1/2 mt-3 w-64 bg-white rounded-xl shadow-xl border border-gray-100 z-50 flex flex-col items-center p-4 animate-fade-in">
-                    <div className="text-xl font-bold text-center mb-3 text-gray-900">
-                      {navDialogContent[openDropdown]?.headline}
-                    </div>
-                    <button className="w-full py-2 rounded-md bg-purple-700 text-white font-bold text-lg hover:bg-purple-800 transition mb-1">
-                      {navDialogContent[openDropdown]?.button}
-                    </button>
-                  </div>
-                )}
-              </div>
+              <button className="p-2 hover:bg-gray-100 rounded-full" title="Notifications">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
+                  <path d="M13.73 21a2 2 0 01-3.46 0" />
+                </svg>
+                {/* Notification dot */}
+                <span className="absolute top-2 right-2 w-2 h-2 bg-purple-600 rounded-full"></span>
+              </button>
             )}
 
             {/* My Learning */}
@@ -485,12 +572,18 @@ const NavbarPage = () => {
                 <div className="absolute right-0 mt-2 w-40 bg-white border rounded shadow-lg z-50 hidden group-hover:block">
                   <ul>
                     <Link to="/profile">
-                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Profile</li>
+                      <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+                        Profile
+                      </li>
                     </Link>
-                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Settings</li>
+                    <li className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+                      Settings
+                    </li>
                     <li
                       className="px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => { confirmLogout() }}
+                      onClick={() => {
+                        confirmLogout();
+                      }}
                     >
                       Log out
                     </li>
@@ -501,8 +594,13 @@ const NavbarPage = () => {
 
             {/* Globe Icon */}
             <button className="p-2 border rounded hover:bg-gray-100">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2"
-                viewBox="0 0 24 24">
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
                 <circle cx="12" cy="12" r="10" />
                 <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" />
               </svg>
@@ -512,8 +610,13 @@ const NavbarPage = () => {
           <div className="flex items-center lg:hidden space-x-2">
             {/* Cart Icon */}
             <button className="p-2">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
-                viewBox="0 0 24 24">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
                 <circle cx="9" cy="21" r="1" />
                 <circle cx="20" cy="21" r="1" />
                 <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
@@ -521,8 +624,13 @@ const NavbarPage = () => {
             </button>
             {/* Globe Icon */}
             <button className="p-2">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2"
-                viewBox="0 0 24 24">
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
                 <circle cx="12" cy="12" r="10" />
                 <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" />
               </svg>
@@ -539,65 +647,167 @@ const NavbarPage = () => {
                 onClick={() => setMobileMenu(false)}
                 aria-label="Close menu"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
               <ul className="space-y-4 mb-6">
                 <li>
-                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/"); setMobileMenu(false); }}>Home</button>
+                  <button
+                    className="text-left w-full text-gray-800 font-semibold"
+                    onClick={() => {
+                      navigate("/");
+                      setMobileMenu(false);
+                    }}
+                  >
+                    Home
+                  </button>
                 </li>
                 <li>
-                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/explore"); setMobileMenu(false); }}>Explore</button>
+                  <button
+                    className="text-left w-full text-gray-800 font-semibold"
+                    onClick={() => {
+                      navigate("/explore");
+                      setMobileMenu(false);
+                    }}
+                  >
+                    Explore
+                  </button>
                 </li>
                 <li>
-                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/plans"); setMobileMenu(false); }}>Plans & Pricing</button>
+                  <button
+                    className="text-left w-full text-gray-800 font-semibold"
+                    onClick={() => {
+                      navigate("/plans");
+                      setMobileMenu(false);
+                    }}
+                  >
+                    Plans & Pricing
+                  </button>
                 </li>
                 <li>
-                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/business"); setMobileMenu(false); }}>EDU Business</button>
+                  <button
+                    className="text-left w-full text-gray-800 font-semibold"
+                    onClick={() => {
+                      navigate("/business");
+                      setMobileMenu(false);
+                    }}
+                  >
+                    EDU Business
+                  </button>
                 </li>
                 <li>
-                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/teach"); setMobileMenu(false); }}>EDU Teach</button>
+                  <button
+                    className="text-left w-full text-gray-800 font-semibold"
+                    onClick={() => {
+                      navigate("/teach");
+                      setMobileMenu(false);
+                    }}
+                  >
+                    EDU Teach
+                  </button>
                 </li>
                 {isLoggedIn && (
                   <>
                     <li>
-                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/my-learning"); setMobileMenu(false); }}>My learning</button>
+                      <button
+                        className="text-left w-full text-gray-800 font-semibold"
+                        onClick={() => {
+                          navigate("/my-learning");
+                          setMobileMenu(false);
+                        }}
+                      >
+                        My learning
+                      </button>
                     </li>
                     <li>
-                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Wishlist</button>
+                      <button
+                        className="text-left w-full text-gray-800 font-semibold"
+                        onClick={() => setMobileMenu(false)}
+                      >
+                        Wishlist
+                      </button>
                     </li>
                     <li>
-                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Notifications</button>
+                      <button
+                        className="text-left w-full text-gray-800 font-semibold"
+                        onClick={() => setMobileMenu(false)}
+                      >
+                        Notifications
+                      </button>
                     </li>
                     <li>
-                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Profile</button>
+                      <button
+                        className="text-left w-full text-gray-800 font-semibold"
+                        onClick={() => setMobileMenu(false)}
+                      >
+                        Profile
+                      </button>
                     </li>
                     <li>
-                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { confirmLogout() }}>Log out</button>
+                      <button
+                        className="text-left w-full text-gray-800 font-semibold"
+                        onClick={() => {
+                          confirmLogout();
+                        }}
+                      >
+                        Log out
+                      </button>
                     </li>
                   </>
                 )}
                 {!isLoggedIn && (
                   <>
                     <li>
-                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/login"); setMobileMenu(false); }}>Log in</button>
+                      <button
+                        className="text-left w-full text-gray-800 font-semibold"
+                        onClick={() => {
+                          navigate("/login");
+                          setMobileMenu(false);
+                        }}
+                      >
+                        Log in
+                      </button>
                     </li>
                     <li>
-                      <button className="text-left w-full text-gray-800 font-semibold" onClick={() => { navigate("/signup"); setMobileMenu(false); }}>Sign up</button>
+                      <button
+                        className="text-left w-full text-gray-800 font-semibold"
+                        onClick={() => {
+                          navigate("/signup");
+                          setMobileMenu(false);
+                        }}
+                      >
+                        Sign up
+                      </button>
                     </li>
                   </>
                 )}
                 <li>
-                  <button className="text-left w-full text-gray-800 font-semibold" onClick={() => setMobileMenu(false)}>Cart</button>
+                  <button
+                    className="text-left w-full text-gray-800 font-semibold"
+                    onClick={() => setMobileMenu(false)}
+                  >
+                    Cart
+                  </button>
                 </li>
               </ul>
               <div className="mt-auto">
                 <h4 className="text-xs text-gray-500 mb-2">Popular</h4>
                 <ul className="space-y-2">
-                  {secondaryLinks.map(link => (
+                  {secondaryLinks.map((link) => (
                     <li key={link}>
-                      <button className="text-left w-full text-gray-700" onClick={() => setMobileMenu(false)}>{link}</button>
+                      <button
+                        className="text-left w-full text-gray-700"
+                        onClick={() => setMobileMenu(false)}
+                      >
+                        {link}
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -614,38 +824,18 @@ const NavbarPage = () => {
         <nav className="bg-white border-b border-gray-200 w-full relative shadow-sm">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             {/* Left scroll indicator */}
-            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none flex items-center">
-              {canScrollLeft && (
-                <button
-                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-white border rounded-full shadow p-1 z-20 hover:bg-purple-50"
-                  style={{ pointerEvents: 'auto' }}
-                  onClick={() => scrollSecondaryNav('left')}
-                  aria-label="Scroll left"
-                >
-                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-              )}
-            </div>
+            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            
             {/* Right scroll indicator */}
-            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none flex items-center justify-end">
-              {canScrollRight && (
-                <button
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-white border rounded-full shadow p-1 z-20 hover:bg-purple-50"
-                  style={{ pointerEvents: 'auto' }}
-                  onClick={() => scrollSecondaryNav('right')}
-                  aria-label="Scroll right"
-                >
-                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              )}
-            </div>
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+            
             <div
-              ref={secondaryNavRef}
-              className="flex flex-nowrap overflow-x-auto space-x-2 py-4 no-scrollbar"
+              className="flex flex-nowrap overflow-x-auto space-x-2 py-4 scrollbar-hide"
+              style={{ 
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+                scrollBehavior: "smooth"
+              }}
               onMouseLeave={() => setHoveredSecondary(null)}
             >
               {/* Add some padding for better scroll experience */}
@@ -656,27 +846,34 @@ const NavbarPage = () => {
                   className="flex-shrink-0 px-4 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-200 border border-transparent transition duration-200 whitespace-nowrap"
                   onMouseEnter={() => setHoveredSecondary(link)}
                   onFocus={() => setHoveredSecondary(link)}
-                  onClick={() => {
+                   onClick={() => {
                     if (link === "Development") {
                       navigate("/web-development");
-                    }
-                    if (link === "Business") {
+                    } else if (link === "Business") {
                       navigate("/businesscourse");
-                    }
-                    if (link === "Personal Development") {
-                      navigate("/personal-development");
-                    }
-                    if (link === "Finance & Accounting") {
+                    } else if (link === "Finance & Accounting") {
                       navigate("/finance");
-                    }
-                    if (link === "Marketing") {
-                      navigate("/marketing");
-                    }
-                    if (link === "Design") {
+                    } else if (link === "IT & Software") {
+                      navigate("/it-software");
+                    } else if (link === "Office Productivity") {
+                      // Route not implemented yet
+                      // navigate("/office-productivity");
+                    } else if (link === "Personal Development") {
+                      navigate("/personal-development");
+                    } else if (link === "Design") {
                       navigate("/design");
-                    }
-                    if (link === "Health & Fitness") {
-                      navigate("/health-and-fitness");
+                    } else if (link === "Marketing") {
+                      navigate("/marketing");
+                    } else if (link === "Lifestyle") {
+                      // Route not implemented yet
+                      // navigate("/lifestyle");
+                    } else if (link === "Photography & Video") {
+                      // Route not implemented yet
+                      // navigate("/photography-video");
+                    } else if (link === "Health & Fitness") {
+                      navigate("/health-fitness");
+                    } else if (link === "Music") {
+                      navigate("/music");
                     }
                   }}
                 >
@@ -701,35 +898,32 @@ const NavbarPage = () => {
                     key={item}
                     className="px-4 py-2 rounded text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 whitespace-nowrap transition"
                     onClick={() => {
-                      if (item === "Interior Design") {
+                      // IT & Software subpages
+                      if (hoveredSecondary === "IT & Software") {
+                        if (item === "Network & Security") navigate("/it-software/network-security");
+                        else if (item === "Hardware") navigate("/it-software/hardware");
+                        else if (item === "Operating Systems") navigate("/it-software/operating-systems");
+                        else if (item === "Cloud Computing") navigate("/it-software/cloud-computing");
+                        else if (item === "Databases") navigate("/it-software/databases");
+                      }
+                      // Add other submenu navigations as needed
+                      else if (item === "Interior Design") {
                         navigate("/interior-design");
                       }
-                      if (hoveredSecondary === "Design") {
-                        if (item === "Graphic Design") navigate("/design/graphic-design");
-                        if (item === "UX/UI Design") navigate("/design/ui-design");
-                        if (item === "Fashion Design") navigate("/design/fashion-design");
-                        if (item === "3D Modeling") navigate("/design/3d-modeling");
-                      }
-                      if (hoveredSecondary === "Marketing") {
+                      // Marketing subpages
+                      else if (hoveredSecondary === "Marketing") {
                         if (item === "Digital Marketing") navigate("/marketing/digital-marketing");
-                        if (item === "SEO") navigate("/marketing/seo");
-                        if (item === "Content Marketing") navigate("/marketing/content-marketing");
-                        if (item === "Social Media") navigate("/marketing/social-media");
-                        if (item === "Branding") navigate("/marketing/branding");
+                        else if (item === "SEO") navigate("/marketing/seo");
+                        else if (item === "Content Marketing") navigate("/marketing/content-marketing");
+                        else if (item === "Social Media") navigate("/marketing/social-media");
+                        else if (item === "Branding") navigate("/marketing/branding");
                       }
-                      if (hoveredSecondary === "Finance & Accounting") {
-                        if (item === "Accounting") navigate("/finance/accounting");
-                        if (item === "Financial Analysis") navigate("/finance/financial-analysis");
-                        if (item === "Investment") navigate("/finance/investment");
-                        if (item === "Taxation") navigate("/finance/taxation");
-                      }
-                      if (item === "Auditing") navigate("/finance/auditing");
-                      if (hoveredSecondary === "Health & Fitness") {
-                        if (item === "Yoga") navigate("/health-and-fitness/yoga");
-                        if (item === "Nutrition") navigate("/health-and-fitness/nutrition");
-                        if (item === "Mental Health") navigate("/health-and-fitness/mental-health");
-                        if (item === "Workout") navigate("/health-and-fitness/workout");
-                        if (item === "Meditation") navigate("/health-and-fitness/meditation");
+                      else if (hoveredSecondary === "Health & Fitness") {
+                        if (item === "Yoga") navigate("/health-yoga");
+                        else if (item === "Nutrition") navigate("/health-nutrition");
+                        else if (item === "Mental Health") navigate("/health-mental-health");
+                        else if (item === "Workout") navigate("/health-workout");
+                        else if (item === "Meditation") navigate("/health-meditation");
                       }
                     }}
                   >
@@ -741,9 +935,7 @@ const NavbarPage = () => {
           </div>
         )}
         </nav>
-
       )}
-
     </>
   );
 };
