@@ -28,11 +28,16 @@ const FeaturedCourseCard = () => {
           ₹{price}
           <span className="original-price"> ₹{originalPrice}</span>
         </div>
-        <div className="card-badges">
-          {badges.map((b, i) => (
-            <span key={i} className={`badge ${b}`}>{b}</span>
-          ))}
+
+        <div className="featured-badges-wrapper">
+          <div className="card-badges">
+            {badges.map((b, i) => (
+              <span key={i} className={`badge ${b.replace(/\s+/g, '')}`}>{b}</span>
+            ))}
+          </div>
+          <button className="featured-enroll-btn">Enroll</button>
         </div>
+
         <p className="course-meta">
           {duration} • {lectures} lectures • Updated {updated}
         </p>

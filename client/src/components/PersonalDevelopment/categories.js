@@ -157,9 +157,10 @@ export const dummyCourses = [
     reviews: 15,
     price: 449,
     originalPrice: 1679,
-    badges: ["Premium", "Hot & New"],
+    badges: ["Premium", "New"],
     duration: "2.5 total hours",
     lectures: 34,
     updated: "June 2025",
   };
-    
+  
+   

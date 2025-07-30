@@ -104,22 +104,12 @@ const SkillPromoSection = () => {
         <div className="trusted-by-bar">
           <p>Trusted by teams at</p>
           <div className="logo-row">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Nasdaq_Logo.svg/120px-Nasdaq_Logo.svg.png"
-              alt="Nasdaq"
-            />
+            
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Volkswagen_logo_2019.svg/120px-Volkswagen_logo_2019.svg.png"
               alt="Volkswagen"
             />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/NetApp_logo_2020.svg/120px-NetApp_logo_2020.svg.png"
-              alt="NetApp"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Eventbrite_Logo.svg/120px-Eventbrite_Logo.svg.png"
-              alt="Eventbrite"
-            />
+            
           </div>
         </div>
       </div>

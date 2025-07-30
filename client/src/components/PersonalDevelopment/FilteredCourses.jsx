@@ -108,11 +108,21 @@ const FilteredCourses = () => {
 
         {mockFilteredCourses.map((course, idx) => (
           <div key={idx} className="filtered-course-card">
-            <img
-              src={course.thumbnail}
-              alt={course.title}
-              className="filtered-course-thumbnail"
-            />
+            <div className="thumbnail-wrapper">
+              <img
+                src={course.thumbnail}
+                alt={course.title}
+                className="filtered-course-thumbnail"
+              />
+              <div className="course-hover-popup">
+                <ul className="popup-points">
+                  <li>{course.description}</li>
+                  <li>{course.level} • {course.lectures} lectures</li>
+                  <li>Instructor: {course.instructor}</li>
+                </ul>
+                <button className="add-to-cart-btn">Add to cart</button>
+              </div>
+            </div>
 
             <div className="filtered-course-content">
               <h3 className="course-title">
