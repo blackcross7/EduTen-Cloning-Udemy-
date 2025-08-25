@@ -59,7 +59,7 @@ const IndustryTabs = () => {
         <button
           key={idx}
           onClick={() => setActiveIndex(idx)}
-          className={`pb-2 font-medium ${
+          className={`pb-2 font-medium mb-2 ${  // ← Added mb-2 here
             idx === activeIndex
               ? "border-b-2 border-black text-black"
               : "text-gray-500 hover:text-black"
@@ -69,7 +69,6 @@ const IndustryTabs = () => {
         </button>
       ))}
     </div>
-
     {/* Tab Content */}
     <div className="bg-gray-50 rounded-2xl p-8 flex flex-col lg:flex-row gap-10 items-center text-center lg:text-left">
       {/* Text + Stats */}

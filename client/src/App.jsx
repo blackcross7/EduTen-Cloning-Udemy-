@@ -65,6 +65,8 @@ import Hardware from "./components/ITSoftwareSubPages/Hardware";
 import NetworkSecurity from "./components/ITSoftwareSubPages/Network&Security";
 import OperatingSystems from "./components/ITSoftwareSubPages/OperatingSystems";
 
+// ADD THIS IMPORT
+import LifestylePage from "./pages/LifestylePage";
 
 function App() {
   const { checkAuth, user } = useAuthStore();
@@ -107,6 +109,8 @@ function App() {
         <Route path="/health-workout" element={<HealthWorkoutPage />} />
         <Route path="/health-meditation" element={<HealthMeditationPage />} />
         <Route path="/plans" element={<PricingPage />} />
+        <Route path="/lifestyle" element={<LifestylePage />} />
+
 
         {/* Finance Sub Pages */}
         <Route path="/finance/taxation" element={<Taxation />} />

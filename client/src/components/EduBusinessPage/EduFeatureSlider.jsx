@@ -70,30 +70,31 @@ const EduFeatureSlider = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-20 py-10">
       {/* Arrows */}
-      <div className="flex justify-start gap-4 mb-6">
-        <button
-          onClick={() => scroll(-1)}
-          disabled={!canScrollLeft}
-          className={`w-10 h-10 rounded-full flex items-center justify-center border transition ${
-            canScrollLeft
-              ? "border-black text-black hover:bg-gray-100"
-              : "border-gray-300 text-gray-300 cursor-not-allowed"
-          }`}
-        >
-          <ChevronLeft size={20} />
-        </button>
-        <button
-          onClick={() => scroll(1)}
-          disabled={!canScrollRight}
-          className={`w-10 h-10 rounded-full flex items-center justify-center border transition ${
-            canScrollRight
-              ? "border-black text-black hover:bg-gray-100"
-              : "border-gray-300 text-gray-300 cursor-not-allowed"
-          }`}
-        >
-          <ChevronRight size={20} />
-        </button>
-      </div>
+    {/* Arrows - Centered on mobile, left-aligned on larger screens */}
+    <div className="flex justify-center lg:justify-start gap-4 mb-6">
+      <button
+        onClick={() => scroll(-1)}
+        disabled={!canScrollLeft}
+        className={`w-10 h-10 rounded-full flex items-center justify-center border transition ${
+          canScrollLeft
+            ? "border-black text-black hover:bg-gray-100"
+            : "border-gray-300 text-gray-300 cursor-not-allowed"
+        }`}
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        onClick={() => scroll(1)}
+        disabled={!canScrollRight}
+        className={`w-10 h-10 rounded-full flex items-center justify-center border transition ${
+          canScrollRight
+            ? "border-black text-black hover:bg-gray-100"
+            : "border-gray-300 text-gray-300 cursor-not-allowed"
+        }`}
+      >
+        <ChevronRight size={20} />
+      </button>
+    </div>
 
       {/* Cards */}
       <div className="flex justify-center items-center w-full">

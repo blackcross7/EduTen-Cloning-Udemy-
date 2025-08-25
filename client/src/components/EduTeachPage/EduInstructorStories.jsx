@@ -15,7 +15,7 @@ const testimonials = [
     image: "/assets/EduTeachPage/instructor2.jpg",
   },
   {
-    name: "Suriya ",
+    name: "Suriya",
     role: "Cybersecurity Expert",
     text: "I love the flexibility EduTeach gives. I can teach from anywhere, anytime, and still make a real impact in students’ lives.",
     image: "/assets/EduTeachPage/instructor3.jpg",
@@ -37,29 +37,29 @@ const EduInstructorStories = () => {
 
   return (
     <div className="bg-[#f7f7f7] flex justify-center items-center px-4 py-10">
-      <div className="w-full max-w-[700px] h-auto flex flex-col sm:flex-row items-center shadow-sm overflow-hidden rounded">
+      <div className="w-full max-w-[700px] h-auto flex flex-col sm:flex-row items-center shadow-sm overflow-hidden rounded-lg bg-white"> {/* Added bg-white for consistency */}
 
-        {/* Left: Image Block */}
-        <div className="w-full sm:w-1/2 h-[300px] sm:h-[340px] flex justify-center items-center">
+        {/* Left: Image Block (Fixed Dimensions) */}
+        <div className="w-full sm:w-1/2 h-[300px] sm:h-[340px] flex justify-center items-center p-4"> {/* Added padding */}
           <img
             src={image}
             alt={name}
-            className="w-[250px] sm:w-[280px] h-[300px] sm:h-[340px] object-cover rounded shadow-md"
+            className="w-full h-full object-cover rounded-lg shadow-md" // Full-width/height for consistency
           />
         </div>
 
         {/* Right: Text Block */}
-        <div className="w-full sm:w-1/2 bg-[#f7f7f7] px-6 py-6 relative flex flex-col justify-between">
-          <div>
+        <div className="w-full sm:w-1/2 px-6 py-6 relative flex flex-col justify-between min-h-[300px]"> {/* Added min-height */}
+          <div className="mb-8"> {/* Added margin-bottom for spacing */}
             <p className="text-[18px] sm:text-[20px] text-gray-800 mb-4 leading-relaxed italic">
               “{text}”
             </p>
             <p className="font-bold text-gray-900 text-base sm:text-lg">{name}</p>
-            <p className="text-sm sm:text-[15px] text-gray-600">{role}</p>
+            <p className="text-sm sm:text-[15px] text-gray-600 mb-10 sm:mb-0">{role}</p> {/* Added bottom margin for mobile */}
           </div>
 
-          {/* Navigation Arrows */}
-          <div className="absolute right-6 bottom-6 flex gap-4">
+          {/* Navigation Arrows (Fixed Positioning) */}
+          <div className="flex justify-end gap-4 mt-4 sm:mt-0 sm:absolute sm:right-6 sm:bottom-6">
             {index > 0 && (
               <button
                 onClick={handlePrev}

@@ -323,6 +323,9 @@ const NavbarPage = () => {
                           } else if (item === "Personal Development") {
                             navigate("/personal-development");
                           }
+                          else if (item == "Lifestyle") {
+                            navigate("/lifestyle")
+                          }
                         }}
                       >
                         {item}
@@ -865,8 +868,7 @@ const NavbarPage = () => {
                     } else if (link === "Marketing") {
                       navigate("/marketing");
                     } else if (link === "Lifestyle") {
-                      // Route not implemented yet
-                      // navigate("/lifestyle");
+                      navigate("/lifestyle");
                     } else if (link === "Photography & Video") {
                       // Route not implemented yet
                       // navigate("/photography-video");
@@ -924,6 +926,11 @@ const NavbarPage = () => {
                         else if (item === "Mental Health") navigate("/health-mental-health");
                         else if (item === "Workout") navigate("/health-workout");
                         else if (item === "Meditation") navigate("/health-meditation");
+                      }
+                      // Lifestyle subpages
+                      else if (hoveredSecondary === "Lifestyle") {
+                        // Add navigation for Lifestyle subcategories here
+                        // Example: if (item === "Cooking") navigate("/lifestyle/cooking");
                       }
                     }}
                   >
