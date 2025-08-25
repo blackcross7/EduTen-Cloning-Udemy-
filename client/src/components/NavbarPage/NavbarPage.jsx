@@ -137,7 +137,8 @@ const navDialogContent = {
     button: "Learn more",
   },
   teach: {
-    headline: "Turn what you know into an opportunity and reach millions around the world.",
+    headline:
+      "Turn what you know into an opportunity and reach millions around the world.",
     button: "Learn more",
   },
   learning: {
@@ -227,12 +228,12 @@ const NavbarPage = () => {
     checkScroll();
     const el = secondaryNavRef.current;
     if (el) {
-      el.addEventListener('scroll', checkScroll);
-      window.addEventListener('resize', checkScroll);
+      el.addEventListener("scroll", checkScroll);
+      window.addEventListener("resize", checkScroll);
     }
     return () => {
-      if (el) el.removeEventListener('scroll', checkScroll);
-      window.removeEventListener('resize', checkScroll);
+      if (el) el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
     };
   }, []);
 
@@ -240,7 +241,10 @@ const NavbarPage = () => {
     const el = secondaryNavRef.current;
     if (!el) return;
     const scrollAmount = 200;
-    el.scrollBy({ left: dir === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+    el.scrollBy({
+      left: dir === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -318,6 +322,8 @@ const NavbarPage = () => {
                             navigate("/businesscourse");
                           } else if (item === "Finance & Accounting") {
                             navigate("/finance");
+                          } else if (item === "Office Productivity") {
+                            navigate("/office-productivity");
                           } else if (item === "Marketing") {
                             navigate("/marketing");
                           } else if (item === "Personal Development") {
@@ -354,7 +360,7 @@ const NavbarPage = () => {
               <input
                 type="text"
                 placeholder="Search for anything"
-                className="w-full pl-10 pr-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 text-sm bg-gray-50"
+                className="w-full pl-10 pr-1 py-1 border rounded-full focus:outline-none focus:ring-2 focus:ring-purple-600 text-sm bg-gray-50"
               />
             </div>
           </div>
@@ -368,7 +374,13 @@ const NavbarPage = () => {
             >
               <button className="text-sm font-semibold hover:text-purple-700 flex items-center">
                 Plans & Pricing
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -393,7 +405,8 @@ const NavbarPage = () => {
               onMouseEnter={() => handleDropdownEnter("business")}
               onMouseLeave={handleDropdownLeave}
             >
-              <button className="text-sm font-semibold hover:text-purple-700 flex items-center"
+              <button
+                className="text-sm font-semibold hover:text-purple-700 flex items-center"
                 onClick={() => navigate("/business")}
               >
                 EDU Business
@@ -441,7 +454,10 @@ const NavbarPage = () => {
               onMouseEnter={() => handleDropdownEnter("teach")}
               onMouseLeave={handleDropdownLeave}
             >
-              <button className="text-sm font-semibold hover:text-purple-700 flex items-center" onClick={() => navigate("/edu-teach")}> 
+              <button
+                className="text-sm font-semibold hover:text-purple-700 flex items-center"
+                onClick={() => navigate("/edu-teach")}
+              >
                 EDU Teach
                 <svg
                   className="w-4 h-4 ml-1"
@@ -479,11 +495,19 @@ const NavbarPage = () => {
               )}
             </div>
 
-
             {/* Wishlist Icon */}
             {isLoggedIn && (
-              <button className="p-2 hover:bg-gray-100 rounded-full" title="Wishlist">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <button
+                className="p-2 hover:bg-gray-100 rounded-full"
+                title="Wishlist"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
               </button>
@@ -491,8 +515,13 @@ const NavbarPage = () => {
 
             {/* Cart Icon */}
             <button className="p-2 hover:bg-gray-100 rounded-full">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2"
-                viewBox="0 0 24 24">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
                 <circle cx="9" cy="21" r="1" />
                 <circle cx="20" cy="21" r="1" />
                 <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
@@ -501,8 +530,17 @@ const NavbarPage = () => {
 
             {/* Notification Icon */}
             {isLoggedIn && (
-              <button className="p-2 hover:bg-gray-100 rounded-full" title="Notifications">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <button
+                className="p-2 hover:bg-gray-100 rounded-full"
+                title="Notifications"
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
                   <path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
                   <path d="M13.73 21a2 2 0 01-3.46 0" />
                 </svg>
@@ -513,7 +551,11 @@ const NavbarPage = () => {
 
             {/* My Learning */}
             {isLoggedIn && (
-              <div className="relative" onMouseEnter={() => handleDropdownEnter("learning")} onMouseLeave={handleDropdownLeave}>
+              <div
+                className="relative"
+                onMouseEnter={() => handleDropdownEnter("learning")}
+                onMouseLeave={handleDropdownLeave}
+              >
                 <button
                   className="text-sm font-semibold hover:text-purple-700"
                   onClick={() => navigate("/my-learning")}
@@ -550,7 +592,11 @@ const NavbarPage = () => {
                 </button>
               </>
             ) : (
-              <div className="relative group" onMouseEnter={() => handleDropdownEnter("profile")} onMouseLeave={handleDropdownLeave}>
+              <div
+                className="relative group"
+                onMouseEnter={() => handleDropdownEnter("profile")}
+                onMouseLeave={handleDropdownLeave}
+              >
                 <Link to="/profile">
                   <button className="flex items-center space-x-2 focus:outline-none relative">
                     <span className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold text-sm">
@@ -828,16 +874,16 @@ const NavbarPage = () => {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             {/* Left scroll indicator */}
             <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-            
+
             {/* Right scroll indicator */}
             <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-            
+
             <div
               className="flex flex-nowrap overflow-x-auto space-x-2 py-4 scrollbar-hide"
-              style={{ 
+              style={{
                 scrollbarWidth: "none",
                 msOverflowStyle: "none",
-                scrollBehavior: "smooth"
+                scrollBehavior: "smooth",
               }}
               onMouseLeave={() => setHoveredSecondary(null)}
             >
@@ -849,7 +895,7 @@ const NavbarPage = () => {
                   className="flex-shrink-0 px-4 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:bg-purple-50 hover:text-purple-700 hover:border-purple-200 border border-transparent transition duration-200 whitespace-nowrap"
                   onMouseEnter={() => setHoveredSecondary(link)}
                   onFocus={() => setHoveredSecondary(link)}
-                   onClick={() => {
+                  onClick={() => {
                     if (link === "Development") {
                       navigate("/web-development");
                     } else if (link === "Business") {
@@ -860,7 +906,7 @@ const NavbarPage = () => {
                       navigate("/it-software");
                     } else if (link === "Office Productivity") {
                       // Route not implemented yet
-                      // navigate("/office-productivity");
+                      navigate("/office-productivity");
                     } else if (link === "Personal Development") {
                       navigate("/personal-development");
                     } else if (link === "Design") {
@@ -886,61 +932,97 @@ const NavbarPage = () => {
               <div className="flex-shrink-0 w-8"></div>
             </div>
           </div>
-        {/* Horizontal submenu */}
-        {hoveredSecondary && secondarySubmenus[hoveredSecondary] && (
-          <div
-            className="absolute left-0 w-full bg-white border-b border-gray-200 shadow z-40"
-            onMouseLeave={() => setHoveredSecondary(null)}
-            onMouseEnter={() => setHoveredSecondary(hoveredSecondary)}
-          >
-            <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
-              <div className="flex flex-nowrap overflow-x-auto space-x-4 py-3 justify-center">
-                {secondarySubmenus[hoveredSecondary].map((item) => (
-                  <button
-                    key={item}
-                    className="px-4 py-2 rounded text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 whitespace-nowrap transition"
-                    onClick={() => {
-                      // IT & Software subpages
-                      if (hoveredSecondary === "IT & Software") {
-                        if (item === "Network & Security") navigate("/it-software/network-security");
-                        else if (item === "Hardware") navigate("/it-software/hardware");
-                        else if (item === "Operating Systems") navigate("/it-software/operating-systems");
-                        else if (item === "Cloud Computing") navigate("/it-software/cloud-computing");
-                        else if (item === "Databases") navigate("/it-software/databases");
-                      }
-                      // Add other submenu navigations as needed
-                      else if (item === "Interior Design") {
-                        navigate("/interior-design");
-                      }
-                      // Marketing subpages
-                      else if (hoveredSecondary === "Marketing") {
-                        if (item === "Digital Marketing") navigate("/marketing/digital-marketing");
-                        else if (item === "SEO") navigate("/marketing/seo");
-                        else if (item === "Content Marketing") navigate("/marketing/content-marketing");
-                        else if (item === "Social Media") navigate("/marketing/social-media");
-                        else if (item === "Branding") navigate("/marketing/branding");
-                      }
-                      else if (hoveredSecondary === "Health & Fitness") {
-                        if (item === "Yoga") navigate("/health-yoga");
-                        else if (item === "Nutrition") navigate("/health-nutrition");
-                        else if (item === "Mental Health") navigate("/health-mental-health");
-                        else if (item === "Workout") navigate("/health-workout");
-                        else if (item === "Meditation") navigate("/health-meditation");
-                      }
-                      // Lifestyle subpages
-                      else if (hoveredSecondary === "Lifestyle") {
-                        // Add navigation for Lifestyle subcategories here
-                        // Example: if (item === "Cooking") navigate("/lifestyle/cooking");
-                      }
-                    }}
-                  >
-                    {item}
-                  </button>
-                ))}
+          {/* Horizontal submenu */}
+          {hoveredSecondary && secondarySubmenus[hoveredSecondary] && (
+            <div
+              className="absolute left-0 w-full bg-white border-b border-gray-200 shadow z-40"
+              onMouseLeave={() => setHoveredSecondary(null)}
+              onMouseEnter={() => setHoveredSecondary(hoveredSecondary)}
+            >
+              <div className="max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-8">
+                <div className="flex flex-nowrap overflow-x-auto space-x-4 py-3 justify-center">
+                  {secondarySubmenus[hoveredSecondary].map((item) => (
+                    <button
+                      key={item}
+                      className="px-4 py-2 rounded text-sm font-medium text-gray-700 hover:bg-purple-100 hover:text-purple-700 whitespace-nowrap transition"
+                      onClick={() => {
+                        // IT & Software subpages
+                        if (hoveredSecondary === "IT & Software") {
+                          if (item === "Network & Security")
+                            navigate("/it-software/network-security");
+                          else if (item === "Hardware")
+                            navigate("/it-software/hardware");
+                          else if (item === "Operating Systems")
+                            navigate("/it-software/operating-systems");
+                          else if (item === "Cloud Computing")
+                            navigate("/it-software/cloud-computing");
+                          else if (item === "Databases")
+                            navigate("/it-software/databases");
+                        }
+                        // Add other submenu navigations as needed
+                        else if (item === "Interior Design") {
+                          navigate("/interior-design");
+                        }
+                        // Marketing subpages
+                        else if (hoveredSecondary === "Marketing") {
+                          if (item === "Digital Marketing")
+                            navigate("/marketing/digital-marketing");
+                          else if (item === "SEO") navigate("/marketing/seo");
+                          else if (item === "Content Marketing")
+                            navigate("/marketing/content-marketing");
+                          else if (item === "Social Media")
+                            navigate("/marketing/social-media");
+                          else if (item === "Branding")
+                            navigate("/marketing/branding");
+                          // health & fitness subpages
+                        } else if (hoveredSecondary === "Health & Fitness") {
+                          if (item === "Yoga") navigate("/health-yoga");
+                          else if (item === "Nutrition")
+                            navigate("/health-nutrition");
+                          else if (item === "Mental Health")
+                            navigate("/health-mental-health");
+                          else if (item === "Workout")
+                            navigate("/health-workout");
+                          else if (item === "Meditation")
+                            navigate("/health-meditation");
+                        }
+                        //personal development subpages
+                        else if (hoveredSecondary === "Personal Development") {
+                          if (item === "Leadership")
+                            navigate("/personal-development/leadership");
+                          else if (item === "Productivity")
+                            navigate("/personal-development/productivity");
+                          else if (item === "Career Development")
+                            navigate("/personal-development/career");
+                          else if (item === "Emotional Intelligence")
+                            navigate(
+                              "/personal-development/emotional-intelligence"
+                            );
+                          else if (item === "Stress Management")
+                            navigate("/personal-development/stress-management");
+                        }
+                        // Office Productivity subpages
+                        else if (hoveredSecondary === "Office Productivity") {
+                          if (item === "Microsoft Office")
+                            navigate("/office-productivity/microsoft-office");
+                          else if (item === "Google Workspace")
+                            navigate("/office-productivity/google-workspace");
+                          else if (item === "Time Management")
+                            navigate("/office-productivity/time-management");
+                          else if (item === "Project Management")
+                            navigate("/office-productivity/project-management");
+                          else if (item === "Communication")
+                            navigate("/office-productivity/communication");
+                        }
+                      }}
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
         </nav>
       )}
     </>

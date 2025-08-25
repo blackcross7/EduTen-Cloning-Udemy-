@@ -47,22 +47,27 @@ const instructors = [
 const PopularInstructors = () => {
   return (
     <div className="popular-instructors-wrapper">
-  <h2 className="section-heading">Popular Instructors</h2>
-  <div className="instructor-grid">
-    {instructors.map((inst, idx) => (
-      <div key={idx} className="instructor-card">
-        <img src={inst.thumbnail} alt={inst.name} className="instructor-photo" />
-        <div className="instructor-details">
-          <h3 className="instructor-name">{inst.name}</h3>
-          <p className="instructor-expertise">{inst.expertise}</p>
-          <p className="instructor-meta">
-            ⭐ {inst.rating} Instructor rating • {inst.students} students • {inst.courses} courses
-          </p>
-        </div>
+      <h2 className="section-heading">Popular Instructors</h2>
+      <div className="instructor-grid">
+        {instructors.map((inst, idx) => (
+          <div key={idx} className="instructor-card">
+            <img
+              src={inst.thumbnail}
+              alt={inst.name}
+              className="instructor-photo"
+            />
+            <div className="instructor-details">
+              <h3 className="instructor-name">{inst.name}</h3>
+              <p className="instructor-expertise">{inst.expertise}</p>
+              <p className="instructor-meta">
+                ⭐ {inst.rating} Instructor rating • {inst.students} students •{" "}
+                {inst.courses} courses
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
+    </div>
   );
 };
 

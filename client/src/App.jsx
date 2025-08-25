@@ -14,8 +14,8 @@ import NavbarPage from "./components/NavbarPage/NavbarPage";
 import ProfilePage from "./pages/ProfilePage";
 import WebDevelopmentPage from "./pages/WebDevelopmentPage";
 import Footer from "./components/FooterSection/Footer";
-import BusinessCoursePage from "./pages/BusinessCoursePage"; 
-import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage"; 
+import BusinessCoursePage from "./pages/BusinessCoursePage";
+import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage";
 import FinancePage from "./pages/FinancePage";
 import InteriorDesignPage from "./pages/InteriorDesignPage";
 import MarketingPage from "./pages/MarketingPage";
@@ -27,9 +27,7 @@ import DesignPage from "./pages/DesignPage";
 import Branding from "./components/MarketingCoursePage/Branding";
 import HealthAndFitnessPage from "./pages/HealthAndFitnessPage";
 
-
 import EduTeachPage from "./pages/EduTeachPage";
-
 
 import Taxation from "./components/FinanceSubPages/Taxation";
 import Invevstment from "./components/FinanceSubPages/Invevstment";
@@ -49,24 +47,36 @@ import HealthWorkoutPage from "./pages/HealthWorkoutPage";
 import HealthMeditationPage from "./pages/HealthMeditationPage";
 import PricingPage from "./pages/PricingPage";
 
-
-// Development SubPages 
+// Development SubPages
 import Mobiledev from "./components/DevelopmentSubPages/Mobiledev";
 import DevOps from "./components/DevelopmentSubPages/DevOps";
 import Softwaretesting from "./components/DevelopmentSubPages/Softwaretesting";
 import WebDev from "./components/DevelopmentSubPages/WebDev";
 import Gamedev from "./components/DevelopmentSubPages/Gamedev";
 
-
-import MusicCoursePage from "./components/MusicPage/MusicCoursePage"
+import MusicCoursePage from "./components/MusicPage/MusicCoursePage";
 import CloudComputing from "./components/ITSoftwareSubPages/CloudComputing";
 import Databases from "./components/ITSoftwareSubPages/Databases";
 import Hardware from "./components/ITSoftwareSubPages/Hardware";
 import NetworkSecurity from "./components/ITSoftwareSubPages/Network&Security";
 import OperatingSystems from "./components/ITSoftwareSubPages/OperatingSystems";
+<<<<<<< HEAD
 
 // ADD THIS IMPORT
 import LifestylePage from "./pages/LifestylePage";
+=======
+import LeadershipPage from "./components/PersonalDevelopmentSubPages/LeadershipPage";
+import ProductivityPage from "./components/PersonalDevelopmentSubPages/ProductivityPage";
+import CareerPage from "./components/PersonalDevelopmentSubPages/CareerPage";
+import EmotionalIntelligencePage from "./components/PersonalDevelopmentSubPages/EmotionalIntelligencePage";
+import StressManagementPage from "./components/PersonalDevelopmentSubPages/StressManagementPage";
+import OfficeProductivityPage from "./pages/OfficeProductivityPage";
+import TimeManagementPage from "./components/OfficeProductivitySubPages/TimeManagementPage";
+import CommunicationPage from "./components/OfficeProductivitySubPages/CommunicationPage";
+import GoogleWorkspacePage from "./components/OfficeProductivitySubPages/GoogleWorkspacePage";
+import MicrosoftOfficePage from "./components/OfficeProductivitySubPages/MicrosoftOfficePage";
+import ProjectManagementPage from "./components/OfficeProductivitySubPages/ProjectManagementPage";
+>>>>>>> 6b99f499d3ebabfff5a0d76ba7b027c1e839394e
 
 function App() {
   const { checkAuth, user } = useAuthStore();
@@ -84,18 +94,32 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={user ? <LandingPage /> : <LoginPage />} />
-        <Route path="/signup" element={user ? <LandingPage /> : <SignUpPage />} />
+        <Route
+          path="/signup"
+          element={user ? <LandingPage /> : <SignUpPage />}
+        />
         <Route path="/business" element={<EduBusinessPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/web-development" element={<WebDevelopmentPage />} />
-        <Route path="/personal-development" element={<PersonalDevPage />} /> 
+        <Route path="/personal-development" element={<PersonalDevPage />} />
+
+        <Route
+          path="/office-productivity"
+          element={<OfficeProductivityPage />}
+        />
         <Route path="/businesscourse" element={<BusinessCoursePage />} />
         <Route path="/finance" element={<FinancePage />} />
         <Route path="/interior-design" element={<InteriorDesignPage />} />
         <Route path="/marketing" element={<MarketingPage />} />
-        <Route path="/marketing/digital-marketing" element={<DigitalMarketing />} />
+        <Route
+          path="/marketing/digital-marketing"
+          element={<DigitalMarketing />}
+        />
         <Route path="/marketing/seo" element={<SEO />} />
-        <Route path="/marketing/content-marketing" element={<ContentMarketing />} />
+        <Route
+          path="/marketing/content-marketing"
+          element={<ContentMarketing />}
+        />
         <Route path="/marketing/social-media" element={<SocialMedia />} />
         <Route path="/marketing/branding" element={<Branding />} />
         <Route path="design/3d-modeling" element={<Modeling />} />
@@ -105,7 +129,10 @@ function App() {
         <Route path="/health-and-fitness" element={<HealthAndFitnessPage />} />
         <Route path="/health-yoga" element={<HealthYogaPage />} />
         <Route path="/health-nutrition" element={<HealthNutritionPage />} />
-        <Route path="/health-mental-health" element={<HealthMentalHealthPage />} />
+        <Route
+          path="/health-mental-health"
+          element={<HealthMentalHealthPage />}
+        />
         <Route path="/health-workout" element={<HealthWorkoutPage />} />
         <Route path="/health-meditation" element={<HealthMeditationPage />} />
         <Route path="/plans" element={<PricingPage />} />
@@ -115,22 +142,27 @@ function App() {
         {/* Finance Sub Pages */}
         <Route path="/finance/taxation" element={<Taxation />} />
         <Route path="/finance/investment" element={<Invevstment />} />
-        <Route path="/finance/financial-analysis" element={<FinancialAnalysis />} />
+        <Route
+          path="/finance/financial-analysis"
+          element={<FinancialAnalysis />}
+        />
         <Route path="/finance/accounting" element={<Accounting />} />
-        <Route path= "/finance/auditing" element={ <Auditing /> } />
+        <Route path="/finance/auditing" element={<Auditing />} />
         {/* ========= */}
 
         <Route path="/it-software" element={<ITSoftware />} />
-        <Route path="*" element={<h1>404 - Page Not Found</h1>} /> 
+        <Route path="*" element={<h1>404 - Page Not Found</h1>} />
         <Route path="/interior" element={<InteriorDesignPage />} />
-        <Route path="/design" element={<DesignPage/>} />
+        <Route path="/design" element={<DesignPage />} />
         <Route path="/edu-teach" element={<EduTeachPage />} />
-
 
         {/* Development SubPage  */}
         <Route path="/development/mobile-dev" element={<Mobiledev />} />
         <Route path="/development/devops" element={<DevOps />} />
-        <Route path="/development/software-testing" element={<Softwaretesting />} />
+        <Route
+          path="/development/software-testing"
+          element={<Softwaretesting />}
+        />
         <Route path="/development/web-dev" element={<WebDev />} />
         <Route path="/development/game-dev" element={<Gamedev />} />
         {/* ========== */}
@@ -138,17 +170,65 @@ function App() {
         {/* Music page  */}
         <Route path="/music" element={<MusicCoursePage />} />
         {/* ========== */}
-        
-       
 
-        <Route path="/it-software/cloud-computing" element={<CloudComputing />} />
+        <Route
+          path="/it-software/cloud-computing"
+          element={<CloudComputing />}
+        />
         <Route path="/it-software/databases" element={<Databases />} />
         <Route path="/it-software/hardware" element={<Hardware />} />
-        <Route path="/it-software/network-security" element={<NetworkSecurity />} />
-        <Route path="/it-software/operating-systems" element={<OperatingSystems />} />
+        <Route
+          path="/it-software/network-security"
+          element={<NetworkSecurity />}
+        />
+        <Route
+          path="/it-software/operating-systems"
+          element={<OperatingSystems />}
+        />
+
+        {/* Personal Development Sub pages  */}
+        <Route
+          path="/personal-development/leadership"
+          element={<LeadershipPage />}
+        />
+        <Route
+          path="/personal-development/productivity"
+          element={<ProductivityPage />}
+        />
+        <Route path="/personal-development/career" element={<CareerPage />} />
+        <Route
+          path="/personal-development/emotional-intelligence"
+          element={<EmotionalIntelligencePage />}
+        />
+        <Route
+          path="/personal-development/stress-management"
+          element={<StressManagementPage />}
+        />
+
+        {/* Time Management subPages*/}
+        <Route
+          path="/office-productivity/time-management"
+          element={<TimeManagementPage />}
+        />
+        <Route
+          path="/office-productivity/communication"
+          element={<CommunicationPage />}
+        />
+        <Route
+          path="/office-productivity/google-workspace"
+          element={<GoogleWorkspacePage />}
+        />
+        <Route
+          path="/office-productivity/microsoft-office"
+          element={<MicrosoftOfficePage />}
+        />
+        <Route
+          path="/office-productivity/project-management"
+          element={<ProjectManagementPage />}
+        />
       </Routes>
 
-      <Footer /> 
+      <Footer />
     </>
   );
 }

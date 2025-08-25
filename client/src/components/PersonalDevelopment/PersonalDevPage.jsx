@@ -25,7 +25,7 @@ const PersonalDevPage = () => {
   return (
     <div className="personal-dev-wrapper">
       {/* 🔼 Subcategories Above Hero */}
-      <SubCategoryBar />
+      {/* <SubCategoryBar /> */}
 
       {/* 🏁 Hero Section */}
       <HeroBanner />

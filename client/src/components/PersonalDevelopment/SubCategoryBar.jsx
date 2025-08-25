@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 const subCategories = [
   "Personal Transformation",
@@ -15,7 +16,13 @@ const SubCategoryBar = () => {
     <div className="subcategory-bar">
       {subCategories.map((sub, idx) => (
         <button key={idx} className="subcategory-btn">
-          {sub}
+          <Link
+            to={`/personal-development/${sub
+              .toLowerCase()
+              .replace(/\s+/g, "-")}`}
+          >
+            {sub}
+          </Link>
         </button>
       ))}
     </div>
