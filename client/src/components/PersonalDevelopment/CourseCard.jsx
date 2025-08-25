@@ -1,6 +1,14 @@
 import React from "react";
 
-const CourseCard = ({ title, instructor, thumbnail, rating, price, originalPrice, badges }) => (
+const CourseCard = ({
+  title,
+  instructor,
+  thumbnail,
+  rating,
+  price,
+  originalPrice,
+  badges,
+}) => (
   <div className="course-card">
     <div className="card-image-wrapper">
       <img src={thumbnail} alt={title} className="card-thumbnail" />
@@ -13,13 +21,15 @@ const CourseCard = ({ title, instructor, thumbnail, rating, price, originalPrice
 
       <div className="card-price">
         ₹{price}
-        {originalPrice && <span className="original-price">₹{originalPrice}</span>}
+        {originalPrice && (
+          <span className="original-price">₹{originalPrice}</span>
+        )}
       </div>
 
       {badges?.length > 0 && (
         <div className="card-badges">
           {badges.map((badge, idx) => (
-            <span key={idx} className={`badge ${badge.replace(/\s+/g, '')}`}>
+            <span key={idx} className={`badge ${badge.replace(/\s+/g, "")}`}>
               {badge}
             </span>
           ))}
