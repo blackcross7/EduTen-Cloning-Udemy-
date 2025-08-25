@@ -316,8 +316,8 @@ const AllBusinessCoursesSection = () => {
 
   return (
     <div className="px-4 sm:px-6 xl:px-16 pt-10 relative">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-        <h2 className="text-[24px] sm:text-[28px] font-extrabold text-gray-900">All Business courses</h2>
+      <div className="flex flex-col sm:flex-row  justify-between items-start sm:items-center mb-4">
+        <h2 className="text-[24px] sm:text-[28px] font-extrabold ml-[18%] lg:ml-0 text-gray-900">All Business courses</h2>
         <span className="text-sm font-semibold text-gray-700">{courses.length} results</span>
       </div>
 
@@ -390,8 +390,8 @@ const AllBusinessCoursesSection = () => {
                 >
                   <img src={course.image} alt={course.title} className="w-full sm:w-[332px] h-auto sm:h-[230px] object-center rounded border" />
                   <div className="flex-1">
-                    <h3 className="font-bold text-lg text-gray-900">{course.title}</h3>
-                    <p className="text-sm text-gray-700">{course.subtitle}</p>
+                    <h3 className="font-bold text-lg text-center lg:text-left  text-gray-900">{course.title}</h3>
+                    <p className="text-sm  text-gray-700">{course.subtitle}</p>
                     <p className="text-sm text-gray-700 mt-1">{course.instructor}</p>
                     <div className="flex items-center gap-2 text-sm mt-1">
                       <span className="font-bold text-yellow-700">{course.rating}</span>
@@ -430,14 +430,14 @@ const AllBusinessCoursesSection = () => {
 
               {currentPage === 1 && i === 1 && (
                 <div className="border border-gray-300 bg-white rounded-xl px-6 py-6 text-left space-y-4 mt-6 shadow-sm">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900">Top companies trust Eduten</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-center lg:text-left text-gray-900">Top companies trust Eduten</h3>
                   <p className="text-sm text-gray-700">Get your team access to Eduten’s top 250,000+ courses</p>
                   <div className="flex justify-start flex-wrap gap-6 mt-2">
                     {["logo1.svg", "logo2.svg", "logo3.svg", "logo4.svg"].map((logo, idx) => (
                       <img key={idx} src={`/assets/business/${logo}`} alt={`Logo ${idx}`} className="h-8 object-contain" />
                     ))}
                   </div>
-                  <div className="pt-2">
+                  <div className="pt-2 lg:ml-0 ml-[23%]">
                     <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm px-4 py-2 rounded">
                       Try Eduten Business
                     </button>

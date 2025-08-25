@@ -345,7 +345,7 @@ const WebCourseInfoPanel = () => {
 
   return (
     <section className="mt-10 px-4 md:px-10">
-      <h2 className="text-2xl font-bold mb-4">All Web Development courses</h2>
+      <h2 className="text-2xl lg:text-left text-center font-bold mb-4">All Web Development courses</h2>
 
       <div className="bg-white border border-gray-200 rounded-lg px-5 py-3 shadow-sm w-full md:w-[88%] flex items-start gap-2">
         <FaInfoCircle className="text-purple-600 mt-1" />

@@ -158,10 +158,10 @@ const FinanceCourceSection = () => {
   return (
     <section className="bg-white text-gray-900 px-6">
       <div className="pl-4 mb-6">
-        <h1 className="text-3xl font-bold mb-1 pb-6">
+        <h1 className="text-3xl text-center lg:text-left font-bold mb-1 pb-6">
           Finance & Accounting Courses
         </h1>
-        <h2 className="text-xl text-black font-semibold mb-2">Courses to get you started</h2>
+        <h2 className="text-xl text-black text-center lg:text-left font-semibold mb-2">Courses to get you started</h2>
         <p className="text-gray-500 mb-6">Explore courses from experienced, real-world experts.</p>
         <div className="flex gap-4 mt-2">
           {tabs.map((tab) => (
@@ -207,8 +207,8 @@ const FinanceCourceSection = () => {
               </div>
               <div className="p-4 flex flex-col justify-between h-full">
                 <div>
-                  <h2 className="text-md font-bold line-clamp-2">{course.title}</h2>
-                  <p className="text-sm text-gray-600 mt-1">{course.instructor}</p>
+                  <h2 className="text-md font-bold text-center lg:text-left line-clamp-2">{course.title}</h2>
+                  <p className="text-sm text-gray-600 text-center lg:text-left mt-1">{course.instructor}</p>
                   <div className="flex items-center gap-2 mt-2 text-sm">
                     <span className="text-yellow-500 font-bold">{course.rating}</span>
                     <div className="flex text-yellow-500 text-sm">★★★★☆</div>

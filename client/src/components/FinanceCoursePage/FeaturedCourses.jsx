@@ -89,8 +89,8 @@ const FeaturedCourses = () => {
 
   return (
     <section className="relative px-4 xl:px-20 py-10 bg-white">
-      <h2 className="text-2xl font-bold text-gray-900 mb-1">Featured courses</h2>
-      <p className="text-gray-600 mb-6">
+      <h2 className="text-2xl font-bold text-center lg:text-left  text-gray-900 mb-1">Featured courses</h2>
+      <p className="text-gray-600 text-center lg:text-left mb-6">
         Many learners enjoyed this highly rated course for its engaging content.
       </p>
 
@@ -130,10 +130,10 @@ const FeaturedCourses = () => {
                 />
                 <div className="p-6 flex flex-col justify-between w-full md:w-[55%]">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 leading-snug">
+                    <h3 className="text-xl font-bold text-center lg:text-left  text-gray-900 mb-2 leading-snug">
                       {course.title}
                     </h3>
-                    <p className="text-sm text-gray-700 mb-3">{course.description}</p>
+                    <p className="text-sm text-gray-700   mb-3">{course.description}</p>
                     <p className="text-xs text-gray-500 mb-1">By {course.instructor}</p>
                     <p className="text-xs text-gray-500 mb-3">
                       Updated <strong>{course.updated}</strong> · {course.hours} total hours ·{" "}

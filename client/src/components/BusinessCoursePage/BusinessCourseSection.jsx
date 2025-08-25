@@ -155,8 +155,8 @@ const BusinessCourseGrid = () => {
   return (
     <section className="bg-white text-gray-900 px-6 pb-10">
       <div className="pl-4 mb-6">
-        <h1 className="text-3xl font-bold mb-1 pb-6">Top Business Courses</h1>
-        <h2 className="text-xl text-black font-semibold mb-2">Courses to get you started</h2>
+        <h1 className="text-3xl text-center lg:text-left font-bold mb-1 pb-6">Top Business Courses</h1>
+        <h2 className="text-xl text-black text-center lg:text-leftfont-semibold mb-2">Courses to get you started</h2>
         <div className="flex gap-4 mt-2">
           {tabs.map((tab) => (
             <button
@@ -194,14 +194,14 @@ const BusinessCourseGrid = () => {
               </div>
               <div className="p-4 flex flex-col justify-between h-full">
                 <div>
-                  <h2 className="text-md font-bold line-clamp-2">{course.title}</h2>
+                  <h2 className="text-md font-bold text-center lg:text-left line-clamp-2">{course.title}</h2>
                   <p className="text-sm text-gray-600 mt-1">{course.instructor}</p>
-                  <div className="flex items-center gap-2 mt-2 text-sm">
-                    <span className="text-yellow-500 font-bold">{course.rating}</span>
+                  <div className="flex items-center gap-2  mt-2 text-sm">
+                    <span className="text-yellow-500  font-bold">{course.rating}</span>
                     <div className="flex text-yellow-500 text-sm">★★★★☆</div>
                     <span className="text-gray-600 text-xs">({course.students})</span>
                   </div>
-                  <div className="mt-2 text-sm font-semibold text-indigo-700">
+                  <div className="mt-2 text-sm  font-semibold text-indigo-700">
                     Current price: {course.price}
                   </div>
                 </div>

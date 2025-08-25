@@ -84,7 +84,7 @@ const PopularInstructors = () => {
 
   return (
     <section className=" px-6 xl:px-20 py-10 relative">
-      <h2 className="text-3xl font-bold text-gray-800 mb-2">Popular Instructors</h2>
+      <h2 className="text-3xl font-bold text-center lg:text-left text-gray-800 mb-2">Popular Instructors</h2>
       <p className="text-gray-600 mb-6 text-sm">
         These real-world experts are highly rated by learners like you.
       </p>

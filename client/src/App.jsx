@@ -60,11 +60,9 @@ import Databases from "./components/ITSoftwareSubPages/Databases";
 import Hardware from "./components/ITSoftwareSubPages/Hardware";
 import NetworkSecurity from "./components/ITSoftwareSubPages/Network&Security";
 import OperatingSystems from "./components/ITSoftwareSubPages/OperatingSystems";
-<<<<<<< HEAD
 
 // ADD THIS IMPORT
 import LifestylePage from "./pages/LifestylePage";
-=======
 import LeadershipPage from "./components/PersonalDevelopmentSubPages/LeadershipPage";
 import ProductivityPage from "./components/PersonalDevelopmentSubPages/ProductivityPage";
 import CareerPage from "./components/PersonalDevelopmentSubPages/CareerPage";
@@ -76,7 +74,6 @@ import CommunicationPage from "./components/OfficeProductivitySubPages/Communica
 import GoogleWorkspacePage from "./components/OfficeProductivitySubPages/GoogleWorkspacePage";
 import MicrosoftOfficePage from "./components/OfficeProductivitySubPages/MicrosoftOfficePage";
 import ProjectManagementPage from "./components/OfficeProductivitySubPages/ProjectManagementPage";
->>>>>>> 6b99f499d3ebabfff5a0d76ba7b027c1e839394e
 
 function App() {
   const { checkAuth, user } = useAuthStore();

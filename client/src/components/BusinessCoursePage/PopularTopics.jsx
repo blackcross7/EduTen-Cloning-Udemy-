@@ -37,7 +37,7 @@ const PopularTopics = () => {
   return (
     <section className="relative py-10 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Popular topics</h2>
+        <h2 className="text-2xl font-bold text-center lg:text-left  text-gray-900 mb-6">Popular topics</h2>
         <div className="relative">
           {/* Scroll buttons */}
           <button

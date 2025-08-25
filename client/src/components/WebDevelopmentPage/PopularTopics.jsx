@@ -69,7 +69,7 @@ const PopularTopics = () => {
   return (
     <section className="py-8 px-4 bg-white">
       {/* ------------------- Popular Topics ------------------- */}
-      <h2 className="text-xl sm:text-2xl font-bold mb-4">Popular topics</h2>
+      <h2 className="text-xl text-center lg:text-left sm:text-2xl font-bold mb-4">Popular topics</h2>
       <div className="relative">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
           {currentTopics.map((topic, index) => (
@@ -103,29 +103,29 @@ const PopularTopics = () => {
 
       {/* ------------------- Popular Instructors ------------------- */}
       <div className="mt-12">
-        <h2 className="text-xl sm:text-2xl font-bold mb-2">Popular Instructors</h2>
-        <p className="text-gray-600 mb-6 text-sm sm:text-base">
+        <h2 className="text-xl text-center lg:text-left sm:text-2xl font-bold mb-2">Popular Instructors</h2>
+        <p className="text-gray-600 mb-6 lg:font-bold text-sm sm:text-base">
           These real-world experts are highly rated by learners like you.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {currentInstructors.map((inst, idx) => (
             <div
               key={idx}
-              className="flex gap-4 items-start border rounded-lg p-4 shadow-sm hover:shadow-md transition relative bg-white"
+              className="lg:flex  lg:gap-4 items-start border rounded-lg p-4 shadow-sm hover:shadow-md transition relative bg-white"
             >
               <img
                 src={inst.image}
                 alt={inst.name}
-                className="w-14 h-14 rounded-full object-cover mt-1"
+                className="w-14 h-14 mx-auto rounded-full object-cover lg:mt-3 mt-1"
               />
-              <div className="min-w-0">
-                <h3 className="text-base font-semibold mb-1">{inst.name}</h3>
+              <div className="lg:min-w-0 text-center lg:text-left">
+                <h3 className="text-base font-bold lg:font-semibold mb-1">{inst.name}</h3>
                 <p className="text-sm text-gray-700 mb-1">{inst.skills}</p>
-                <div className="flex items-center gap-1 text-sm text-gray-700 mb-1">
-                  <span className="font-medium text-gray-800">{inst.rating}</span>
-                  <span className="text-yellow-600">⭐</span>
-                  <span className="text-gray-600">Instructor Rating</span>
+                <div className="lg:flex lg:items-center lg:gap-1  lg:text-sm text-gray-700 mb-1">
+                  <span className="font-medium text-gray-800 ">{inst.rating}</span>
+                  <span className="text-yellow-600 mx-auto">⭐</span>
+                  <span className="text-gray-600 mx-auto">Instructor Rating</span>
                 </div>
                 <p className="text-sm text-gray-600">{inst.students} students</p>
                 <p className="text-sm text-gray-600">{inst.courses} courses</p>

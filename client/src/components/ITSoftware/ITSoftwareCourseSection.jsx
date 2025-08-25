@@ -155,10 +155,10 @@ const ITSoftwareCourseSection = () => {
 
   return (
     <section className="relative px-4 xl:px-20 py-10 bg-white">
-      <h2 className="text-2xl font-bold text-gray-900 mb-1">
+      <h2 className="text-2xl font-bold text-center lg:text-left text-gray-900 mb-1">
         IT & Software Courses
       </h2>
-      <h3 className="text-xl text-black font-semibold mb-2">
+      <h3 className="text-xl text-center lg:text-left text-black font-semibold mb-2">
         Courses to get you started
       </h3>
       <p className="text-gray-700 mb-4">
@@ -214,7 +214,7 @@ const ITSoftwareCourseSection = () => {
               </div>
               <div className="p-4 flex flex-col justify-between flex-grow">
                 <div>
-                  <h2 className="text-md font-bold line-clamp-2">
+                  <h2 className="text-md text-center lg:text-center font-bold line-clamp-2">
                     {course.title}
                   </h2>
                   <p className="text-sm text-gray-600 mt-1">
@@ -266,7 +266,7 @@ const ITSoftwareCourseSection = () => {
                     isLeft ? "md:right-full md:mr-4" : "md:left-full md:ml-4"
                   } md:top-0 top-full mt-2`}
                 >
-                  <h2 className="text-lg font-bold text-gray-900 mb-2">
+                  <h2 className="text-lg font-bold  text-gray-900 mb-2">
                     {course.title}
                   </h2>
                   <p className="text-sm text-gray-700 mb-1">

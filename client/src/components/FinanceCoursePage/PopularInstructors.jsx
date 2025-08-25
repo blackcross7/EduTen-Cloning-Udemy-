@@ -85,7 +85,7 @@ const PopularInstructors = () => {
   return (
     <section className="px-6 xl:px-20 py-10 relative">
       <motion.h2
-        className="text-3xl font-bold text-gray-800 mb-2"
+        className="text-3xl text-center lg:text-left font-bold text-gray-800 mb-2"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -147,15 +147,15 @@ const PopularInstructors = () => {
                   alt={ins.name}
                   className="w-14 h-14 rounded-full object-cover"
                 />
-                <div>
-                  <h4 className="font-bold text-sm text-gray-800 leading-tight">
+                <div >
+                  <h4 className="font-bold text-sm   text-gray-800 leading-tight">
                     {ins.name}
                   </h4>
                 </div>
               </div>
-              <p className="text-sm text-gray-700 mb-2">{ins.title}</p>
+              <p className="text-sm text-gray-700  mb-2">{ins.title}</p>
               <div className="text-sm text-gray-700">
-                <p className="flex items-center gap-1 text-orange-700 font-semibold">
+                <p className="flex items-center gap-1  text-orange-700 font-semibold">
                   {ins.rating}
                   <Star className="w-4 h-4 fill-orange-500 text-orange-500" />
                   <span className="text-xs font-medium text-gray-600">Instructor Rating</span>
