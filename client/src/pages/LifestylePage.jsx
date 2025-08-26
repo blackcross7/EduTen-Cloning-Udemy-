@@ -4,6 +4,16 @@ import PopularTopics from "../components/LifestylePage/PopularTopics";
 import PopularInstructors from "../components/LifestylePage/PopularInstructors";
 import CoursesToGetStarted from "../components/LifestylePage/CoursesToGetStarted";
 import AllCourses from "../components/LifestylePage/AllCourses";
+import { courses as lifestyleCourses } from "../components/LifestylePage/data/mockData";
+
+import {
+  popularCourses,
+  trendingCourses,
+  popularHoverDetails,
+  trendingHoverDetails,
+  popularRatingData,
+  trendingRatingData,
+} from "../components/LifestylePage/data/mockData";
 
 export default function LifestylePage() {
   const [sortBy, setSortBy] = useState("Most Popular");
@@ -11,14 +21,22 @@ export default function LifestylePage() {
 
   return (
     <>
-      <div className="min-h-screen ">
-        
+      <div className="min-h-screen ">        
         <div className="max-w-7xl mx-auto px-4">
-          <CoursesToGetStarted />
+          <CoursesToGetStarted
+            title="Lifestyle"
+            popularCourses={popularCourses}
+            trendingCourses={trendingCourses}
+            popularHoverDetails={popularHoverDetails}
+            trendingHoverDetails={trendingHoverDetails}
+            popularRatingData={popularRatingData}
+            trendingRatingData={trendingRatingData}
+          />
           <FeaturedCourses courses={courses} />
           <PopularTopics />
           <PopularInstructors />
-          <AllCourses />
+          <AllCourses title="Lifestyle" courses={lifestyleCourses} />
+
         </div>
 
         {/* Why Learn Section */}

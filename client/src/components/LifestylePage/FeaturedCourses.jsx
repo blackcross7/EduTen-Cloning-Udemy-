@@ -105,7 +105,7 @@ export default function FeaturedCourses() {
     if (intervalRef.current) return; // prevent multiple intervals
     intervalRef.current = setInterval(() => {
       nextSlide();
-    }, 3000); // 3s per slide
+    }, 5000); // 5s per slide
   };
 
   const stopAutoPlay = () => {

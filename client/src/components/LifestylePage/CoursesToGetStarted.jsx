@@ -1,25 +1,28 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import {
+
+const CoursesToGetStarted = ({
+  title,
   popularCourses,
   trendingCourses,
   popularHoverDetails,
   trendingHoverDetails,
   popularRatingData,
-  trendingRatingData
-} from "./data/mockData";
-
-const CoursesToGetStarted = () => {
-  const [activeTab, setActiveTab] = useState('popular');
+  trendingRatingData,
+}) => {
+  const [activeTab, setActiveTab] = useState("popular");
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [startIndex, setStartIndex] = useState(0);
 
   const itemsPerPage = 4;
 
-  // Get the appropriate data based on active tab
-  const currentCourses = activeTab === 'popular' ? popularCourses : trendingCourses;
-  const currentHoverDetails = activeTab === 'popular' ? popularHoverDetails : trendingHoverDetails;
-  const currentRatingData = activeTab === 'popular' ? popularRatingData : trendingRatingData;
+  // pick data based on active tab
+  const currentCourses =
+    activeTab === "popular" ? popularCourses : trendingCourses;
+  const currentHoverDetails =
+    activeTab === "popular" ? popularHoverDetails : trendingHoverDetails;
+  const currentRatingData =
+    activeTab === "popular" ? popularRatingData : trendingRatingData;
 
   const handleNext = () => {
     if (startIndex + itemsPerPage < currentCourses.length) {
@@ -33,9 +36,11 @@ const CoursesToGetStarted = () => {
     }
   };
 
-  const visibleCourses = currentCourses.slice(startIndex, startIndex + itemsPerPage);
+  const visibleCourses = currentCourses.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
 
-  // Reset startIndex when tab changes
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setStartIndex(0);
@@ -43,13 +48,11 @@ const CoursesToGetStarted = () => {
   };
 
   return (
-    <section className=" text-gray-900 px-6 py-10">
+    <section className="text-gray-900 px-6 py-10">
       <div className="pl-4 mb-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h1 className="text-3xl font-bold mb-1">
-              Lifestyle Courses
-            </h1>
+            <h1 className="text-3xl font-bold mb-1">{title} Courses</h1>
             <h2 className="text-xl text-black font-semibold">
               Courses to get you started
             </h2>
@@ -84,33 +87,33 @@ const CoursesToGetStarted = () => {
             </button>
           </div>
         </div>
-        
+
         {/* Tab Navigation */}
         <div className="flex border-b border-gray-200">
           <button
             className={`pb-4 px-1 mr-8 text-sm font-medium border-b-2 transition-colors ${
-              activeTab === 'popular'
-                ? 'border-gray-900 text-gray-900'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+              activeTab === "popular"
+                ? "border-gray-900 text-gray-900"
+                : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
-            onClick={() => handleTabChange('popular')}
+            onClick={() => handleTabChange("popular")}
           >
             Most popular
           </button>
           <button
             className={`pb-4 px-1 text-sm font-medium border-b-2 transition-colors ${
-              activeTab === 'trending'
-                ? 'border-gray-900 text-gray-900'
-                : 'border-transparent text-gray-500 hover:text-gray-700'
+              activeTab === "trending"
+                ? "border-gray-900 text-gray-900"
+                : "border-transparent text-gray-500 hover:text-gray-700"
             }`}
-            onClick={() => handleTabChange('trending')}
+            onClick={() => handleTabChange("trending")}
           >
             Trending
           </button>
         </div>
       </div>
 
-      {/* Course Cards (only 4 at a time) */}
+      {/* Course Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
         {visibleCourses.map((course, index) => {
           const actualIndex = startIndex + index;
@@ -175,51 +178,56 @@ const CoursesToGetStarted = () => {
                 </div>
               </div>
 
-              {/* Hover Details - Show for the currently hovered card */}
-              {hoveredIndex === actualIndex && currentHoverDetails[actualIndex] && (
-                <div className="absolute top-0 left-0 w-full bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 z-20">
-                  <h2 className="text-lg font-bold text-gray-900 mb-2">
-                    {currentHoverDetails[actualIndex].title}
-                  </h2>
+              {/* Hover Details */}
+              {hoveredIndex === actualIndex &&
+                currentHoverDetails[actualIndex] && (
+                  <div className="absolute top-0 left-0 w-full bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 z-20">
+                    <h2 className="text-lg font-bold text-gray-900 mb-2">
+                      {currentHoverDetails[actualIndex].title}
+                    </h2>
 
-                  <div className="flex items-center gap-2 mb-2">
-                    {currentHoverDetails[actualIndex].premium && (
-                      <span className="bg-violet-200 text-violet-800 text-xs font-semibold px-2 py-1 rounded">
-                        Premium
-                      </span>
-                    )}
-                    {currentHoverDetails[actualIndex].bestseller && (
-                      <span className="bg-green-200 text-green-800 text-xs font-semibold px-2 py-1 rounded">
-                        Bestseller
-                      </span>
-                    )}
+                    <div className="flex items-center gap-2 mb-2">
+                      {currentHoverDetails[actualIndex].premium && (
+                        <span className="bg-violet-200 text-violet-800 text-xs font-semibold px-2 py-1 rounded">
+                          Premium
+                        </span>
+                      )}
+                      {currentHoverDetails[actualIndex].bestseller && (
+                        <span className="bg-green-200 text-green-800 text-xs font-semibold px-2 py-1 rounded">
+                          Bestseller
+                        </span>
+                      )}
+                    </div>
+
+                    <p className="text-gray-500 text-sm mb-1">
+                      Updated {currentHoverDetails[actualIndex].updated}
+                    </p>
+                    <p className="text-sm text-gray-700 mb-2">
+                      <strong>
+                        {currentHoverDetails[actualIndex].duration}
+                      </strong>{" "}
+                      • {currentHoverDetails[actualIndex].level} • Subtitles
+                    </p>
+                    <p className="text-gray-800 text-sm mb-2">
+                      {currentHoverDetails[actualIndex].description}
+                    </p>
+
+                    <ul className="space-y-1 text-sm text-gray-700">
+                      {currentHoverDetails[actualIndex].points.map(
+                        (point, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="text-green-500 font-bold">✓</span>
+                            <span>{point}</span>
+                          </li>
+                        )
+                      )}
+                    </ul>
+
+                    <button className="mt-4 bg-violet-600 text-white py-2 px-4 w-full rounded hover:bg-violet-700 transition">
+                      Add to Cart
+                    </button>
                   </div>
-
-                  <p className="text-gray-500 text-sm mb-1">
-                    Updated {currentHoverDetails[actualIndex].updated}
-                  </p>
-                  <p className="text-sm text-gray-700 mb-2">
-                    <strong>{currentHoverDetails[actualIndex].duration}</strong> •{" "}
-                    {currentHoverDetails[actualIndex].level} • Subtitles
-                  </p>
-                  <p className="text-gray-800 text-sm mb-2">
-                    {currentHoverDetails[actualIndex].description}
-                  </p>
-
-                  <ul className="space-y-1 text-sm text-gray-700">
-                    {currentHoverDetails[actualIndex].points.map((point, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className="text-green-500 font-bold">✓</span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button className="mt-4 bg-violet-600 text-white py-2 px-4 w-full rounded hover:bg-violet-700 transition">
-                    Add to Cart
-                  </button>
-                </div>
-              )}
+                )}
             </div>
           );
         })}
@@ -229,4 +237,3 @@ const CoursesToGetStarted = () => {
 };
 
 export default CoursesToGetStarted;
-
