@@ -332,6 +332,10 @@ const NavbarPage = () => {
                           else if (item == "Lifestyle") {
                             navigate("/lifestyle")
                           }
+                          else if (item === "Health & Fitness") {
+                            navigate("/health-and-fitness");
+                          }
+                                                    
                         }}
                       >
                         {item}
@@ -919,7 +923,7 @@ const NavbarPage = () => {
                       // Route not implemented yet
                       // navigate("/photography-video");
                     } else if (link === "Health & Fitness") {
-                      navigate("/health-fitness");
+                      navigate("/health-and-fitness");
                     } else if (link === "Music") {
                       navigate("/music");
                     }
