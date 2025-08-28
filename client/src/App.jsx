@@ -68,12 +68,18 @@ import ProductivityPage from "./components/PersonalDevelopmentSubPages/Productiv
 import CareerPage from "./components/PersonalDevelopmentSubPages/CareerPage";
 import EmotionalIntelligencePage from "./components/PersonalDevelopmentSubPages/EmotionalIntelligencePage";
 import StressManagementPage from "./components/PersonalDevelopmentSubPages/StressManagementPage";
+
+// Office Productivity Page
 import OfficeProductivityPage from "./pages/OfficeProductivityPage";
+// Office Productivity Sub-Pages
 import TimeManagementPage from "./components/OfficeProductivitySubPages/TimeManagementPage";
 import CommunicationPage from "./components/OfficeProductivitySubPages/CommunicationPage";
 import GoogleWorkspacePage from "./components/OfficeProductivitySubPages/GoogleWorkspacePage";
 import MicrosoftOfficePage from "./components/OfficeProductivitySubPages/MicrosoftOfficePage";
 import ProjectManagementPage from "./components/OfficeProductivitySubPages/ProjectManagementPage";
+
+// Photography and video page
+import PhotographyAndVideoPage from "./components/PohotographyAndVideoPage/PhotographyVideoPage";
 
 function App() {
   const { checkAuth, user } = useAuthStore();
@@ -134,7 +140,6 @@ function App() {
         <Route path="/health-meditation" element={<HealthMeditationPage />} />
         <Route path="/plans" element={<PricingPage />} />
         <Route path="/lifestyle" element={<LifestylePage />} />
-
 
         {/* Finance Sub Pages */}
         <Route path="/finance/taxation" element={<Taxation />} />
@@ -222,6 +227,11 @@ function App() {
         <Route
           path="/office-productivity/project-management"
           element={<ProjectManagementPage />}
+        />
+        {/* Photography & Video */}
+        <Route
+          path="/photography-video"
+          element={<PhotographyAndVideoPage />}
         />
       </Routes>
 

@@ -1,22 +1,23 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// Updated list of topics for photography and video
 const topics = [
-  "Microsoft Excel",
-  "Google Sheets",
-  "Microsoft Word",
-  "PowerPoint Design",
-  "Google Workspace",
-  "Outlook Productivity",
-  "Project Management Tools",
-  "Time Management",
-  "Keyboard Shortcuts",
-  "Data Visualization",
-  "Note-taking with OneNote",
-  "Task Management (Todoist, Trello, Asana)",
-  "Email Management",
-  "Remote Collaboration",
-  "Automation with Zapier",
+  "Camera Basics",
+  "Photo Editing",
+  "Video Editing",
+  "Drone Photography",
+  "Portraiture",
+  "Street Photography",
+  "Wildlife Photography",
+  "Lighting Techniques",
+  "Adobe Photoshop",
+  "Adobe Lightroom",
+  "Final Cut Pro",
+  "Storytelling in Film",
+  "Color Grading",
+  "Cinematography",
+  "Mobile Videography",
 ];
 
 const PopularTopics = () => {
@@ -35,7 +36,7 @@ const PopularTopics = () => {
   return (
     <div className="max-w-5xl px-4 py-10 mx-auto relative">
       <h2 className="text-2xl font-bold mb-6">
-        Popular Office Productivity Topics
+        Popular Photography & Video Topics
       </h2>
 
       <div className="relative">

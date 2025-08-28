@@ -328,14 +328,13 @@ const NavbarPage = () => {
                             navigate("/marketing");
                           } else if (item === "Personal Development") {
                             navigate("/personal-development");
-                          }
-                          else if (item == "Lifestyle") {
-                            navigate("/lifestyle")
-                          }
-                          else if (item === "Health & Fitness") {
+                          } else if (item == "Lifestyle") {
+                            navigate("/lifestyle");
+                          } else if (item == "Photography & Video") {
+                            navigate("/photography-video");
+                          } else if (item === "Health & Fitness") {
                             navigate("/health-and-fitness");
                           }
-                                                    
                         }}
                       >
                         {item}
@@ -921,7 +920,7 @@ const NavbarPage = () => {
                       navigate("/lifestyle");
                     } else if (link === "Photography & Video") {
                       // Route not implemented yet
-                      // navigate("/photography-video");
+                      navigate("/photography-video");
                     } else if (link === "Health & Fitness") {
                       navigate("/health-and-fitness");
                     } else if (link === "Music") {

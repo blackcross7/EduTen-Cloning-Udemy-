@@ -2,10 +2,10 @@ import { useState } from "react";
 import HeroBanner from "./HeroBanner";
 import TabsSection from "./TabSelection";
 import DetailView from "./DetailView";
-import { officeProductivityCourses } from "./data";
+import { photographyCourses } from "./data";
 import CardSection from "./CardSection";
 import FeaturedCourses from "./FeaturedCourses";
-import AllOfficeProductivityCourse from "./AllOfficeProductivityCourses";
+import AllOfficeProductivityCourse from "./AllCourses";
 import PopularTopics from "./PopularTopiics";
 import PopularInstructors from "./PopularInstructors";
 
@@ -15,28 +15,28 @@ const OfficeProductivityPage = () => {
   const [selectedCourse, setSelectedCourse] = useState(null); // for detail view
 
   // Filter courses by tab
-  const filteredCourses = officeProductivityCourses.filter((course) => {
+  const filteredCourses = photographyCourses.filter((course) => {
     if (activeTab === "Most Popular") return course.status === "popular";
     if (activeTab === "New") return course.status === "new";
     if (activeTab === "Trending") return course.status === "trending";
     return true;
   });
 
-  const filteredFeaturedCourses = officeProductivityCourses.filter((course) => {
+  const filteredFeaturedCourses = photographyCourses.filter((course) => {
     return course.badge === "Bestseller";
   });
   console.log(filteredFeaturedCourses);
 
   // Get full course info on click
   const handleCourseClick = (id) => {
-    const course = officeProductivityCourses.find((c) => c.id === id);
+    const course = photographyCourses.find((c) => c.id === id);
     if (course) {
       setSelectedCourse(course); // opens modal
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 relative">
+    <div className="min-h-screen bg-gray-50 relative p-2 pt-8">
       {selectedCourse ? (
         // Detail View Modal
         <DetailView
@@ -45,7 +45,10 @@ const OfficeProductivityPage = () => {
         />
       ) : (
         <>
-          <HeroBanner />
+          <HeroBanner
+            label={"Office Productivity Courses"}
+            paragraph={"Explore courses from experienced, real-world experts."}
+          />
           {/* Tabs */}
           <TabsSection activeTab={activeTab} setActiveTab={setActiveTab} />
           {/* Courses Section */}
@@ -59,8 +62,7 @@ const OfficeProductivityPage = () => {
           {/* Featured Courses Section */}
 
           <FeaturedCourses
-            key={filteredFeaturedCourses[1].id}
-            course={filteredFeaturedCourses[1]}
+            courses={filteredFeaturedCourses.slice(0, 3)}
             onClick={handleCourseClick}
           />
           {/* Popular Topics  */}
@@ -71,7 +73,7 @@ const OfficeProductivityPage = () => {
           <AllOfficeProductivityCourse
             handleCourseClick={handleCourseClick}
             setHoveredCourse={setHoveredCourse}
-            courses={officeProductivityCourses}
+            courses={photographyCourses}
             hoveredCourse={hoveredCourse}
           />
         </>

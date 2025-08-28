@@ -45,7 +45,7 @@ const instructors = [
 
 const PopularInstructors = () => {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="max-w-6xl  px-4 py-10 mx-4">
       <h2 className="text-2xl font-bold mb-6">
         Popular Office Productivity Instructors
       </h2>

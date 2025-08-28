@@ -2,7 +2,7 @@ import { useState } from "react";
 import HorizontalCard from "./HorizontalCard";
 import HoverCard from "./HoverCard";
 
-const AllOfficeProductivityCourse = ({
+const AllCourse = ({
   courses,
   setHoveredCourse,
   hoveredCourse,
@@ -97,4 +97,4 @@ const AllOfficeProductivityCourse = ({
   );
 };
 
-export default AllOfficeProductivityCourse;
+export default AllCourse;

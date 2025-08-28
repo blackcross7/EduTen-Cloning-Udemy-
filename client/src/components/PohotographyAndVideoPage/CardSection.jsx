@@ -10,7 +10,9 @@ const CardSection = ({
   handleCourseClick,
 }) => {
   return (
-    <div className="px-6 py-6 max-w-7xl mx-4">
+    <div className="px-6 py-8 max-w-7xl mx-4">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">{activeTab}</h2>
+
       {filteredCourses.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredCourses.map((course, index) => {
