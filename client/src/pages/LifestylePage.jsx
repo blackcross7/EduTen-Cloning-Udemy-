@@ -5,20 +5,42 @@ import PopularInstructors from "../components/LifestylePage/PopularInstructors";
 import CoursesToGetStarted from "../components/LifestylePage/CoursesToGetStarted";
 import AllCourses from "../components/LifestylePage/AllCourses";
 
+//imported data
+import { topics } from "../components/LifestylePage/data/mockData";
+import { popularInstructors } from "../components/LifestylePage/data/mockData";
+import { featuredCourses } from "../components/LifestylePage/data/mockData";
+import { courses as lifestyleCourses } from "../components/LifestylePage/data/mockData";
+import {
+  popularCourses,
+  trendingCourses,
+  popularHoverDetails,
+  trendingHoverDetails,
+  popularRatingData,
+  trendingRatingData,
+} from "../components/LifestylePage/data/mockData";
+
 export default function LifestylePage() {
   const [sortBy, setSortBy] = useState("Most Popular");
   const [courses, setCourses] = useState([]);
 
   return (
     <>
-      <div className="min-h-screen ">
-        
-        <div className="max-w-7xl mx-auto px-4">
-          <CoursesToGetStarted />
-          <FeaturedCourses courses={courses} />
-          <PopularTopics />
-          <PopularInstructors />
-          <AllCourses />
+      <div className="bg-white text-gray-800 py-10 ">        
+        <div className="max-w-[1440px] w-full px-4 sm:px-8 lg:px-12 mx-auto">
+          <CoursesToGetStarted
+            title="Lifestyle"
+            popularCourses={popularCourses}
+            trendingCourses={trendingCourses}
+            popularHoverDetails={popularHoverDetails}
+            trendingHoverDetails={trendingHoverDetails}
+            popularRatingData={popularRatingData}
+            trendingRatingData={trendingRatingData}
+          />
+          <FeaturedCourses courses={featuredCourses} />
+          <PopularTopics topics={topics}/>
+          <PopularInstructors instructors = {popularInstructors}/>
+          <AllCourses heading="All Lifestyle Courses" courses={lifestyleCourses} />
+
         </div>
 
         {/* Why Learn Section */}

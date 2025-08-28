@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 
-const topics = [
-  "Reiki", "Drawing", "Energy Healing", "Tarot Reading", "Watercolor Painting", 
-  "Chess", "Beauty", "Hypnotherapy", "Spiritual Healing", "Astrology", "Watercolor Painting",
-  "Psychic", "Makeup Artistry", "Sketching", "Figure Drawing","Astrology", "Akashic Records", 
-  "Acrylic Painting", "Skincare", "Nail Artistry"
-];
-
 const ITEMS_PER_PAGE = 10;
-
-const PopularTopics = () => {
+const PopularTopics = ({topics}) => {
   const [topicPage, setTopicPage] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
 

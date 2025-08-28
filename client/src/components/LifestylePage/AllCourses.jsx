@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaFilter, FaStar, FaInfoCircle } from "react-icons/fa";
-import { courses } from "./data/mockData";
 
-const AllCourses = () => {
+const AllCourses = ({ courses, heading = "All Courses" }) => {
   const [showFilters, setShowFilters] = useState(false); 
   const [sortVisible, setSortVisible] = useState(false);
   const [showDurationMore, setShowDurationMore] = useState(false);
@@ -10,15 +9,10 @@ const AllCourses = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [coursesPerPage, setCoursesPerPage] = useState(7);
 
-  // ... rest of the code remains the same
-  useEffect(() => {
+    useEffect(() => {
     const updateCoursesPerPage = () => {
       const width = window.innerWidth;
-      if (width < 768) {
-        setCoursesPerPage(3);
-      } else {
-        setCoursesPerPage(7);
-      }
+      setCoursesPerPage(width < 768 ? 3 : 7);
     };
     updateCoursesPerPage();
     window.addEventListener("resize", updateCoursesPerPage);
@@ -26,8 +20,8 @@ const AllCourses = () => {
   }, []);
 
   const languages = [
-    "English", "Español", "Português", "Türkçe", "Deutsch", "Français", "Italiano", "Polski", "Afrikaans",
-    "Magyar", "ქართული", "Latviešu", "Slovenčina", "Kiswahili", "Oʻzbek"
+    "English","Español","Português","Türkçe","Deutsch","Français","Italiano","Polski","Afrikaans",
+    "Magyar","ქართული","Latviešu","Slovenčina","Kiswahili","Oʻzbek"
   ];
 
   const totalPages = Math.ceil(courses.length / coursesPerPage);
@@ -37,8 +31,9 @@ const AllCourses = () => {
 
   return (
     <section className="mt-10 px-4 md:px-10">
-      <h2 className="text-2xl font-bold mb-4">All Lifestyle courses</h2>
+      <h2 className="text-2xl font-bold mb-4">{heading}</h2>
 
+      {/* Info banner */}
       <div className="bg-white border border-gray-200 rounded-lg px-5 py-3 shadow-sm w-full md:w-[88%] flex items-start gap-2">
         <FaInfoCircle className="text-purple-600 mt-1" />
         <p className="text-sm text-gray-800">
@@ -46,6 +41,7 @@ const AllCourses = () => {
         </p>
       </div>
 
+      {/* Filters + Sort buttons */}
       <div className="flex items-center gap-4 mt-4 flex-wrap">
         <button
           onClick={() => setShowFilters(!showFilters)}
@@ -176,16 +172,18 @@ const AllCourses = () => {
     </div>
   </>
 )}
-
-  <div className="flex-1 space-y-8">
-    {currentCourses.map((course, index) =>
-      course.ad ? (
-        <div key={index} className=" border rounded-lg p-6 shadow-sm">
-          <h3 className="text-lg font-semibold">Top companies trust Udemy</h3>
-          <p className="text-sm text-gray-700 mb-3">
-            Get your team access to Udemy’s top 250,000+ courses
-          </p>
-          <div className="flex items-center gap-6 flex-wrap mt-2 mb-4">
+      {/* Course list */}
+      <div className="flex-1 space-y-8">
+        {currentCourses.map((course, index) =>
+          course.ad ? (
+            // ad block
+            <div key={index} className="border rounded-lg p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">Top companies trust Udemy</h3>
+              <p className="text-sm text-gray-700 mb-3">
+                Get your team access to Udemy’s top 250,000+ courses
+              </p>
+              {/* logos and button */}
+            <div className="flex items-center gap-6 flex-wrap mt-2 mb-4">
             <img src="/assets/WebDevelopmentPage/nasdaq-dark.svg" alt="Nasdaq" className="h-6" />
             <img src="/assets/WebDevelopmentPage/volkswagen-dark.svg" alt="Volkswagen" className="h-6" />
             <img src="/assets/WebDevelopmentPage/netapp-dark.svg" alt="NetApp" className="h-6" />
@@ -194,91 +192,90 @@ const AllCourses = () => {
           <button className="border border-purple-600 text-purple-700 px-4 py-1 rounded text-sm hover:bg-purple-50">
             Try Udemy Business
           </button>
-        </div>
-      ) : (
-        <div key={index} className="relative group">
-          <div className="flex flex-col sm:flex-row gap-4 border-b pb-6">
-           <div className="w-full sm:w-52 flex justify-center sm:justify-start">
-        <img
-          src={course.image}
-          alt={course.title}
-          className="w-52 h-28 object-cover rounded"
-        />
-        </div>
-
-
-            <div className="flex flex-col items-center sm:items-start justify-between flex-1 sm:pr-12 text-center sm:text-left">
-
-              <h3 className="text-lg font-bold text-gray-800">{course.title}</h3>
-              <p className="text-sm text-gray-600 mb-1">{course.subtitle}</p>
-              <div className="text-sm text-yellow-600 font-medium">
-                {course.rating} ⭐ ({course.students})
-              </div>
-              <p className="text-sm text-gray-500">
-                {course.hours} • {course.level}
-              </p>
-              <div className="flex items-center gap-2 mt-1">
-                {course.premium && (
-                  <span className="text-xs text-white bg-purple-700 px-2 py-0.5 rounded">
-                    <b>Premium</b>
-                  </span>
-                )}
-                {course.bestseller && (
-                  <span className="text-xs text-green-800 bg-green-100 px-2 py-0.5 rounded">
-                    Bestseller
-                  </span>
-                )}
-              </div>
-            </div>
-
-            <div className="text-right text-base font-semibold text-gray-900 min-w-[80px]">
-              {course.price}
-            </div>
           </div>
+          ) : (
+            // course block
+            <div key={index} className="relative group">
+              <div className="flex flex-col sm:flex-row gap-4 border-b pb-6">
+                <div className="w-full sm:w-52 flex justify-center sm:justify-start">
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="w-52 h-28 object-cover rounded"
+                  />
+                </div>
 
-          <div
-            className={`
-              w-full md:w-80 bg-white shadow-xl border rounded-lg p-4 text-sm text-gray-800 
-              mt-4 md:mt-0 
-              hidden group-hover:block 
-              md:absolute md:top-0 md:left-[300px] z-20
-            `}
-          >
-            <h4 className="font-semibold mb-2">What you’ll learn</h4>
-            <ul className="space-y-2 mb-4">
-              {course.learnPoints.map((point, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-gray-700">
-                  <span className="text-green-600 font-bold">✔</span> {point}
-                </li>
-              ))}
-            </ul>
-            <button className="w-full text-white bg-purple-700 py-2 rounded hover:bg-purple-700 text-sm font-medium">
-              Add to cart
+                <div className="flex flex-col items-center sm:items-start justify-between flex-1 sm:pr-12 text-center sm:text-left">
+                  <h3 className="text-lg font-bold text-gray-800">{course.title}</h3>
+                  <p className="text-sm text-gray-600 mb-1">{course.subtitle}</p>
+                  <div className="text-sm text-yellow-600 font-medium">
+                    {course.rating} ⭐ ({course.students})
+                  </div>
+                  <p className="text-sm text-gray-500">
+                    {course.hours} • {course.level}
+                  </p>
+                  <div className="flex items-center gap-2 mt-1">
+                    {course.premium && (
+                      <span className="text-xs text-white bg-purple-700 px-2 py-0.5 rounded">
+                        <b>Premium</b>
+                      </span>
+                    )}
+                    {course.bestseller && (
+                      <span className="text-xs text-green-800 bg-green-100 px-2 py-0.5 rounded">
+                        Bestseller
+                      </span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="text-right text-base font-semibold text-gray-900 min-w-[80px]">
+                  {course.price}
+                </div>
+              </div>
+
+              {/* Hover Details */}
+              <div
+                className={`
+                  w-full md:w-80 bg-white shadow-xl border rounded-lg p-4 text-sm text-gray-800 
+                  mt-4 md:mt-0 
+                  hidden group-hover:block 
+                  md:absolute md:top-0 md:left-[300px] z-20
+                `}
+              >
+                <h4 className="font-semibold mb-2">What you’ll learn</h4>
+                <ul className="space-y-2 mb-4">
+                  {course.learnPoints.map((point, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-gray-700">
+                      <span className="text-green-600 font-bold">✔</span> {point}
+                    </li>
+                  ))}
+                </ul>
+                <button className="w-full text-white bg-purple-700 py-2 rounded hover:bg-purple-700 text-sm font-medium">
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          )
+        )}
+
+        {/* Pagination */}
+        <div className="flex justify-center gap-2 mt-10">
+          {[...Array(totalPages)].map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentPage(idx + 1)}
+              className={`px-3 py-1 border rounded text-sm ${
+                currentPage === idx + 1
+                  ? "bg-purple-600 text-white"
+                  : "bg-white text-gray-700 hover:bg-purple-100"
+              }`}
+            >
+              {idx + 1}
             </button>
-          </div>
+          ))}
         </div>
-      )
-    )}
-
-    {/* Pagination */}
-    <div className="flex justify-center gap-2 mt-10">
-      {[...Array(totalPages)].map((_, idx) => (
-        <button
-          key={idx}
-          onClick={() => setCurrentPage(idx + 1)}
-          className={`px-3 py-1 border rounded text-sm ${
-            currentPage === idx + 1
-              ? "bg-purple-600 text-white"
-              : "bg-white text-gray-700 hover:bg-purple-100"
-          }`}
-        >
-          {idx + 1}
-        </button>
-      ))}
-    </div>
-  </div>
-</div>
-
+      </div>
+      </div>
     </section>
   );
 };

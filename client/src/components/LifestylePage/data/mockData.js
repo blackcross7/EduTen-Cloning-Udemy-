@@ -872,3 +872,10 @@ export const courses = [
   }
 
 ];
+
+export const topics = [
+  "Reiki", "Drawing", "Energy Healing", "Tarot Reading", "Watercolor Painting", 
+  "Chess", "Beauty", "Hypnotherapy", "Spiritual Healing", "Astrology", "Watercolor Painting",
+  "Psychic", "Makeup Artistry", "Sketching", "Figure Drawing","Astrology", "Akashic Records", 
+  "Acrylic Painting", "Skincare", "Nail Artistry"
+];

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Star, ChevronRight, ChevronLeft } from 'lucide-react';
-import { popularInstructors } from './data/mockData';
+// import { popularInstructors } from './data/mockData';
 
-const PopularInstructors = () => {
+const PopularInstructors = ({instructors}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [slidesToShow, setSlidesToShow] = useState(4);
   const [isMobile, setIsMobile] = useState(false);
@@ -45,7 +45,7 @@ const PopularInstructors = () => {
   };
 
   const nextSlide = () => {
-    if (currentIndex < popularInstructors.length - slidesToShow) {
+    if (currentIndex < instructors.length - slidesToShow) {
       setCurrentIndex(currentIndex + 1);
     } else {
       // Loop back to the beginning
@@ -58,11 +58,11 @@ const PopularInstructors = () => {
       setCurrentIndex(currentIndex - 1);
     } else {
       // Loop to the end
-      setCurrentIndex(popularInstructors.length - slidesToShow);
+      setCurrentIndex(instructors.length - slidesToShow);
     }
   };
 
-  const visibleInstructors = popularInstructors.slice(currentIndex, currentIndex + slidesToShow);
+  const visibleInstructors = instructors.slice(currentIndex, currentIndex + slidesToShow);
 
   // Add empty cards if we don't have enough to fill the grid
   const emptyCardsCount = slidesToShow - visibleInstructors.length;
@@ -124,7 +124,7 @@ const PopularInstructors = () => {
         </div>
         
         {/* Navigation arrows */}
-        {popularInstructors.length > slidesToShow && (
+        {instructors.length > slidesToShow && (
           <>
             <button 
               className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 bg-white border border-gray-300 rounded-full p-1 sm:p-2 shadow-md hover:shadow-lg transition-shadow z-10"
@@ -145,9 +145,9 @@ const PopularInstructors = () => {
         )}
 
         {/* Dots indicator for mobile */}
-        {isMobile && popularInstructors.length > 1 && (
+        {isMobile && instructors.length > 1 && (
           <div className="flex justify-center mt-4 space-x-2">
-            {Array.from({ length: popularInstructors.length }).map((_, index) => (
+            {Array.from({ length: instructors.length }).map((_, index) => (
               <button
                 key={index}
                 className={`w-2 h-2 rounded-full ${
