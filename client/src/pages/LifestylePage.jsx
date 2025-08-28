@@ -4,8 +4,12 @@ import PopularTopics from "../components/LifestylePage/PopularTopics";
 import PopularInstructors from "../components/LifestylePage/PopularInstructors";
 import CoursesToGetStarted from "../components/LifestylePage/CoursesToGetStarted";
 import AllCourses from "../components/LifestylePage/AllCourses";
-import { courses as lifestyleCourses } from "../components/LifestylePage/data/mockData";
 
+//imported data
+import { topics } from "../components/LifestylePage/data/mockData";
+import { popularInstructors } from "../components/LifestylePage/data/mockData";
+import { featuredCourses } from "../components/LifestylePage/data/mockData";
+import { courses as lifestyleCourses } from "../components/LifestylePage/data/mockData";
 import {
   popularCourses,
   trendingCourses,
@@ -21,8 +25,8 @@ export default function LifestylePage() {
 
   return (
     <>
-      <div className="min-h-screen ">        
-        <div className="max-w-7xl mx-auto px-4">
+      <div className="bg-white text-gray-800 py-10 ">        
+        <div className="max-w-[1440px] w-full px-4 sm:px-8 lg:px-12 mx-auto">
           <CoursesToGetStarted
             title="Lifestyle"
             popularCourses={popularCourses}
@@ -32,10 +36,10 @@ export default function LifestylePage() {
             popularRatingData={popularRatingData}
             trendingRatingData={trendingRatingData}
           />
-          <FeaturedCourses courses={courses} />
-          <PopularTopics />
-          <PopularInstructors />
-          <AllCourses title="Lifestyle" courses={lifestyleCourses} />
+          <FeaturedCourses courses={featuredCourses} />
+          <PopularTopics topics={topics}/>
+          <PopularInstructors instructors = {popularInstructors}/>
+          <AllCourses heading="All Lifestyle Courses" courses={lifestyleCourses} />
 
         </div>
 

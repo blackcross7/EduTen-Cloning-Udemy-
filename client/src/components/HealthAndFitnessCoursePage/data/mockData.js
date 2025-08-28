@@ -620,23 +620,118 @@ export const courses = [
       "Improve your range of motion",
       "Lubricate your joints",
     ],
+  }
+];
+export const featuredCourses = [
+  {
+    id: 1,
+    title: "Acupressure for Weight Loss: Healthy Slimming & Body Balance",
+    description:
+      "Break weight-loss plateaus with Chinese wisdom — no hunger, no pain, just 5 mins a day",
+    instructor: "Wonder Orient",
+    rating: 5.0,
+    ratingCount: 161,
+    hours: 2,
+    lectures: 21,
+    level: "All Levels",
+    price: 399,
+    originalPrice: 1689,
+    image: "https://img-c.udemycdn.com/course/750x422/6752603_c4e7.jpg",
+    isHotAndNew: false,
+    updated: "August 2025",
   },
   {
-    title: "200 Hours Yoga Teacher Training - Part 1 (Bodsphere)",
-    image: "https://img-c.udemycdn.com/course/240x135/4638604_2377_2.jpg",
-    subtitle: "Yoga Teacher Training",
-    rating: 4.5,
-    students: "1,377",
-    hours: "22 total hours",
-    lectures: "– lectures",
+    id: 2,
+    title: "Fitness 101: Beginner’s Blueprint for Body Transformation",
+    description:
+      "Master Nutrition, Fitness, Health and Body Transformation Basics for Fat Loss, Muscle Gain with Practical Strategies",
+    instructor: "Jay Bansal",
+    rating: 4.9,
+    ratingCount: 12,
+    hours: 3,
+    lectures: 43,
     level: "All Levels",
-    premium: true,
-    bestseller: true,
-    price: "₹409",
-    learnPoints: [
-      "Learn Ancient Yogic Philosophy, Vedas & Upanishads",
-      "Practical Yoga for Strength, Flexibility & Mobility",
-      "Understand different paths & definitions of Yoga",
-    ],
+    price: 399,
+    originalPrice: 1689,
+    image: "https://img-c.udemycdn.com/course/480x270/6754267_7cfb_7.jpg",
+    isHotAndNew: true,
+    updated: "August 2025",
+  },
+  {
+    id: 3,
+    title: "Master the Marma Therapy (Certification)",
+    description: "Learn about different Marmas and how to stimulate them",
+    instructor: "Dr. Pragya Gupta",
+    rating: 5.0,
+    ratingCount: 16,
+    hours: 2,
+    lectures: 31,
+    level: "All Levels",
+    price: 399,
+    originalPrice: 1689,
+    image: "https://img-c.udemycdn.com/course/480x270/6744821_a3d5_3.jpg",
+    isHotAndNew: true,
+    updated: "August 2025",
+  },
+];
+
+export const topics = ["Massage", "Yoga", "Nutrition", "Fitness","Tai Chi", "Pilates","Qigong", 
+  "Facial Massage", "Swimming", "Somatic Therapy", "Swimming", "Somatic Therapy", "Meditation", "Breathing Techniques", "Dance", 
+  "Cognitive Behavioral Therapy (CBT)", "Health", "Mental Health", "Herbalism", "Sports Massage"]
+
+  export const popularInstructors = [
+  {
+    id: 1,
+    name: "Mark Perren-Jones",
+    specialty: "Massage, Aromatherapy",
+    rating: 4.7,
+    students: 278692,
+    courses: 86,
+    image: "https://img-c.udemycdn.com/user/100x100/7240640_bf4c_7.jpg"
+  },
+  {
+    id: 2,
+    name: "Michael Eric Everson",
+    specialty: "Massage, Sports Massage",
+    rating: 4.7,
+    students: 41902,
+    courses: 32,
+    image: "https://img-c.udemycdn.com/user/100x100/61192080_163c_4.jpg"
+  },
+  {
+    id: 3,
+    name: "Felix Harder",
+    specialty: "Nutrition, Fitness",
+    rating: 4.6,
+    students: 261496,
+    courses: 41,
+    image: "https://img-c.udemycdn.com/user/100x100/26801218_cefd_3.jpg"
+  },
+  {
+    id: 4,
+    name: "Josie McKenlay",
+    specialty: "Pilates, Teacher Training",
+    rating: 4.7,
+    students: 50979,
+    courses: 14,
+    image: "https://img-c.udemycdn.com/user/100x100/16320038_03f6_4.jpg"
+  },
+  {
+    id: 5,
+    name: "Bodsphere - Health and Wellness",
+    specialty: "Yoga, Pranayama",
+    rating: 4.8,
+    students: 49461,
+    courses: 9,
+    image: "https://img-c.udemycdn.com/user/100x100/21674826_0b4e_2.jpg"
+  },
+  {
+    id: 6,
+    name: "YMAA Publication Center",
+    specialty: "Qigong, Tai Chi",
+    rating: 4.8,
+    students: 22593,
+    courses: 41,
+    image: "https://img-c.udemycdn.com/user/100x100/107581774_64fb_5.jpg"
   }
 ];

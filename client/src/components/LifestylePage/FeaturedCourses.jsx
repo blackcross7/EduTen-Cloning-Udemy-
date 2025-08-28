@@ -1,8 +1,7 @@
 import { Star, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { featuredCourses } from "./data/mockData";
 
-export default function FeaturedCourses() {
+export default function FeaturedCourses({ courses }) {
   const [currentSlide, setCurrentSlide] = useState(1);
   const [wishlistedCourses, setWishlistedCourses] = useState({});
   const [isTransitioning, setIsTransitioning] = useState(true);
@@ -10,10 +9,11 @@ export default function FeaturedCourses() {
   const sliderRef = useRef(null);
   const intervalRef = useRef(null);
 
+  // Extend courses for infinite loop
   const extendedCourses = [
-    featuredCourses[featuredCourses.length - 1],
-    ...featuredCourses,
-    featuredCourses[0],
+    courses[courses.length - 1],
+    ...courses,
+    courses[0],
   ];
 
   // Check if device is mobile
@@ -213,7 +213,7 @@ export default function FeaturedCourses() {
           ))}
         </div>
 
-        {/* Arrows - Only show on non-mobile or if explicitly enabled on mobile */}
+        {/* Arrows */}
         <button
           onClick={prevSlide}
           className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-1 sm:p-2 shadow-lg hover:bg-gray-100 transition-colors"
@@ -232,7 +232,7 @@ export default function FeaturedCourses() {
         {/* Dots indicator for mobile */}
         {isMobile && (
           <div className="absolute bottom-2 left-0 right-0 flex justify-center space-x-2">
-            {featuredCourses.map((_, index) => (
+            {courses.map((_, index) => (
               <button
                 key={index}
                 className={`w-2 h-2 rounded-full ${

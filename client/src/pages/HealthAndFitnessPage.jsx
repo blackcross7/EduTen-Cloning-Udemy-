@@ -1,10 +1,14 @@
 import React from "react";
-import FeaturedCourses from "../components/HealthAndFitnessCoursePage/FeaturedCourses";
-import PopularTopics from "../components/HealthAndFitnessCoursePage/PopularTopics";
-import PopularInstructors from "../components/HealthAndFitnessCoursePage/PopularInstructors";
-import AllHealthAndFitnessCoursesSection from "../components/HealthAndFitnessCoursePage/AllHealthAndFitnessCoursesSection";
+import PopularTopics from "../components/LifestylePage/PopularTopics";
+import PopularInstructors from "../components/LifestylePage/PopularInstructors";
+import AllCourses from "../components/LifestylePage/AllCourses";
 import CoursesToGetStarted from "../components/LifestylePage/CoursesToGetStarted";
+import FeaturedCourses from "../components/LifestylePage/FeaturedCourses";
 
+import { topics } from "../components/HealthAndFitnessCoursePage/data/mockData";
+import { featuredCourses } from "../components/HealthAndFitnessCoursePage/data/mockData";
+import { popularInstructors } from "../components/HealthAndFitnessCoursePage/data/mockData";
+import { courses as healthandfitnesscourses } from "../components/HealthAndFitnessCoursePage/data/mockData";
 import {
   popularCourses,
   trendingCourses,
@@ -27,10 +31,10 @@ const HealthAndFitnessPage = () => {
           popularRatingData={popularRatingData}
           trendingRatingData={trendingRatingData}
         />
-        <FeaturedCourses />
-        <PopularTopics />
-        <PopularInstructors />
-        <AllHealthAndFitnessCoursesSection />
+        <FeaturedCourses courses={featuredCourses} />
+        <PopularTopics topics = {topics}/>
+        <PopularInstructors instructors={popularInstructors}/>
+        <AllCourses heading="All Health Courses" courses={healthandfitnesscourses} />
       </div>
     </main>
   );
