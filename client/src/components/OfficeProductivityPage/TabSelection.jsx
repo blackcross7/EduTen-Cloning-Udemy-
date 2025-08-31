@@ -1,8 +1,8 @@
 const TabsSection = ({ activeTab, setActiveTab }) => {
   const tabs = ["Most Popular", "New", "Trending"];
   return (
-    <div className="flex justify-start items-center my-4  mx-4 ">
-      <div className="inline-flex items-center gap-3 md:rounded-2xl  p-2  md:px-4 px-6 ">
+    <div className="flex justify-start items-center my-6 md:my-3  mx-4 ">
+      <div className="inline-flex items-center  md:rounded-2xl p-2 gap-4  md:px-4 px-6 ">
         {tabs.map((tab) => {
           const isActive = activeTab === tab;
           return (

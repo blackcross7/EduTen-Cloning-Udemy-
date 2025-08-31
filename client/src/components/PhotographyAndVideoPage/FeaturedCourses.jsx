@@ -39,26 +39,26 @@ const FeaturedCourses = ({
     addToCart(course.id);
   }
   return (
-    <div className="px-4 py-8 ">
+    <div className="px-4 py-8">
       <h2 className="text-2xl font-semibold mb-6">Featured Courses</h2>
 
       <div
-        className="bg-white  flex justify-start place-items-start gap-6 rounded-lg border shadow-sm hover:shadow-md transition cursor-pointer  relative"
+        className="bg-white flex flex-col md:flex-row gap-4 md:gap-6 rounded-lg border shadow-sm hover:shadow-md transition cursor-pointer relative"
         onClick={onClick.bind(null, id)}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
         {/* Image */}
-        <div className="w-[30vw]  relative overflow-hidden">
+        <div className="w-full md:w-[30%] relative overflow-hidden">
           <img
             src={imageUrl}
             alt={title}
-            className="w-full h-40 object-cover"
+            className="w-full h-48 md:h-40 object-cover"
           />
         </div>
 
         {/* Content */}
-        <div className="p-4 flex flex-col">
+        <div className="p-4 flex flex-col flex-1">
           <h3 className="text-base font-semibold text-gray-800 line-clamp-2">
             {title}
           </h3>
@@ -85,13 +85,13 @@ const FeaturedCourses = ({
             <p className="text-lg font-bold text-gray-900">₹{price}</p>
             {originalPrice && (
               <p className="text-sm text-gray-500 line-through">
-                ₹{originalPrice}
+                {originalPrice}
               </p>
             )}
           </div>
 
-          {/* Badge & Buttion */}
-          <div className="flex items-center gap-2 mt-3">
+          {/* Badge & Button */}
+          <div className="flex items-center gap-2 mt-3 flex-wrap">
             {badge && (
               <span
                 className={`mt-2 w-fit inline-block text-xs font-medium px-2 py-1 rounded ${
@@ -103,28 +103,31 @@ const FeaturedCourses = ({
                 {badge}
               </span>
             )}
-            {hovered && (
-              <button
-                className="bg-purple-900 text-white mt-2 w-fit inline-block text-xs font-medium px-2 py-1 rounded "
-                onClick={(e) => {
-                  e.stopPropagation(); // prevent opening detail page
-                  handleCart(course); // add to cart only
-                }}
-              >
-                Enroll
-              </button>
-            )}
+
+            {/* Enroll button */}
+            <button
+              className={`bg-purple-900 text-white mt-2 w-fit inline-block text-xs font-medium px-2 py-1 rounded
+      ${hovered ? "md:block" : "md:hidden"} block`}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleCart(course);
+              }}
+            >
+              Enroll
+            </button>
           </div>
         </div>
+
+        {/* Navigation Buttons */}
         <button
           onClick={prevCourse}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-transparent border rounded-full p-2 shadow hover:bg-gray-100"
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={nextCourse}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
         >
           <ChevronRight className="w-5 h-5" />
         </button>

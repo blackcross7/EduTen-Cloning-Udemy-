@@ -45,22 +45,24 @@ const instructors = [
 
 const PopularInstructors = () => {
   return (
-    <div className="max-w-6xl  px-4 py-10 mx-4">
+    <div className="max-w-6xl px-4 py-10 mx-auto">
       <h2 className="text-2xl font-bold mb-6">
         Popular Office Productivity Instructors
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+      {/* Horizontal scroll on small screens */}
+      <div className="flex gap-4 overflow-x-auto md:overflow-x-hidden no-scrollbar md:grid md:grid-cols-3 lg:grid-cols-4 md:gap-6">
         {instructors.map((inst, idx) => (
           <div
             key={idx}
-            className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition duration-300"
+            className="flex-shrink-0 w-64 md:w-56 bg-white border border-gray-200 rounded-lg shadow-sm p-4 hover:shadow-md transition duration-300 md:flex-shrink-1"
           >
-            <img
-              src={inst.thumbnail}
-              alt={inst.name}
-              className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
-            />
-            <div className="text-center">
+            <div className="text-center w-full">
+              <img
+                src={inst.thumbnail}
+                alt={inst.name}
+                className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
+              />
               <h3 className="text-lg font-semibold text-gray-900">
                 {inst.name}
               </h3>

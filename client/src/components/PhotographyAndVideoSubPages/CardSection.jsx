@@ -1,18 +1,16 @@
-import React from "react";
 import Card from "./Card";
 import HoverCard from "./HoverCard";
 
 const CardSection = ({
   filteredCourses,
-  activeTab,
   setHoveredCourse,
   hoveredCourse,
   handleCourseClick,
 }) => {
+  console.log(filteredCourses);
+
   return (
     <div className="px-6 py-8 max-w-7xl mx-4">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6">{activeTab}</h2>
-
       {filteredCourses.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredCourses.map((course, index) => {
@@ -38,10 +36,7 @@ const CardSection = ({
           })}
         </div>
       ) : (
-        <div className="text-center text-gray-500 py-12">
-          No courses found under{" "}
-          <span className="font-semibold">{activeTab}</span>.
-        </div>
+        <div className="text-center text-gray-500 py-12">No courses found</div>
       )}
     </div>
   );

@@ -20,8 +20,6 @@ const AllCourse = ({
 
   return (
     <div className="md:px-6 py-8 max-w-7xl md:mx-4 px-2 mx-auto">
-      <h1 className="text-2xl font-bold mb-6">All courses</h1>
-
       {courses.length > 0 ? (
         <>
           <div className="flex flex-col flex-wrap">

@@ -1,13 +1,13 @@
 import { useState } from "react";
-import HeroBanner from "./HeroBanner";
-import TabsSection from "./TabSelection";
-import DetailView from "./DetailView";
-import { photographyCourses } from "./data";
-import CardSection from "./CardSection";
-import FeaturedCourses from "./FeaturedCourses";
-import AllOfficeProductivityCourse from "./AllCourses";
-import PopularTopics from "./PopularTopiics";
-import PopularInstructors from "./PopularInstructors";
+import HeroBanner from "../components/PhotographyAndVideoPage/HeroBanner";
+import TabsSection from "../components/PhotographyAndVideoPage/TabSelection";
+import DetailView from "../components/PhotographyAndVideoPage/DetailView";
+import { photographyCourses } from "../components/PhotographyAndVideoPage/data";
+import CardSection from "../components/PhotographyAndVideoPage/CardSection";
+import FeaturedCourses from "../components/PhotographyAndVideoPage/FeaturedCourses";
+import AllOfficeProductivityCourse from "../components/PhotographyAndVideoPage/AllCourses";
+import PopularTopics from "../components/PhotographyAndVideoPage/PopularTopiics";
+import PopularInstructors from "../components/PhotographyAndVideoPage/PopularInstructors";
 
 const OfficeProductivityPage = () => {
   const [activeTab, setActiveTab] = useState("Most Popular"); // default tab
@@ -25,7 +25,6 @@ const OfficeProductivityPage = () => {
   const filteredFeaturedCourses = photographyCourses.filter((course) => {
     return course.badge === "Bestseller";
   });
-  console.log(filteredFeaturedCourses);
 
   // Get full course info on click
   const handleCourseClick = (id) => {
@@ -46,7 +45,7 @@ const OfficeProductivityPage = () => {
       ) : (
         <>
           <HeroBanner
-            label={"Office Productivity Courses"}
+            label={"Photography & Video Courses"}
             paragraph={"Explore courses from experienced, real-world experts."}
           />
           {/* Tabs */}

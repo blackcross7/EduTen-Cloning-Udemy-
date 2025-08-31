@@ -79,7 +79,15 @@ import MicrosoftOfficePage from "./components/OfficeProductivitySubPages/Microso
 import ProjectManagementPage from "./components/OfficeProductivitySubPages/ProjectManagementPage";
 
 // Photography and video page
-import PhotographyAndVideoPage from "./components/PohotographyAndVideoPage/PhotographyVideoPage";
+import PhotographyAndVideoPage from "./pages/PhotographyVideoPage";
+// Photography and video Sub-Pages
+import PhotoGraphyBasicsPage from "./components/PhotographyAndVideoSubPages/PhotographyBasics";
+import VideoEditingPage from "./components/PhotographyAndVideoSubPages/VideoEditing";
+import PhotoEditingPage from "./components/PhotographyAndVideoSubPages/PhotoEditing";
+import LightingTechniquesPage from "./components/PhotographyAndVideoSubPages/LightingTechniques";
+import DronePhotographyPage from "./components/PhotographyAndVideoSubPages/DronePhotography";
+
+// Photography and video sub-pages
 
 function App() {
   const { checkAuth, user } = useAuthStore();
@@ -232,6 +240,28 @@ function App() {
         <Route
           path="/photography-video"
           element={<PhotographyAndVideoPage />}
+        />
+
+        {/* Photography & Video Sub-Pages */}
+        <Route
+          path="/photography-video/PhotoGraphy-Basics"
+          element={<PhotoGraphyBasicsPage />}
+        />
+        <Route
+          path="/photography-video/Video-Editing"
+          element={<VideoEditingPage />}
+        />
+        <Route
+          path="/photography-video/Photo-Editing"
+          element={<PhotoEditingPage />}
+        />
+        <Route
+          path="/photography-video/Lighting-Techniques"
+          element={<LightingTechniquesPage />}
+        />
+        <Route
+          path="/photography-video/Drone-Photography"
+          element={<DronePhotographyPage />}
         />
       </Routes>
 

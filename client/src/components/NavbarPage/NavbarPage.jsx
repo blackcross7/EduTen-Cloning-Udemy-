@@ -109,7 +109,7 @@ const secondarySubmenus = {
     "Fashion & Style",
   ],
   "Photography & Video": [
-    "Photography Basics",
+    "Photography & Video",
     "Video Editing",
     "Drone Photography",
     "Lighting Techniques",
@@ -919,7 +919,7 @@ const NavbarPage = () => {
                     } else if (link === "Lifestyle") {
                       navigate("/lifestyle");
                     } else if (link === "Photography & Video") {
-                      // Route not implemented yet
+                      // Reoute not implemented yet
                       navigate("/photography-video");
                     } else if (link === "Health & Fitness") {
                       navigate("/health-and-fitness");
@@ -1016,6 +1016,20 @@ const NavbarPage = () => {
                             navigate("/office-productivity/project-management");
                           else if (item === "Communication")
                             navigate("/office-productivity/communication");
+                        }
+                        //Photography & Video subpage
+                        else if (hoveredSecondary === "Photography & Video") {
+                          if (item === "Photography & Video")
+                            navigate("/photography-video/Photography-Basics");
+
+                          if (item === "Video Editing")
+                            navigate("/photography-video/Video-Editing");
+                          if (item === "Drone Photography")
+                            navigate("/photography-video/Drone-Photography");
+                          if (item === "Lighting Techniques")
+                            navigate("/photography-video/Lighting-Techniques");
+                          if (item === "Photo Editing")
+                            navigate("/photography-video/Photo-Editing");
                         }
                       }}
                     >

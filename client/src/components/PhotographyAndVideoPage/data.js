@@ -245,7 +245,7 @@ export const photographyCourses = [
       "Travelers",
       "Documentary photographers",
     ],
-    subPage: "Street-Photography",
+    subPage: "Photography-Basics",
     reviews: [
       {
         id: 1,
@@ -294,7 +294,7 @@ export const photographyCourses = [
       "Chefs",
       "Instagrammers",
     ],
-    subPage: "Food-Photography",
+    subPage: "Photography-Basics",
     reviews: [
       {
         id: 1,
@@ -342,7 +342,7 @@ export const photographyCourses = [
       "Hikers & nature lovers",
       "Bloggers",
     ],
-    subPage: "Landscape-Photography",
+    subPage: "Lighting-Techniques",
     reviews: [
       {
         id: 1,
@@ -393,7 +393,7 @@ export const photographyCourses = [
       "Event planners",
       "Freelancers",
     ],
-    subPage: "Business-Photography",
+    subPage: "Drone-Photography",
     reviews: [
       {
         id: 1,
@@ -437,7 +437,7 @@ export const photographyCourses = [
       "Find your unique photographic style",
     ],
     targetAudience: ["Social media users", "Bloggers", "Casual photographers"],
-    subPage: "Mobile-Photography",
+    subPage: "Video-Editing",
     reviews: [
       {
         id: 1,
@@ -485,7 +485,7 @@ export const photographyCourses = [
       "Portrait photographers",
       "Street photographers",
     ],
-    subPage: "Photo-Editing",
+    subPage: "Lighting-Techniques",
     reviews: [
       {
         id: 1,
@@ -529,7 +529,7 @@ export const photographyCourses = [
       "Tell a story through your nature photography",
     ],
     targetAudience: ["Wildlife enthusiasts", "Nature lovers", "Travelers"],
-    subPage: "Wildlife-Photography",
+    subPage: "Drone-Photography",
     reviews: [
       {
         id: 1,
@@ -578,7 +578,7 @@ export const photographyCourses = [
       "Small business owners",
       "Product marketers",
     ],
-    subPage: "Business-Photography",
+    subPage: "Photo-Editing",
     reviews: [
       {
         id: 1,
@@ -670,7 +670,7 @@ export const photographyCourses = [
       "Outdoor enthusiasts",
       "Nature lovers",
     ],
-    subPage: "Wildlife-Photography",
+    subPage: "Photo-Editing",
     reviews: [
       {
         id: 1,
