@@ -1,20 +1,39 @@
-import React from "react";
-import CourseCard from "../PersonalDevelopment/CourseCard"; // adjust path if needed
+import React, { useState } from "react";
 import { careerDevelopmentCourses } from "./data"; // adjust path if needed
 
-export default function CareerPage() {
-  return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">🎯 Career Development Courses</h1>
+import CardSection from "../PhotographyAndVideoSubPages/CardSection";
+import HeroBanner from "./HeroBanner";
+import DetailView from "./DetailView";
 
-      {careerDevelopmentCourses.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {careerDevelopmentCourses.map((course) => (
-            <CourseCard key={course.id} {...course} />
-          ))}
-        </div>
+export default function LeadershipPage() {
+  const [hoveredCourse, setHoveredCourse] = useState(null); // for hover popup
+  const [selectedCourse, setSelectedCourse] = useState(null); // for detail view
+
+  // Get full course info on click
+  const handleCourseClick = (id) => {
+    const course = careerDevelopmentCourses.find((c) => c.id === id);
+    if (course) {
+      setSelectedCourse(course); // opens modal
+    }
+  };
+  return (
+    <div className="min-h-screen bg-gray-50 relative p-2 pt-8">
+      {selectedCourse ? (
+        // Detail View Modal
+        <DetailView
+          course={selectedCourse}
+          onClose={() => setSelectedCourse(null)}
+        />
       ) : (
-        <p>No courses available at the moment.</p>
+        <div>
+          <HeroBanner label={"🎯 Career Development Courses"} />
+          <CardSection
+            handleCourseClick={handleCourseClick}
+            setHoveredCourse={setHoveredCourse}
+            hoveredCourse={hoveredCourse}
+            filteredCourses={careerDevelopmentCourses}
+          />
+        </div>
       )}
     </div>
   );

@@ -1,22 +1,39 @@
-import React from "react";
-import CourseCard from "../PersonalDevelopment/CourseCard"; // Adjust path as needed
+import React, { useState } from "react";
 import { emotionalIntelligenceCourses } from "./data"; // Adjust path if needed
+import HeroBanner from "./HeroBanner";
+import DetailView from "../PhotographyAndVideoSubPages/DetailView";
+import CardSection from "../PhotographyAndVideoSubPages/CardSection";
 
 export default function EmotionalIntelligencePage() {
-  return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">
-        🧠 Emotional Intelligence Courses
-      </h1>
+  const [hoveredCourse, setHoveredCourse] = useState(null); // for hover popup
+  const [selectedCourse, setSelectedCourse] = useState(null); // for detail view
 
-      {emotionalIntelligenceCourses.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {emotionalIntelligenceCourses.map((course) => (
-            <CourseCard key={course.id} {...course} />
-          ))}
-        </div>
+  // Get full course info on click
+  const handleCourseClick = (id) => {
+    const course = emotionalIntelligenceCourses.find((c) => c.id === id);
+    if (course) {
+      setSelectedCourse(course); // opens modal
+    }
+  };
+  return (
+    <div className="min-h-screen bg-gray-50 relative p-2 pt-8">
+      {selectedCourse ? (
+        // Detail View Modal
+        <DetailView
+          course={selectedCourse}
+          onClose={() => setSelectedCourse(null)}
+        />
       ) : (
-        <p>No emotional intelligence courses available right now.</p>
+        <div>
+          <HeroBanner label={"🧠 Emotional Intelligence Courses"} />
+
+          <CardSection
+            handleCourseClick={handleCourseClick}
+            setHoveredCourse={setHoveredCourse}
+            hoveredCourse={hoveredCourse}
+            filteredCourses={emotionalIntelligenceCourses}
+          />
+        </div>
       )}
     </div>
   );

@@ -25,7 +25,6 @@ const OfficeProductivityPage = () => {
   const filteredFeaturedCourses = officeProductivityCourses.filter((course) => {
     return course.badge === "Bestseller";
   });
-  console.log(filteredFeaturedCourses);
 
   // Get full course info on click
   const handleCourseClick = (id) => {

@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "./Card";
 import HoverCard from "./HoverCard";
+import SidebarFilters from "./FilterSection";
 
 const CardSection = ({
   filteredCourses,
@@ -10,18 +11,24 @@ const CardSection = ({
   handleCourseClick,
 }) => {
   return (
-    <div className="px-6 py-8 max-w-7xl mx-auto">
+    <div className="px-6 py-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-2">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">{activeTab}</h2>
+      {/* Sidebar Filters */}
+      <div className="w-full lg:w-64">
+        <SidebarFilters
+          levels={["Beginner", "Intermediate", "Advanced"]}
+          providers={["AWS", "Azure", "Google Cloud"]}
+          prices={["Free", "Paid"]}
+          ratings={["4.5 & up", "4.0 & up", "3.5 & up"]}
+          languages={["English", "Hindi"]}
+          // selectedFilters={filteredCourses}
+          // setSelectedFilters={setSelectedFilters}
+        />
+      </div>
 
       {filteredCourses.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {filteredCourses.map((course, index) => {
-            let position = "center";
-            // if course is in first column → show right
-            // 1st card in row → right
-            if (index % 3 === 0) position = "right";
-            // 2nd & 3rd card in row → left
-            else position = "left";
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {filteredCourses.map((course) => {
             return (
               <div
                 key={course.id}
@@ -30,9 +37,9 @@ const CardSection = ({
                 className="relative"
               >
                 <Card {...course} onClick={handleCourseClick} />
-                {hoveredCourse?.id === course.id && (
-                  <HoverCard course={hoveredCourse} position={position} />
-                )}
+                {/* {hoveredCourse?.id === course.id && (
+                  <HoverCard course={hoveredCourse} />
+                )} */}
               </div>
             );
           })}
