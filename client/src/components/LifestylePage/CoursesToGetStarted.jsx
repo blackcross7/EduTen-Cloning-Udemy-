@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const CoursesToGetStarted = ({
   title,
@@ -16,7 +17,7 @@ const CoursesToGetStarted = ({
 
   const itemsPerPage = 4;
 
-  // pick data based on active tab
+  // Pick data based on active tab
   const currentCourses =
     activeTab === "popular" ? popularCourses : trendingCourses;
   const currentHoverDetails =
@@ -117,35 +118,47 @@ const CoursesToGetStarted = ({
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6 items-start">
         {visibleCourses.map((course, index) => {
           const actualIndex = startIndex + index;
+          const isHovered = hoveredIndex === actualIndex;
 
           return (
             <div
               key={actualIndex}
-              className="relative group"
+              className="relative group w-full h-[400px]"
+              style={{ perspective: "1000px" }} // Tailwind can't do perspective
               onMouseEnter={() => setHoveredIndex(actualIndex)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="border rounded-lg shadow-md overflow-hidden transition-all h-[400px] w-full flex flex-col">
-                <div className="w-full h-48 flex-shrink-0 overflow-hidden rounded-t">
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+              <motion.div
+                className="relative w-full h-full"
+                animate={{ rotateY: isHovered ? 180 : 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                {/* Front (Course Card) */}
+                <div
+                  className="absolute inset-0 border rounded-lg shadow-md overflow-hidden bg-white flex flex-col"
+                  style={{ backfaceVisibility: "hidden" }}
+                >
+                  {/* Image */}
+                  <div className="w-full h-48 overflow-hidden rounded-t">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-                <div className="p-4 flex flex-col justify-between h-full">
-                  <div>
+                  {/* Content */}
+                  <div className="p-4 space-y-2">
                     <h2 className="text-md font-bold line-clamp-2">
                       {course.title}
                     </h2>
                     {course.subtitle && (
-                      <p className="text-sm text-gray-600 mt-1">
+                      <p className="text-sm text-gray-600">
                         {course.subtitle}
                       </p>
                     )}
-
-                    <div className="flex items-center gap-2 mt-2 text-sm">
+                    <div className="flex items-center gap-2 text-sm">
                       <span className="text-yellow-500 font-bold">4.7</span>
                       <div className="flex text-yellow-500 text-sm">
                         {[...Array(4)].map((_, i) => (
@@ -157,11 +170,9 @@ const CoursesToGetStarted = ({
                         ({currentRatingData[actualIndex]})
                       </span>
                     </div>
-
-                    <div className="mt-2 text-sm font-semibold text-indigo-700">
+                    <div className="text-sm font-semibold text-indigo-700">
                       Current price: {course.price}
                     </div>
-
                     <div className="flex flex-wrap items-center gap-2 text-xs mt-2">
                       {course.premium && (
                         <span className="bg-violet-200 text-violet-800 font-semibold px-2 py-1 rounded">
@@ -176,16 +187,19 @@ const CoursesToGetStarted = ({
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Hover Details */}
-              {hoveredIndex === actualIndex &&
-                currentHoverDetails[actualIndex] && (
-                  <div className="absolute top-0 left-0 w-full bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 z-20">
+                {/* Back (Hover Details) */}
+                <div
+                  className="absolute inset-0 bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 flex flex-col justify-between"
+                  style={{
+                    backfaceVisibility: "hidden",
+                    transform: "rotateY(180deg)",
+                  }}
+                >
+                  <div>
                     <h2 className="text-lg font-bold text-gray-900 mb-2">
-                      {currentHoverDetails[actualIndex].title}
+                      {currentHoverDetails[actualIndex]?.title}
                     </h2>
-
                     <div className="flex items-center gap-2 mb-2">
                       {currentHoverDetails[actualIndex].premium && (
                         <span className="bg-violet-200 text-violet-800 text-xs font-semibold px-2 py-1 rounded">
@@ -198,22 +212,18 @@ const CoursesToGetStarted = ({
                         </span>
                       )}
                     </div>
-
                     <p className="text-gray-500 text-sm mb-1">
                       Updated {currentHoverDetails[actualIndex].updated}
                     </p>
                     <p className="text-sm text-gray-700 mb-2">
-                      <strong>
-                        {currentHoverDetails[actualIndex].duration}
-                      </strong>{" "}
+                      <strong>{currentHoverDetails[actualIndex].duration}</strong>{" "}
                       • {currentHoverDetails[actualIndex].level} • Subtitles
                     </p>
-                    <p className="text-gray-800 text-sm mb-2">
-                      {currentHoverDetails[actualIndex].description}
+                    <p className="text-sm text-gray-700 mb-2">
+                      {currentHoverDetails[actualIndex]?.description}
                     </p>
-
                     <ul className="space-y-1 text-sm text-gray-700">
-                      {currentHoverDetails[actualIndex].points.map(
+                      {currentHoverDetails[actualIndex]?.points.map(
                         (point, idx) => (
                           <li key={idx} className="flex items-start gap-2">
                             <span className="text-green-500 font-bold">✓</span>
@@ -222,12 +232,12 @@ const CoursesToGetStarted = ({
                         )
                       )}
                     </ul>
-
-                    <button className="mt-4 bg-violet-600 text-white py-2 px-4 w-full rounded hover:bg-violet-700 transition">
-                      Add to Cart
-                    </button>
                   </div>
-                )}
+                  <button className="mt-4 bg-violet-600 text-white py-2 px-4 w-full rounded hover:bg-violet-700 transition">
+                    Add to Cart
+                  </button>
+                </div>
+              </motion.div>
             </div>
           );
         })}

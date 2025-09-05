@@ -76,7 +76,6 @@ export const popularHoverDetails = [
     subtitles: true,
     description: "Learn how Cognitive Behavioral Therapy (CBT) equips people to improve their emotional intelligence + mental well-being.",
     points: [
-      "Master essential CBT concepts like cognitive restructuring and behavioral activation",
       "Apply theoretical models such as Beck’s Cognitive Therapy and REBT",
       "Develop self-discipline for mindset, thinking, and emotions",
     ],
@@ -106,7 +105,6 @@ export const popularHoverDetails = [
     subtitles: true,
     description: "Take charge of your health with herbal medicine. Using herbs and natural holistic medicine is easy, effective and safe.",
     points: [
-      "Start making your first herbal remedy from day one",
       "Learn life-changing herbalism skills in one place",
       "Details of 20+ important medicinal plants",
     ],
@@ -122,8 +120,7 @@ export const popularHoverDetails = [
     description: "The Most Comprehensive Masterclass to Improve Your Mind, Body and Health - Start Growing Today!",
     points: [
       "Discover what Reverse Aging is & how it works",
-      "Learn the science & secrets behind Reverse Aging",
-      "Explore the many powerful benefits of Reverse Aging",
+      "Learn the science & secrets behind Reverse Aging"
     ],
   },
   {
@@ -183,7 +180,6 @@ export const popularHoverDetails = [
     points: [
       "Earn your CPD Certificate",
       "Design weight loss & muscle growth diets",
-      "Help others lose fat & build muscle",
     ],
   },
 ];
@@ -268,7 +264,6 @@ export const trendingHoverDetails = [
     subtitles: true,
     description: "Everything about sitting posture, screen work, and how to prevent forward head posture and rounded shoulders.",
     points: [
-      "Understand what musculoskeletal disorders truly are",
       "Learn the 3 Rules of Posture for daily activities",
       "Apply the 4 steps occupational health action plan",
     ],
@@ -299,7 +294,6 @@ export const trendingHoverDetails = [
     description: "Tap into the power of your breath and develop health, happiness and inner richness. A complete breathwork course.",
     points: [
       "Learn fundamentals from basic to advanced Pranayama",
-      "Practice 15 types of Pranayama techniques",
       "Practical sessions combining Breathwork, Yoga & Meditation",
     ],
   },
@@ -315,7 +309,6 @@ export const trendingHoverDetails = [
     points: [
       "Earn your CPD Certificate",
       "Help others lose fat & build muscle",
-      "Assess clients and determine fitness & strength levels",
     ],
   },
   {
@@ -344,7 +337,6 @@ export const trendingHoverDetails = [
     description: "Part 1 of Part 2 of our Internationally Accredited Certification Course by Bodsphere.",
     points: [
       "Learn Ancient Yogic Philosophy, Vedas & Upanishads",
-      "Practical Yoga for Strength, Flexibility & Mobility",
       "Understand different paths & definitions of Yoga",
     ],
   },
@@ -359,7 +351,6 @@ export const trendingHoverDetails = [
     description: "Strategies for Reducing Stress, Increasing Happiness, Communicating Better & Achieving Your Goals Through Mindfulness.",
     points: [
       "Quick and easy mindfulness practices for busy professionals",
-      "Improve communication and conflict resolution with mindfulness",
       "Set goals, reduce stress, and make better decisions",
     ],
   },
@@ -374,7 +365,6 @@ export const trendingHoverDetails = [
     description: "Learn how Cognitive Behavioral Therapy (CBT) equips people to improve their emotional intelligence + mental well-being.",
     points: [
       "Master CBT concepts like cognitive restructuring & activation",
-      "Apply Beck’s Cognitive Therapy and REBT in practice",
       "Develop self-discipline for mindset, emotions, and habits",
     ],
   },
