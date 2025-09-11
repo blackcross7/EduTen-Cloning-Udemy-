@@ -69,6 +69,11 @@ const Card = ({ onClick = () => {}, onHover = () => {}, ...data }) => {
             {badge}
           </span>
         )}
+
+        {/* Enroll Now button (mobile only) */}
+        <button className="mt-3 w-fit text-xs font-medium px-2 py-1 rounded bg-blue-600 text-white md:hidden">
+          Enroll Now
+        </button>
       </div>
     </div>
   );
