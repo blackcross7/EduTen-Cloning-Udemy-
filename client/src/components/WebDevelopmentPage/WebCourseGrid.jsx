@@ -185,54 +185,67 @@ const WebCourseGrid = () => {
               </div>
             </div>
 
-            
-            {/* Hover Details */}
-            {hoveredIndex !== null &&
-              getHoverTarget(hoveredIndex) === index &&
-              hoverDetails[hoveredIndex] && (
-                <div className="absolute top-0 left-0 w-full bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 z-20">
-                  <h2 className="text-lg font-bold text-gray-900 mb-2">
-                    {hoverDetails[hoveredIndex].title}
-                  </h2>
+{/* Hover Details */}
+{/* Hover Details */}
+{hoveredIndex === index && hoverDetails[index] && (
+  <div
+    className={`absolute top-0 ${
+      (index + 1) % 4 === 0  // last card in 4-column grid
+        ? "right-full mr-2"  // show on the left
+        : "left-full ml-2"   // show on the right
+    } w-80 bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 z-20`}
+  >
+    {/* Arrow */}
+    {((index + 1) % 4 === 0) ? (
+      // Arrow pointing right (when popup is on the left)
+      <div className="absolute top-6 -right-2 border-l-8 border-l-blue-600 border-y-transparent border-y-8" />
+    ) : (
+      // Arrow pointing left (when popup is on the right)
+      <div className="absolute top-6 -left-2 border-r-8 border-r-blue-600 border-y-transparent border-y-8" />
+    )}
 
-                  <div className="flex items-center gap-2 mb-2">
-                    {hoverDetails[hoveredIndex].premium && (
-                      <span className="bg-violet-200 text-violet-800 text-xs font-semibold px-2 py-1 rounded">
-                        Premium
-                      </span>
-                    )}
-                    {hoverDetails[hoveredIndex].bestseller && (
-                      <span className="bg-green-200 text-green-800 text-xs font-semibold px-2 py-1 rounded">
-                        Bestseller
-                      </span>
-                    )}
-                  </div>
+    <h2 className="text-lg font-bold text-gray-900 mb-2">
+      {hoverDetails[index].title}
+    </h2>
+    <div className="flex items-center gap-2 mb-2">
+      {hoverDetails[index].premium && (
+        <span className="bg-violet-200 text-violet-800 text-xs font-semibold px-2 py-1 rounded">
+          Premium
+        </span>
+      )}
+      {hoverDetails[index].bestseller && (
+        <span className="bg-green-200 text-green-800 text-xs font-semibold px-2 py-1 rounded">
+          Bestseller
+        </span>
+      )}
+    </div>
 
-                  <p className="text-gray-500 text-sm mb-1">
-                    Updated {hoverDetails[hoveredIndex].updated}
-                  </p>
-                  <p className="text-sm text-gray-700 mb-2">
-                    <strong>{hoverDetails[hoveredIndex].duration}</strong> •{' '}
-                    {hoverDetails[hoveredIndex].level} • Subtitles
-                  </p>
-                  <p className="text-gray-800 text-sm mb-2">
-                    {hoverDetails[hoveredIndex].description}
-                  </p>
+    <p className="text-gray-500 text-sm mb-1">
+      Updated {hoverDetails[index].updated}
+    </p>
+    <p className="text-sm text-gray-700 mb-2">
+      <strong>{hoverDetails[index].duration}</strong> •{" "}
+      {hoverDetails[index].level} • Subtitles
+    </p>
+    <p className="text-gray-800 text-sm mb-2">
+      {hoverDetails[index].description}
+    </p>
 
-                  <ul className="space-y-1 text-sm text-gray-700">
-                    {hoverDetails[hoveredIndex].points.map((point, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <span className="text-green-500 font-bold">✓</span>
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+    <ul className="space-y-1 text-sm text-gray-700">
+      {hoverDetails[index].points.map((point, idx) => (
+        <li key={idx} className="flex items-start gap-2">
+          <span className="text-green-500 font-bold">✓</span>
+          <span>{point}</span>
+        </li>
+      ))}
+    </ul>
 
-                  <button className="mt-4 bg-violet-600 text-white py-2 px-4 w-full rounded hover:bg-violet-700 transition">
-                    Add to Cart
-                  </button>
-                </div>
-              )}
+    <button className="mt-4 bg-violet-600 text-white py-2 px-4 w-full rounded hover:bg-violet-700 transition">
+      Add to Cart
+    </button>
+  </div>
+)}
+              
           </div>
         ))}
       </div>
