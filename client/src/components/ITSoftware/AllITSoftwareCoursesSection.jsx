@@ -131,9 +131,9 @@ const itCourses = [
     price: "₹579",
     image: "/assets/itsoftware/ethical-hacking.jpg",
     hoverLearn: [
-      "Understand ethical hacking techniques",
-      "Explore different types of cyber attacks",
-      "Learn tools used by professionals",
+      // "Understand ethical hacking techniques",
+      // "Explore different types of cyber attacks",
+      // "Learn tools used by professionals",
     ],
   },
   {
@@ -187,6 +187,30 @@ const itCourses = [
       "Prepare for the DVA-C02 developer exam",
       "Explore AWS development best practices",
       "Master exam questions & patterns",
+    ],
+  },
+  {
+    title: "AZ-900 Microsoft Azure Fundamentals",
+    subtitle: "Beginner's guide to Microsoft Azure",
+    instructor: "Created by Alan Rodrigues",
+    duration: "14.5 hours on-demand video",
+    badge: "Bestseller",
+    price: "42000",
+    image: "/assets/itsoftware/azure-fundamentals.png",
+    hoverLearn: [
+      "Official Microsoft Learn + John Savill videos se concepts clear karo, Azure Portal pe thoda hands-on karo, aur Whizlabs/MeasureUp se practice tests dekar 90%+ score tak repeat karo.",
+    ],
+  },
+  {
+    title: "The Complete Cyber Security Course : Hackers Exposed!",
+    subtitle:
+      "Volume 1 : Become a Cyber Security Specialist, Learn How to Stop Hackers, Prevent Hacking, Learn IT Security & INFOSEC",
+    instructor: "Created by Nathan Houses",
+    badge: "Bestseller",
+    price: "3000",
+    image: "/assets/itsoftware/azure-fundamentals.png",
+    hoverLearn: [
+      "Some sites offering “free” downloads or “group‑buys” of the course are almost certainly unauthorized or infringing. Using those would be risky (legal & security risks",
     ],
   },
   {
@@ -322,7 +346,7 @@ const AllITSoftwareCoursesSection = () => {
   const [showFilters, setShowFilters] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const coursesPerPage = 3;
+  const coursesPerPage = 9;
   const totalPages = Math.ceil(itCourses.length / coursesPerPage);
   const paginatedCourses = itCourses.slice(
     (currentPage - 1) * coursesPerPage,
