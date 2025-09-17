@@ -1,33 +1,42 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Updated list of topics for photography and video
-const topics = [
-  "Camera Basics",
-  "Photo Editing",
-  "Video Editing",
-  "Drone Photography",
-  "Portraiture",
-  "Street Photography",
-  "Wildlife Photography",
-  "Lighting Techniques",
-  "Adobe Photoshop",
-  "Adobe Lightroom",
-  "Final Cut Pro",
-  "Storytelling in Film",
-  "Color Grading",
-  "Cinematography",
-  "Mobile Videography",
-];
+const PopularTopics = ({ topics }) => {
+  console.log(topics);
 
-const PopularTopics = () => {
   const scrollRef = useRef(null);
 
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = scrollRef.current.offsetWidth / 1.5; // scroll by ~1.5 cards
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <div className="max-w-5xl px-4 py-10 mx-auto">
+    <div className="relative max-w-5xl px-4 py-10 mx-auto">
       <h2 className="text-2xl font-bold mb-6">
         Popular Photography & Video Topics
       </h2>
+
+      {/* Left Button */}
+      <button
+        onClick={() => scroll("left")}
+        className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-2 mt-6 z-10 hover:bg-gray-100"
+      >
+        <ChevronLeft size={40} />
+      </button>
+
+      {/* Right Button */}
+      <button
+        onClick={() => scroll("right")}
+        className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow rounded-full p-2 mt-6 z-10 hover:bg-gray-100"
+      >
+        <ChevronRight size={40} />
+      </button>
 
       {/* Scrollable grid */}
       <div
@@ -35,14 +44,17 @@ const PopularTopics = () => {
         className="overflow-x-auto overflow-y-hidden scroll-smooth no-scrollbar"
       >
         <div className="grid grid-rows-2 grid-flow-col gap-3 min-w-max">
-          {topics.map((topic, idx) => (
-            <div
-              key={idx}
-              className="bg-white text-black border rounded-md flex items-center justify-center text-center cursor-pointer hover:border-gray-500 hover:bg-gray-100 transition-colors duration-300 w-40 h-16 text-sm flex-shrink-0"
-            >
-              {topic}
-            </div>
-          ))}
+          {topics &&
+            topics.map((topic, idx) => (
+              <div
+                key={idx}
+                className="bg-white font-bold text-black border rounded-md flex items-center justify-center text-center 
+                         cursor-pointer  hover:bg-gray-100 transition-colors duration-300 
+                         w-40 h-16 text-sm flex-shrink-0"
+              >
+                {topic}
+              </div>
+            ))}
         </div>
       </div>
     </div>
