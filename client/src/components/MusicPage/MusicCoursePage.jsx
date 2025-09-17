@@ -6,10 +6,17 @@ const courses = [
   {
     id: 1,
     title: "Guitar Mastery for Beginners",
+    subtitle: "Strum your first song in just weeks 🎸",
     instructor: "John Mayer",
     rating: 4.7,
     reviews: 2100,
     price: "₹499",
+    originalPrice: "₹1299",
+    students: 8500,
+    hours: "12h 30m",
+    level: "Beginner",
+    premium: true,
+    bestseller: true,
     image: "/assets/MusicPage/guitar-course.jpg",
     learnPoints: [
       "Master basic open chords and strumming patterns",
@@ -21,10 +28,17 @@ const courses = [
   {
     id: 2,
     title: "Piano Essentials: From Zero to Hero",
+    subtitle: "Unlock melodies that touch the soul 🎹",
     instructor: "Alicia Keys",
     rating: 4.8,
     reviews: 1800,
     price: "₹699",
+    originalPrice: "₹1599",
+    students: 6700,
+    hours: "15h 10m",
+    level: "Beginner to Intermediate",
+    premium: true,
+    bestseller: true,
     image: "/assets/MusicPage/piano-course.webp",
     learnPoints: [
       "Understand piano keys, scales, and hand positioning",
@@ -36,10 +50,17 @@ const courses = [
   {
     id: 3,
     title: "Learn Singing with Confidence",
+    subtitle: "Find your voice and own the stage 🎤",
     instructor: "Adele Laurie",
     rating: 4.6,
     reviews: 1500,
     price: "₹599",
+    originalPrice: "₹1399",
+    students: 4900,
+    hours: "10h 45m",
+    level: "All Levels",
+    premium: true,
+    bestseller: true,
     image: "/assets/MusicPage/singing-course.webp",
     learnPoints: [
       "Discover breathing and vocal warm-up techniques",
@@ -51,10 +72,17 @@ const courses = [
   {
     id: 4,
     title: "Music Production in FL Studio",
+    subtitle: "Turn your ideas into chart-topping hits 🎶",
     instructor: "Martin Garrix",
     rating: 4.9,
     reviews: 3100,
     price: "₹799",
+    originalPrice: "₹1999",
+    students: 12000,
+    hours: "20h 00m",
+    level: "Intermediate",
+    premium: true,
+    bestseller: true,
     image: "/assets/MusicPage/production-course.webp",
     learnPoints: [
       "Learn FL Studio interface and workflow",
@@ -66,10 +94,17 @@ const courses = [
   {
     id: 5,
     title: "Classical Violin Techniques",
+    subtitle: "Bring elegance and power to every note 🎻",
     instructor: "Nicola Benedetti",
     rating: 4.8,
     reviews: 1200,
     price: "₹649",
+    originalPrice: "₹1699",
+    students: 5300,
+    hours: "14h 20m",
+    level: "Intermediate to Advanced",
+    premium: true,
+    bestseller: true,
     image: "/assets/MusicPage/violin-course.jpg",
     learnPoints: [
       "Hold the violin and bow with proper posture",
@@ -81,10 +116,17 @@ const courses = [
   {
     id: 6,
     title: "Electronic Music with Ableton Live",
+    subtitle: "Produce beats that move the crowd 🎧",
     instructor: "Deadmau5",
     rating: 4.7,
     reviews: 2000,
     price: "₹899",
+    originalPrice: "₹2199",
+    students: 9800,
+    hours: "18h 15m",
+    level: "Advanced",
+    premium: true,
+    bestseller: true,
     image: "/assets/MusicPage/ableton-course.webp",
     learnPoints: [
       "Explore Ableton Live’s powerful features",
@@ -94,6 +136,7 @@ const courses = [
     ],
   },
 ];
+
 
 const instructors = [
   { name: "John Mayer", img: "/assets/MusicPage/instructor1.jpg" },
@@ -106,17 +149,41 @@ const languages = ["English", "Hindi", "Spanish", "French", "German", "Japanese"
 const faqs = [
   {
     question: "Do I need prior music knowledge?",
-    answer: "No, most courses are beginner friendly and build up from basics.",
+    answer:
+      "Not at all! Most of our courses are designed for complete beginners and gradually progress to advanced concepts.",
   },
   {
     question: "Will I get a certificate?",
-    answer: "Yes, upon completion, you will receive a course certificate.",
+    answer:
+      "Yes! After successfully completing a course, you will receive a shareable certificate to showcase your achievement.",
   },
   {
     question: "Are there any free courses?",
-    answer: "Yes, you can find free previews and some basic courses at no cost.",
+    answer:
+      "Yes, we offer free trial lessons and selected beginner courses so you can start learning without any cost.",
+  },
+  {
+    question: "How long will I have access to the course?",
+    answer:
+      "Once you enroll, you get lifetime access to the course, including all future updates and added content.",
+  },
+  {
+    question: "Can I learn at my own pace?",
+    answer:
+      "Absolutely. All courses are self-paced, allowing you to learn whenever and wherever it suits you best.",
+  },
+  {
+    question: "Which devices can I use to watch the lessons?",
+    answer:
+      "You can access the courses on any device — desktop, laptop, tablet, or smartphone — with a stable internet connection.",
+  },
+  {
+    question: "Is there any support if I get stuck?",
+    answer:
+      "Yes, our instructors and community forums are available to answer your questions and guide you throughout your learning journey.",
   },
 ];
+
 
 
 const MusicCoursePage = () => {
