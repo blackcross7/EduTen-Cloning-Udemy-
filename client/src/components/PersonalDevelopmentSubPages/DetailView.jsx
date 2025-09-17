@@ -1,7 +1,7 @@
 const DetailView = ({ course, onClose }) => {
   // If no course data is provided, return a loading state or nothing.
   if (!course) return null;
-  // console.log("hhhh", course.thumbnail);
+  console.log(course.reviews);
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 sm:p-8 md:p-10 max-w-6xl mx-auto my-8">
@@ -15,28 +15,10 @@ const DetailView = ({ course, onClose }) => {
 
       {/* Course Header Section */}
       <div className="flex flex-col  gap-8 mb-8">
-        {course.badges && (
-          <div
-            className={`mt-2 w-fit flex text-md font-medium px-2 py-1  gap-5`}
-          >
-            {course.badges.map((item, index) => (
-              <span
-                className={`px-3 py-2 ${
-                  index % 2 === 0
-                    ? "bg-green-700 text-green-100"
-                    : "bg-purple-700 text-purple-100"
-                }`}
-                key={index}
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-        )}
         {/* Image */}
         <div className="flex-shrink-0 md:w-1/2 mx-auto">
           <img
-            src={course.thumbnail}
+            src={course.imageUrl}
             alt={course.title}
             className="w-full h-48 sm:h-64 md:h-full object-cover rounded-lg shadow-md"
             onError={(e) => {
@@ -49,11 +31,9 @@ const DetailView = ({ course, onClose }) => {
         {/* Details Column */}
         <div className="flex-grow">
           {/* Title + Instructor */}
-
           <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-gray-900 leading-tight">
             {course.title}
           </h1>
-
           <p className="text-gray-600 text-sm sm:text-base font-medium mb-4">
             By <span className="text-blue-600">{course.instructor}</span>
           </p>
@@ -61,7 +41,9 @@ const DetailView = ({ course, onClose }) => {
           {/* Rating + Review Count */}
           <div className="flex items-center gap-2 mb-4 text-yellow-500 text-sm sm:text-base font-semibold">
             <span>⭐ {course.rating}</span>
-            <span className="text-gray-500">({course.reviews} reviews)</span>
+            <span className="text-gray-500">
+              ({course.reviewCount} reviews)
+            </span>
           </div>
 
           {/* Price */}
@@ -89,7 +71,7 @@ const DetailView = ({ course, onClose }) => {
           About this course
         </h2>
         <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-          {course.description || "Description not Available"}
+          {course.description}
         </p>
       </div>
 

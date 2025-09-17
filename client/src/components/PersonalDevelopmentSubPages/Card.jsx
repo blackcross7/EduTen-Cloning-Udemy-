@@ -6,14 +6,13 @@ const Card = ({ onClick = () => {}, onHover = () => {}, ...data }) => {
     id,
     title,
     instructor,
-    thumbnail,
     rating,
+    reviewCount,
     price,
     originalPrice,
-    badges,
-    reviews,
+    imageUrl,
+    badge,
   } = data;
-  console.log(thumbnail);
 
   return (
     <div
@@ -23,7 +22,7 @@ const Card = ({ onClick = () => {}, onHover = () => {}, ...data }) => {
       onMouseLeave={() => onHover(null)}
     >
       {/* Image */}
-      <img src={thumbnail} alt={title} className="w-full h-40 object-cover" />
+      <img src={imageUrl} alt={title} className="w-full h-40 object-cover" />
 
       {/* Content */}
       <div className="p-4 flex flex-col">
@@ -45,7 +44,7 @@ const Card = ({ onClick = () => {}, onHover = () => {}, ...data }) => {
               />
             ))}
           </div>
-          <span className="text-gray-500 ml-1">({reviews || 1200})</span>
+          <span className="text-gray-500 ml-1">({reviewCount})</span>
         </div>
 
         {/* Price */}
@@ -59,23 +58,16 @@ const Card = ({ onClick = () => {}, onHover = () => {}, ...data }) => {
         </div>
 
         {/* Badge */}
-        {badges && (
-          <div
-            className={`mt-2 w-fit inline-block text-xs font-medium px-2 py-1 rounded `}
+        {badge && (
+          <span
+            className={`mt-2 w-fit inline-block text-xs font-medium px-2 py-1 rounded ${
+              badge === "Bestseller"
+                ? "bg-green-700 text-green-100"
+                : "bg-purple-700 text-purple-100"
+            }`}
           >
-            {badges.map((item, index) => (
-              <span
-                className={`${
-                  index % 2 === 0
-                    ? "bg-green-700 text-green-100"
-                    : "bg-purple-700 text-purple-100"
-                }`}
-                key={index}
-              >
-                {item}
-              </span>
-            ))}
-          </div>
+            {badge}
+          </span>
         )}
 
         {/* Enroll Now button (mobile only) */}
