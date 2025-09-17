@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const ITSoftwareCourseSection = () => {
   const [selectedTab, setSelectedTab] = useState("Most popular");
   const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [isLeft, setIsLeft] = useState(false);
+  // const [isLeft, setIsLeft] = useState(false);
   const cardRef = useRef();
 
   const coursesData = {
@@ -139,23 +139,23 @@ const ITSoftwareCourseSection = () => {
   const tabs = Object.keys(coursesData);
   const currentCourses = coursesData[selectedTab];
 
-  useEffect(() => {
-    const handlePosition = () => {
-      const rect = cardRef.current?.getBoundingClientRect();
-      if (rect && rect.right + 360 > window.innerWidth) {
-        setIsLeft(true);
-      } else {
-        setIsLeft(false);
-      }
-    };
-    handlePosition();
-    window.addEventListener("resize", handlePosition);
-    return () => window.removeEventListener("resize", handlePosition);
-  }, [hoveredIndex]);
+  // useEffect(() => {
+  //   const handlePosition = () => {
+  //     const rect = cardRef.current?.getBoundingClientRect();
+  //     if (rect && rect.right + 360 > window.innerWidth) {
+  //       setIsLeft(true);
+  //     } else {
+  //       setIsLeft(false);
+  //     }
+  //   };
+  //   handlePosition();
+  //   window.addEventListener("resize", handlePosition);
+  //   return () => window.removeEventListener("resize", handlePosition);
+  // }, [hoveredIndex]);
 
   return (
     <section className="relative px-4 xl:px-20 py-10 bg-white">
-      <h2 className="text-2xl font-bold text-center lg:text-left text-gray-900 mb-1">
+      <h2 className="text-2xl font-bold text-center lg:text-left text-gray-900 mb-12">
         IT & Software Courses
       </h2>
       <h3 className="text-xl text-center lg:text-left text-black font-semibold mb-2">
@@ -195,7 +195,7 @@ const ITSoftwareCourseSection = () => {
             className="relative group"
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
-            ref={hoveredIndex === index ? cardRef : null}
+            // ref={hoveredIndex === index ? cardRef : null}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.4 }}
@@ -262,9 +262,10 @@ const ITSoftwareCourseSection = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.2 }}
-                  className={`absolute z-30 w-[330px] bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 transition-all duration-300 ${
-                    isLeft ? "md:right-full md:mr-4" : "md:left-full md:ml-4"
-                  } md:top-0 top-full mt-2`}
+                  // className={`absolute z-30 w-[330px] bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 transition-all duration-300 ${
+                  //   isLeft ? "md:right-full md:mr-4" : "md:left-full md:ml-4"
+                  // } md:top-0 top-full mt-2`}
+                  className="absolute z-30 w-[320px] bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 transition-all duration-300 left-1/1 -translate-x-1/2 bottom-full mb-[-272px]"
                 >
                   <h2 className="text-lg font-bold  text-gray-900 mb-2">
                     {course.title}
