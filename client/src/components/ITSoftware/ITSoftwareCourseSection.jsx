@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ITSoftwareCourseSection = () => {
   const [selectedTab, setSelectedTab] = useState("Most popular");
   const [hoveredIndex, setHoveredIndex] = useState(null);
   // const [isLeft, setIsLeft] = useState(false);
-  const cardRef = useRef();
+  // const cardRef = useRef();
 
   const coursesData = {
     "Most popular": [
@@ -41,7 +41,7 @@ const ITSoftwareCourseSection = () => {
       },
       {
         image: "/assets/itsoftware/aws-developer.png",
-        title: "Ultimate AWS Certified Developer Associate 2025 DVA-C02",
+        title: "Ultimate AWS Certified Developer Associate 2025 ",
         instructor: "Stephane Maarek | AWS Certified Cloud...",
         rating: "4.7",
         students: "114,207",
@@ -265,7 +265,7 @@ const ITSoftwareCourseSection = () => {
                   // className={`absolute z-30 w-[330px] bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 transition-all duration-300 ${
                   //   isLeft ? "md:right-full md:mr-4" : "md:left-full md:ml-4"
                   // } md:top-0 top-full mt-2`}
-                  className="absolute z-30 w-[320px] bg-white border-2 border-blue-600 rounded-xl shadow-xl p-4 transition-all duration-300 left-1/1 -translate-x-1/2 bottom-full mb-[-272px]"
+                  className="absolute top-0 left-0 w-full h-full bg-white border-2 border-blue-600 rounded-xl shadow-2xl z-50 p-4 pointer-events-none"
                 >
                   <h2 className="text-lg font-bold  text-gray-900 mb-2">
                     {course.title}
@@ -278,15 +278,23 @@ const ITSoftwareCourseSection = () => {
                   </p>
                   <ul className="text-sm text-gray-700 space-y-1">
                     <li className="flex gap-2">
-                      <span className="text-green-500">✓</span> Real-world
-                      learning
+                      <span className="text-green-500">
+                        15 total hoursAll LevelsSubtitles Become an ethical
+                        hacker that can hack like
+                      </span>
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-500">✓</span> Industry-grade
-                      training
+                      <span className="text-green-500">✓</span> 145+ videos (15+
+                      hours) to teach you ethical hacking & cybersecurity from
+                      scratch.
                     </li>
                     <li className="flex gap-2">
-                      <span className="text-green-500">✓</span> Lifetime access
+                      <span className="text-green-500">✓</span> Use 30+ hacking
+                      tools such as Metasploit, Aircrack-ng, SQLmap, etc.
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-500">✓</span> 85+ hands-on
+                      real-life hacking examples.
                     </li>
                   </ul>
                   <button className="mt-4 bg-indigo-600 text-white py-2 px-4 w-full rounded hover:bg-indigo-700 transition">
