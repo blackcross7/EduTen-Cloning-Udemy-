@@ -393,7 +393,7 @@ const WebCourseInfoPanel = () => {
             {/* Sidebar */}
             <div
               className={`
-        fixed z-50 top-0 left-0 h-full w-72 bg-white border-r shadow-lg
+        fixed z-10 top-0 left-0 h-full w-72 bg-white border-r shadow-lg
         flex flex-col
         transition-transform duration-300
         ${showFilters ? "translate-x-0" : "-translate-x-full"}
