@@ -1,10 +1,19 @@
-import React from "react";
+const HeroBanner = ({
+  label = "Courses to get you started",
+  title = "",
+  paragraph = "Explore courses from experienced, real-world experts.",
+}) => (
+  <div className="hero-banner mx-6 font-serif">
+    {title && (
+      <h1 className="font-bold lg:text-4xl md:text-2xl text-xl mb-6">
+        {title}
+      </h1>
+    )}
+    <div>
+      <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">{label}</h2>
 
-const HeroBanner = () => (
-  <div className="hero-banner">
-    <h1>Personal Development Courses</h1>
-    <p>Explore courses from experienced, real-world experts.</p>
+      <p className="mt-2 text-gray-700 text-sm">{paragraph}</p>
+    </div>
   </div>
 );
-
 export default HeroBanner;

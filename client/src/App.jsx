@@ -15,7 +15,7 @@ import ProfilePage from "./pages/ProfilePage";
 import WebDevelopmentPage from "./pages/WebDevelopmentPage";
 import Footer from "./components/FooterSection/Footer";
 import BusinessCoursePage from "./pages/BusinessCoursePage";
-import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage";
+import PersonalDevPage from "./pages/PersonalDevPage";
 import FinancePage from "./pages/FinancePage";
 import InteriorDesignPage from "./pages/InteriorDesignPage";
 import MarketingPage from "./pages/MarketingPage";
