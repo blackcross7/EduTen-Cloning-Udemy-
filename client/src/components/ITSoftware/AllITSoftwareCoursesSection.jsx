@@ -131,9 +131,9 @@ const itCourses = [
     price: "₹579",
     image: "/assets/itsoftware/ethical-hacking.jpg",
     hoverLearn: [
-      // "Understand ethical hacking techniques",
-      // "Explore different types of cyber attacks",
-      // "Learn tools used by professionals",
+      "Understand ethical hacking techniques",
+      "Explore different types of cyber attacks",
+      "Learn tools used by professionals",
     ],
   },
   {
@@ -508,7 +508,7 @@ const AllITSoftwareCoursesSection = () => {
                       </span>
                     )}
                   </div>
-                  <div className="text-right font-bold text-[15px] text-gray-900 mt-2 sm:mt-0">
+                  <div className="text-right font-bold text-[15px] text-gray-900 mt-2 p-2 sm:mt-0 p-1">
                     {course.price}
                   </div>
                 </motion.div>

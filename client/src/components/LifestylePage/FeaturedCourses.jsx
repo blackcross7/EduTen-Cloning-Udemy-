@@ -2,6 +2,8 @@ import { Star, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 export default function FeaturedCourses({ courses }) {
+  const hasMultipleCourses = courses.length > 1;
+
   const [currentSlide, setCurrentSlide] = useState(1);
   const [wishlistedCourses, setWishlistedCourses] = useState({});
   const [isTransitioning, setIsTransitioning] = useState(true);
@@ -9,25 +11,17 @@ export default function FeaturedCourses({ courses }) {
   const sliderRef = useRef(null);
   const intervalRef = useRef(null);
 
-  // Extend courses for infinite loop
-  const extendedCourses = [
-    courses[courses.length - 1],
-    ...courses,
-    courses[0],
-  ];
+  // Extend courses for infinite loop (only if multiple)
+  const extendedCourses = hasMultipleCourses
+    ? [courses[courses.length - 1], ...courses, courses[0]]
+    : courses;
 
   // Check if device is mobile
   useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
+    const checkIsMobile = () => setIsMobile(window.innerWidth < 768);
     checkIsMobile();
-    window.addEventListener('resize', checkIsMobile);
-    
-    return () => {
-      window.removeEventListener('resize', checkIsMobile);
-    };
+    window.addEventListener("resize", checkIsMobile);
+    return () => window.removeEventListener("resize", checkIsMobile);
   }, []);
 
   const handleWishlistToggle = (courseId, e) => {
@@ -66,18 +60,14 @@ export default function FeaturedCourses({ courses }) {
     );
   };
 
-  const nextSlide = () => {
-    setIsTransitioning(true);
-    setCurrentSlide((prev) => prev + 1);
-  };
-
-  const prevSlide = () => {
-    setIsTransitioning(true);
-    setCurrentSlide((prev) => prev - 1);
-  };
+  // Navigation functions
+  const nextSlide = () => hasMultipleCourses && setCurrentSlide((prev) => prev + 1);
+  const prevSlide = () => hasMultipleCourses && setCurrentSlide((prev) => prev - 1);
 
   // Infinite looping fix
   useEffect(() => {
+    if (!hasMultipleCourses) return;
+
     if (currentSlide === extendedCourses.length - 1) {
       const timeout = setTimeout(() => {
         setIsTransitioning(false);
@@ -93,19 +83,18 @@ export default function FeaturedCourses({ courses }) {
       }, 500);
       return () => clearTimeout(timeout);
     }
-  }, [currentSlide, extendedCourses.length]);
+  }, [currentSlide, extendedCourses.length, hasMultipleCourses]);
 
-  // --- AUTOPLAY ---
+  // Autoplay
   useEffect(() => {
+    if (!hasMultipleCourses) return; // Do not autoplay if only one course
     startAutoPlay();
     return () => stopAutoPlay();
-  }, []);
+  }, [currentSlide, hasMultipleCourses]);
 
   const startAutoPlay = () => {
-    if (intervalRef.current) return; // prevent multiple intervals
-    intervalRef.current = setInterval(() => {
-      nextSlide();
-    }, 5000); // 5s per slide
+    if (intervalRef.current || !hasMultipleCourses) return;
+    intervalRef.current = setInterval(() => nextSlide(), 5000);
   };
 
   const stopAutoPlay = () => {
@@ -133,7 +122,8 @@ export default function FeaturedCourses({ courses }) {
           ref={sliderRef}
           className={`flex ${isTransitioning ? "transition-transform duration-500 ease-in-out" : ""}`}
           style={{
-            transform: `translateX(-${currentSlide * 100}%)`,
+            transform: `translateX(-${hasMultipleCourses ? currentSlide * 100 : 0}%)`,
+            transition: hasMultipleCourses ? undefined : "none",
           }}
         >
           {extendedCourses.map((course, idx) => (
@@ -162,11 +152,7 @@ export default function FeaturedCourses({ courses }) {
                   >
                     <Heart
                       size={20}
-                      className={
-                        wishlistedCourses[course.id]
-                          ? "fill-red-500 text-red-500"
-                          : ""
-                      }
+                      className={wishlistedCourses[course.id] ? "fill-red-500 text-red-500" : ""}
                     />
                   </button>
                 </div>
@@ -179,8 +165,7 @@ export default function FeaturedCourses({ courses }) {
                   Updated <span className="font-semibold">{course.updated}</span>
                 </p>
                 <p className="text-xs sm:text-sm text-gray-500 mb-4">
-                  {course.hours} total hours · {course.lectures} lectures ·{" "}
-                  {course.level}
+                  {course.hours} total hours · {course.lectures} lectures · {course.level}
                 </p>
 
                 <div className="flex items-center gap-2 sm:gap-3 mb-4 flex-wrap">
@@ -214,29 +199,33 @@ export default function FeaturedCourses({ courses }) {
         </div>
 
         {/* Arrows */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-1 sm:p-2 shadow-lg hover:bg-gray-100 transition-colors"
-          aria-label="Previous course"
-        >
-          <ChevronLeft size={isMobile ? 20 : 28} />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-1 sm:p-2 shadow-lg hover:bg-gray-100 transition-colors"
-          aria-label="Next course"
-        >
-          <ChevronRight size={isMobile ? 20 : 28} />
-        </button>
+        {hasMultipleCourses && (
+          <>
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-1 sm:p-2 shadow-lg hover:bg-gray-100 transition-colors"
+              aria-label="Previous course"
+            >
+              <ChevronLeft size={isMobile ? 20 : 28} />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white rounded-full p-1 sm:p-2 shadow-lg hover:bg-gray-100 transition-colors"
+              aria-label="Next course"
+            >
+              <ChevronRight size={isMobile ? 20 : 28} />
+            </button>
+          </>
+        )}
 
         {/* Dots indicator for mobile */}
-        {isMobile && (
+        {isMobile && hasMultipleCourses && (
           <div className="absolute bottom-2 left-0 right-0 flex justify-center space-x-2">
             {courses.map((_, index) => (
               <button
                 key={index}
                 className={`w-2 h-2 rounded-full ${
-                  currentSlide === index + 1 ? 'bg-gray-800' : 'bg-gray-300'
+                  currentSlide === index + 1 ? "bg-gray-800" : "bg-gray-300"
                 }`}
                 onClick={() => {
                   setIsTransitioning(true);
