@@ -1,5 +1,5 @@
 import React from "react";
-import ITSoftwareCourseSection from "../components/ITSoftware/ITSoftwareCourseSection";
+// import ITSoftwareCourseSection from "../components/ITSoftware/ITSoftwareCourseSection";
 import PopularTopics from "../components/ITSoftware/PopularTopics";
 import PopularInstructors from "../components/ITSoftware/PopularInstructors";
 import FeaturedCourses from "../components/ITSoftware/FeaturedCourses";
@@ -22,7 +22,7 @@ const ITSoftware = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <CoursesToGetStarted
-        title="Health & Fitness"
+        title="IT & SoftWare"
         popularCourses={popularCourses}
         trendingCourses={trendingCourses}
         popularHoverDetails={popularHoverDetails}
@@ -30,7 +30,7 @@ const ITSoftware = () => {
         popularRatingData={popularRatingData}
         trendingRatingData={trendingRatingData}
       />
-      <ITSoftwareCourseSection />
+      {/* <ITSoftwareCourseSection /> */}
       <PopularTopics />
       <FeaturedCourses />
       <PopularInstructors />
