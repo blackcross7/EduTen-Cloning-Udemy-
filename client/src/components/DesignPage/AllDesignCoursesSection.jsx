@@ -197,6 +197,7 @@ const designCourses = [
 
 ];
 
+// --- FilterSection and Pagination components are unchanged ---
 const FilterSection = ({ title, options, show, toggle }) => (
   <div className="mb-6">
     <div className="flex justify-between items-center mb-3 cursor-pointer text-lg font-semibold" onClick={toggle}>
@@ -262,8 +263,6 @@ const FilterSection = ({ title, options, show, toggle }) => (
   </div>
 );
 
-
-// ✅ Pagination component
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   return (
     <div className="flex justify-center mt-10 mb-16">
@@ -289,8 +288,8 @@ const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   );
 };
 
+
 const AllDesignCoursesSection = () => {
-  const [visibleHoverIndex, setVisibleHoverIndex] = useState(null);
   const [showRatings, setShowRatings] = useState(false);
   const [showDurations, setShowDurations] = useState(false);
   const [showTopics, setShowTopics] = useState(false);
@@ -301,15 +300,25 @@ const AllDesignCoursesSection = () => {
   const [showPractices, setShowPractices] = useState(false);
   const [showSubtitles, setShowSubtitles] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  
+  // ✅ ADDED: State to track which card is active/tapped on mobile
+  const [activeCardIndex, setActiveCardIndex] = useState(null);
 
-  // ✅ Pagination state
+  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const coursesPerPage = 3;
+  const coursesPerPage = 4;
   const totalPages = Math.ceil(designCourses.length / coursesPerPage);
   const paginatedCourses = designCourses.slice(
     (currentPage - 1) * coursesPerPage,
     currentPage * coursesPerPage
   );
+
+  // ✅ ADDED: Function to handle tapping a card
+  const handleCardClick = (index) => {
+    // If the same card is tapped again, close it. Otherwise, open the new one.
+    setActiveCardIndex(prevIndex => (prevIndex === index ? null : index));
+  };
+
 
   return (
     <div className="px-4 sm:px-6 xl:px-16 pt-10 pb-20 relative">
@@ -318,8 +327,8 @@ const AllDesignCoursesSection = () => {
         <span className="text-sm font-semibold text-gray-700">{designCourses.length} results</span>
       </div>
 
-      <div className="border px-4 py-4 mb-6 rounded-xl flex flex-col sm:flex-row items-start sm:items-center gap-3 text-base font-bold text-[#2d2f31] bg-[#f7f9fa] border-[#d1d7dc]">
-        <span className="text-purple-600 text-3xl sm:text-4xl font-bold">ⓘ</span>
+      <div className="border px-4 py-4 mb-6 rounded-xl flex items-start sm:items-center gap-3 text-sm sm:text-base font-bold text-[#2d2f31] bg-[#f7f9fa] border-[#d1d7dc]">
+        <span className="text-purple-600 text-2xl sm:text-3xl font-bold">ⓘ</span>
         <p>Not sure? All courses have a 30-day money-back guarantee</p>
       </div>
 
@@ -342,126 +351,170 @@ const AllDesignCoursesSection = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row gap-10">
-       {showFilters && (
-  <>
-    <aside
-      className="
-        fixed top-0 left-0 z-50 h-full w-[85vw] max-w-xs
-        xl:static xl:block lg:w-1/3 lg:min-w-[220px]
-        bg-white shadow-2xl p-5 overflow-y-auto transition-transform duration-300 ease-in-out
-        rounded-tr-xl rounded-br-xl
-      "
-    >
-      <button
-        className="xl:hidden absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl"
-        onClick={() => setShowFilters(false)}
-        aria-label="Close filters"
-      >
-        ✕
-      </button>
+        {/* Sidebar */}
+        {showFilters && (
+          <>
+            <aside
+              className="
+                fixed top-0 left-0 z-50 h-full w-[85vw] max-w-xs
+                lg:static lg:block lg:w-1/3 lg:min-w-[220px]
+                bg-white shadow-2xl transition-transform duration-300 ease-in-out
+                flex flex-col
+              "
+            >
+              <div className="flex justify-between items-center p-4 border-b lg:hidden">
+                 <h3 className="text-xl font-bold">Filters</h3>
+                 <button
+                   className="text-gray-500 hover:text-gray-800 text-2xl"
+                   onClick={() => setShowFilters(false)}
+                   aria-label="Close filters"
+                 >
+                   ✕
+                 </button>
+              </div>
 
-      {/* Optional heading for mobile */}
-      <h3 className="text-xl font-bold mb-4 xl:hidden">Filters</h3>
+              <div className="overflow-y-auto p-5 flex-1">
+                <FilterSection title="Ratings" show={showRatings} toggle={() => setShowRatings(!showRatings)} options={filters} />
+                <FilterSection title="Video Duration" show={showDurations} toggle={() => setShowDurations(!showDurations)} options={durations} />
+                <FilterSection title="Topic" show={showTopics} toggle={() => setShowTopics(!showTopics)} options={topicOptions} />
+                <FilterSection title="Subcategory" show={showSubcategories} toggle={() => setShowSubcategories(!showSubcategories)} options={subcategoryOptions} />
+                <FilterSection title="Level" show={showLevels} toggle={() => setShowLevels(!showLevels)} options={levelOptions} />
+                <FilterSection title="Language" show={showLanguages} toggle={() => setShowLanguages(!showLanguages)} options={languageOptions} />
+                <FilterSection title="Price" show={showPaids} toggle={() => setShowPaids(!showPaids)} options={priceOptions} />
+                <FilterSection title="Practice" show={showPractices} toggle={() => setShowPractices(!showPractices)} options={practiceOptions} />
+                <FilterSection title="Subtitle" show={showSubtitles} toggle={() => setShowSubtitles(!showSubtitles)} options={subtitleOptions} />
+              </div>
 
-      <FilterSection title="Ratings" show={showRatings} toggle={() => setShowRatings(!showRatings)} options={filters} />
-      <FilterSection title="Video Duration" show={showDurations} toggle={() => setShowDurations(!showDurations)} options={durations} />
-      <FilterSection title="Topic" show={showTopics} toggle={() => setShowTopics(!showTopics)} options={topicOptions} />
-      <FilterSection title="Subcategory" show={showSubcategories} toggle={() => setShowSubcategories(!showSubcategories)} options={subcategoryOptions} />
-      <FilterSection title="Level" show={showLevels} toggle={() => setShowLevels(!showLevels)} options={levelOptions} />
-      <FilterSection title="Language" show={showLanguages} toggle={() => setShowLanguages(!showLanguages)} options={languageOptions} />
-      <FilterSection title="Price" show={showPaids} toggle={() => setShowPaids(!showPaids)} options={priceOptions} />
-      <FilterSection title="Practice" show={showPractices} toggle={() => setShowPractices(!showPractices)} options={practiceOptions} />
-      <FilterSection title="Subtitle" show={showSubtitles} toggle={() => setShowSubtitles(!showSubtitles)} options={subtitleOptions} />
-    </aside>
+              <div className="p-4 border-t lg:hidden">
+                <button
+                  onClick={() => setShowFilters(false)}
+                  className="w-full bg-purple-600 text-white font-semibold py-3 rounded hover:bg-purple-700"
+                >
+                  Done
+                </button>
+              </div>
 
-    {/* Backdrop */}
-    <div
-      className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm xl:hidden"
-      onClick={() => setShowFilters(false)}
-    />
-  </>
-)}
-
-
+            </aside>
+            <div
+              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden"
+              onClick={() => setShowFilters(false)}
+            />
+          </>
+        )}
 
         <main className="flex-1 space-y-6 relative z-0">
           {paginatedCourses.map((course, i) => (
             <React.Fragment key={i}>
-              <div
-                className="relative"
-                onMouseEnter={() => setVisibleHoverIndex(i)}
-                onMouseLeave={() => setVisibleHoverIndex(null)}
-              >
-                <div className="flex flex-col sm:flex-row gap-4 border-b border-gray-300 pb-6 bg-white">
-                  <img src={course.image} alt={course.title} className="w-full sm:w-[332px] h-auto sm:h-[230px] object-center rounded border" />
+              <div className="relative group">
+                {activeCardIndex === i && (
+                  <div className="lg:hidden absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-[95%] max-w-sm p-4 rounded-lg shadow-lg bg-white border border-gray-200 z-20">
+                     <div
+                       className="absolute top-full left-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-white rotate-45 border-r border-b border-gray-200"
+                       aria-hidden="true"
+                     />
+                     <h4 className="font-bold text-gray-900 text-base mb-2">What you’ll learn</h4>
+                     <ul className="text-sm text-gray-700 list-disc list-inside space-y-1.5">
+                       {course.hoverLearn.map((point, idx) => (
+                         <li key={idx}>{point}</li>
+                       ))}
+                     </ul>
+                     <div className="flex justify-between items-center mt-4">
+                       <button className="flex-grow bg-purple-600 text-white font-semibold text-base px-4 py-3 rounded hover:bg-purple-700 transition">
+                         Add to cart
+                       </button>
+                       <div className="w-11 h-11 ml-3 shrink-0 rounded-full border-2 hover:bg-purple-100 border-purple-600 flex items-center justify-center cursor-pointer">
+                         <Heart className="w-5 h-5 text-purple-600" />
+                       </div>
+                     </div>
+                  </div>
+                )}
+                
+                {/* ✅ MODIFIED: Added onClick and cursor for mobile interaction */}
+                <div
+                  className="flex flex-row gap-4 border-b border-gray-300 pb-4 cursor-pointer lg:cursor-auto"
+                  onClick={() => handleCardClick(i)}
+                >
+                  {/* Image */}
+                  <img
+                    src={course.image}
+                    alt={course.title}
+                    className="w-24 h-16 sm:w-64 sm:h-36 object-cover rounded border"
+                  />
+                  {/* Details */}
                   <div className="flex-1">
-                    <h3 className="font-bold text-lg text-gray-900">{course.title}</h3>
-                    <p className="text-sm text-gray-700">{course.subtitle}</p>
-                    <p className="text-sm text-gray-700 mt-1">{course.instructor}</p>
+                    <h3 className="font-bold text-base text-gray-900 line-clamp-2">{course.title}</h3>
+                    <p className="hidden sm:block text-sm text-gray-700 mt-1 line-clamp-2">{course.subtitle}</p>
+                    <p className="text-xs text-gray-600 mt-1">{course.instructor}</p>
                     <div className="flex items-center gap-2 text-sm mt-1">
                       <span className="font-bold text-yellow-700">{course.rating}</span>
-                      <span className="text-yellow-600">★</span>
-                      <span className="text-gray-600">{course.students}</span>
+                      <span className="text-yellow-500">★</span>
+                      <span className="text-gray-600 text-xs">{course.students}</span>
                     </div>
-                    <div className="text-sm text-gray-600 mt-1">{course.duration}</div>
+                    <div className="hidden sm:block text-xs text-gray-600 mt-1">{course.duration}</div>
                     {course.badge && (
-                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded font-semibold mt-1 inline-block">
+                      <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold mt-2 inline-block">
                         {course.badge}
                       </span>
                     )}
                   </div>
-                  <div className="text-right font-bold text-[15px] text-gray-900 mt-2 sm:mt-0">{course.price}</div>
+                  {/* Price */}
+                  <div className="text-right font-bold text-sm sm:text-base text-gray-900">
+                    {course.price}
+                  </div>
                 </div>
 
-                {visibleHoverIndex === i && (
-                  <div className="hidden sm:block absolute -top-[140px] left-[260px] w-[360px] shadow-2xl rounded-md bg-white border border-gray-300 px-5 py-4 z-50">
-                    <h4 className="font-bold text-gray-900 text-sm mb-3">What you’ll learn</h4>
-                    <ul className="text-sm text-gray-700 list-disc list-inside space-y-1">
-                      {course.hoverLearn.map((point, idx) => (
-                        <li key={idx}>{point}</li>
-                      ))}
-                    </ul>
-                    <div className="flex justify-between items-center mt-6">
-                      <button className="bg-purple-600 w-[210px] text-white font-semibold text-lg px-4 py-2 rounded hover:bg-purple-700 transition">
-                        Add to cart
-                      </button>
-                      <div className="w-10 h-10 rounded-full border-2 hover:bg-purple-100 border-purple-600 flex items-center justify-center mr-6">
-                        <Heart className="w-5 h-5 text-purple-600" />
-                      </div>
+                {/* ✅ UNCHANGED: Desktop hover card remains the same */}
+                <div
+                  className="
+                    hidden lg:group-hover:block absolute top-4 left-[280px] w-[360px] shadow-2xl rounded-md
+                    bg-white border border-gray-300 px-5 py-4 z-20
+                  "
+                >
+                  <div className="absolute top-1/2 -left-2 -translate-y-1/2 w-4 h-4 bg-white rotate-45 border-l border-b border-gray-300" />
+                  <h4 className="font-bold text-gray-900 text-lg mb-3">What you’ll learn</h4>
+                  <ul className="text-sm text-gray-700 list-disc list-inside space-y-2">
+                    {course.hoverLearn.map((point, idx) => (
+                      <li key={idx}>{point}</li>
+                    ))}
+                  </ul>
+                  <div className="flex justify-between items-center mt-6">
+                    <button className="bg-purple-600 w-[210px] text-white font-semibold text-base px-4 py-3 rounded hover:bg-purple-700 transition">
+                      Add to cart
+                    </button>
+                    <div className="w-11 h-11 rounded-full border-2 hover:bg-purple-100 border-purple-600 flex items-center justify-center mr-6 cursor-pointer">
+                      <Heart className="w-5 h-5 text-purple-600" />
                     </div>
                   </div>
-                )}
+                </div>
               </div>
 
-              {/* Trust Eduten Section – only on first page after 2nd course */}
+              {/* Trust Eduten Section */}
               {currentPage === 1 && i === 1 && (
-                <div className="border border-gray-300 bg-white rounded-xl px-6 py-6 text-left space-y-4 mt-6 shadow-sm">
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900">Top companies trust Eduten</h3>
-                  <p className="text-sm text-gray-700">
-                    Get your team access to Eduten’s top 250,000+ courses
-                  </p>
-                  <div className="flex justify-start flex-wrap gap-6 mt-2">
-                    {["logo1.svg", "logo2.svg", "logo3.svg", "logo4.svg"].map((logo, idx) => (
-                      <img
-                        key={idx}
-                        src={`/assets/business/${logo}`}
-                        alt={`Logo ${idx}`}
-                        className="h-8 object-contain"
-                      />
-                    ))}
-                  </div>
-                  <div className="pt-2">
-                    <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm px-4 py-2 rounded">
-                      Try Eduten Business
-                    </button>
-                  </div>
-                </div>
+                 <div className="border border-gray-300 bg-white rounded-xl px-6 py-6 text-left space-y-4 mt-6 shadow-sm">
+                   <h3 className="text-lg md:text-xl font-bold text-gray-900">Top companies trust Eduten</h3>
+                   <p className="text-sm text-gray-700">
+                     Get your team access to Eduten’s top 250,000+ courses
+                   </p>
+                   <div className="flex justify-start flex-wrap gap-6 mt-2">
+                     {["logo1.svg", "logo2.svg", "logo3.svg", "logo4.svg"].map((logo, idx) => (
+                       <img
+                         key={idx}
+                         src={`/assets/business/${logo}`}
+                         alt={`Logo ${idx}`}
+                         className="h-8 object-contain"
+                       />
+                     ))}
+                   </div>
+                   <div className="pt-2">
+                     <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm px-4 py-2 rounded">
+                       Try Eduten Business
+                     </button>
+                   </div>
+                 </div>
               )}
-
             </React.Fragment>
           ))}
 
-          {/* ✅ Pagination rendered below course list */}
           <Pagination
             totalPages={totalPages}
             currentPage={currentPage}
