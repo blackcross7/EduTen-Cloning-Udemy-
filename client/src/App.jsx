@@ -15,7 +15,7 @@ import ProfilePage from "./pages/ProfilePage";
 import WebDevelopmentPage from "./pages/WebDevelopmentPage";
 import Footer from "./components/FooterSection/Footer";
 import BusinessCoursePage from "./pages/BusinessCoursePage";
-import PersonalDevPage from "./components/PersonalDevelopment/PersonalDevPage";
+import PersonalDevPage from "./pages/PersonalDevPage";
 import FinancePage from "./pages/FinancePage";
 import InteriorDesignPage from "./pages/InteriorDesignPage";
 import MarketingPage from "./pages/MarketingPage";
@@ -86,6 +86,7 @@ import VideoEditingPage from "./components/PhotographyAndVideoSubPages/VideoEdit
 import PhotoEditingPage from "./components/PhotographyAndVideoSubPages/PhotoEditing";
 import LightingTechniquesPage from "./components/PhotographyAndVideoSubPages/LightingTechniques";
 import DronePhotographyPage from "./components/PhotographyAndVideoSubPages/DronePhotography";
+import CartPage from "./pages/CartPage";
 
 // Photography and video sub-pages
 
@@ -109,6 +110,7 @@ function App() {
           path="/signup"
           element={user ? <LandingPage /> : <SignUpPage />}
         />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/business" element={<EduBusinessPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/web-development" element={<WebDevelopmentPage />} />
@@ -264,7 +266,6 @@ function App() {
           element={<DronePhotographyPage />}
         />
       </Routes>
-
       <Footer />
     </>
   );

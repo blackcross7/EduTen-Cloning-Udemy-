@@ -4,7 +4,11 @@ const HeroBanner = ({
   paragraph = "Explore courses from experienced, real-world experts.",
 }) => (
   <div className="hero-banner mx-6 font-serif">
-    {title && <h1 className="font-thin mb-6">{title}</h1>}
+    {title && (
+      <h1 className="font-bold lg:text-4xl md:text-2xl text-xl mb-6">
+        {title}
+      </h1>
+    )}
     <div>
       <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">{label}</h2>
 
