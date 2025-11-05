@@ -1,7 +1,8 @@
-import React from 'react';
-import WebCourseGrid from '../components/WebDevelopmentPage/WebCourseGrid';
-import PopularTopics from '../components/WebDevelopmentPage/PopularTopics';
-import WebCourseInfoPanel from '../components/WebDevelopmentPage/WebCourseInfoPanel';
+import React from "react";
+import WebCourseGrid from "../components/WebDevelopmentPage/WebCourseGrid";
+import PopularTopics from "../components/WebDevelopmentPage/PopularTopics";
+import WebCourseInfoPanel from "../components/WebDevelopmentPage/WebCourseInfoPanel";
+import FeaturedCourses from "../components/LifestylePage/FeaturedCourses";
 
 const WebDevelopmentPage = () => {
   return (
@@ -9,12 +10,11 @@ const WebDevelopmentPage = () => {
       <div className="w-[95vw] lg:w-[90vw] mx-auto">
         <WebCourseGrid />
         <PopularTopics />
-        <WebCourseInfoPanel /> 
-
+        <WebCourseInfoPanel />
+        <FeaturedCourses />
       </div>
     </main>
   );
 };
 
 export default WebDevelopmentPage;
- 

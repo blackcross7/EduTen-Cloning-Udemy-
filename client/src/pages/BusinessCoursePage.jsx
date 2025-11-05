@@ -1,10 +1,12 @@
 // src/pages/BusinessPage.jsx
 import React from "react";
 import BusinessCourseSection from "../components/BusinessCoursePage/BusinessCourseSection";
+import AllCourses from "../components/LifestylePage/AllCourses";
 import FeaturedCourses from "../components/BusinessCoursePage/FeaturedCourses";
 import PopularTopics from "../components/BusinessCoursePage/PopularTopics";
 import PopularInstructors from "../components/BusinessCoursePage/PopularInstructors";
 import AllBusinessCoursesSection from "../components/BusinessCoursePage/AllBusinessCoursesSection";
+// import { courses as healthandfitnesscourses } from "../components/HealthAndFitnessCoursePage/data/mockData";
 
 const BusinessCoursePage = () => {
   return (
@@ -21,5 +23,3 @@ const BusinessCoursePage = () => {
 };
 
 export default BusinessCoursePage;
-
- 

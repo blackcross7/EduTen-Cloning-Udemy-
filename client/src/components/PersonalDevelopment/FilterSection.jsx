@@ -1,88 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaFilter } from "react-icons/fa";
 
-// Single filter section component
-const FilterSection = ({ title, options, selectedOptions, onChange }) => (
-  <div className="mb-4">
-    <h3 className="font-semibold mb-2">{title}</h3>
-    <div className="flex flex-col gap-1">
-      {options.map((option) => (
-        <label key={option.value} className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={selectedOptions.includes(option.value)}
-            onChange={() => onChange(option.value)}
-            className="accent-purple-600"
-          />
-          {option.label}
-        </label>
-      ))}
-    </div>
-  </div>
-);
-
-// Main Sidebar Filters component
-const SidebarFilters = ({
-  levels = [],
-  providers = [],
-  prices = [],
-  ratings = [],
-  languages = [],
-  selectedFilters = {},
-  setSelectedFilters,
-}) => {
-  // Helper to handle checkbox changes
-  const handleCheckboxChange = (category, value) => {
-    const currentValues = selectedFilters[category] || [];
-    const updatedValues = currentValues.includes(value)
-      ? currentValues.filter((v) => v !== value)
-      : [...currentValues, value];
-
-    setSelectedFilters({
-      ...selectedFilters,
-      [category]: updatedValues,
-    });
-  };
-
+const FilterSection = () => {
+  const [setShowFilters, showFilters] = useState(false);
+  const [setSortVisible, sortVisible] = useState(false);
   return (
-    <aside className="w-full md:w-64 bg-white rounded-lg shadow p-4 mb-6 md:mb-0">
-      <h2 className="font-bold text-lg mb-4">Filters</h2>
+    <>
+      {/* Filters + Sort buttons */}
+      <div className="flex items-center gap-4 mt-4 flex-wrap pb-8">
+        <button
+          onClick={() => setShowFilters(!showFilters)}
+          className="flex items-center gap-2 border border-gray-600 font-semibold px-4 py-2 rounded text-sm hover:bg-gray-100 transition"
+        >
+          <FaFilter /> Filter
+        </button>
 
-      <FilterSection
-        title="Level"
-        options={levels.map((lvl) => ({ label: lvl, value: lvl }))}
-        selectedOptions={selectedFilters.level || []}
-        onChange={(val) => handleCheckboxChange("level", val)}
-      />
-
-      <FilterSection
-        title="Provider"
-        options={providers.map((p) => ({ label: p, value: p }))}
-        selectedOptions={selectedFilters.provider || []}
-        onChange={(val) => handleCheckboxChange("provider", val)}
-      />
-
-      <FilterSection
-        title="Price"
-        options={prices.map((p) => ({ label: p, value: p }))}
-        selectedOptions={selectedFilters.price || []}
-        onChange={(val) => handleCheckboxChange("price", val)}
-      />
-
-      <FilterSection
-        title="Rating"
-        options={ratings.map((r) => ({ label: r, value: r }))}
-        selectedOptions={selectedFilters.rating || []}
-        onChange={(val) => handleCheckboxChange("rating", val)}
-      />
-
-      <FilterSection
-        title="Language"
-        options={languages.map((l) => ({ label: l, value: l }))}
-        selectedOptions={selectedFilters.language || []}
-        onChange={(val) => handleCheckboxChange("language", val)}
-      />
-    </aside>
+        <div className="relative inline-block text-left">
+          <button
+            onClick={() => setSortVisible(!sortVisible)}
+            className="border border-gray-600 px-4 py-2 rounded font-semibold text-sm"
+          >
+            Sort by: Most Popular
+          </button>
+          {sortVisible && (
+            <div className="absolute mt-1 w-40 bg-white border rounded shadow z-10">
+              <div className="py-1 text-sm text-gray-900">
+                <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                  Most Popular
+                </div>
+                <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                  Highest Rated
+                </div>
+                <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                  Newest
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
   );
 };
 
-export default SidebarFilters;
+export default FilterSection;

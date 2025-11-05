@@ -32,9 +32,12 @@ const HealthAndFitnessPage = () => {
           trendingRatingData={trendingRatingData}
         />
         <FeaturedCourses courses={featuredCourses} />
-        <PopularTopics topics = {topics}/>
-        <PopularInstructors instructors={popularInstructors}/>
-        <AllCourses heading="All Health Courses" courses={healthandfitnesscourses} />
+        <PopularTopics topics={topics} />
+        <PopularInstructors instructors={popularInstructors} />
+        <AllCourses
+          heading="All Health Courses"
+          courses={healthandfitnesscourses}
+        />
       </div>
     </main>
   );

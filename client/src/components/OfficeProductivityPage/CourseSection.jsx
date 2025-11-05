@@ -3,6 +3,7 @@ import SidebarFilters from "./FilterSection";
 import CourseListItem from "./CourseListItem";
 import { Menu } from "lucide-react";
 import { useState, useEffect } from "react";
+import { FaFilter } from "react-icons/fa";
 
 const CardSection = ({
   filteredCourses,
@@ -10,10 +11,11 @@ const CardSection = ({
   // hoveredCourse,
   // handleCourseClick,
 }) => {
-  const [showFilters, setShowFilters] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(7); // default desktop = 7
   const [hoveredCourse, setHoveredCourse] = useState(null);
+  const [showFilters, setShowFilters] = useState(false);
+  const [sortVisible, setSortVisible] = useState(false);
 
   // Adjust items per page based on screen size
   useEffect(() => {
@@ -40,20 +42,56 @@ const CardSection = ({
 
   return (
     <div>
+      <h2 className="text-[24px] pl-5 pb-6 sm:text-[28px] font-extrabold ml-[18%] lg:ml-0 text-gray-900 ">
+        Office Productivity Courses
+      </h2>
       {/* Info Banner */}
       <div className="border mx-4 px-4 py-4 mb-6 rounded-xl flex flex-col sm:flex-row items-start sm:items-center gap-3 text-base font-bold text-[#2d2f31] bg-[#f7f9fa] border-[#d1d7dc]">
         <span className="text-purple-600 text-3xl sm:text-4xl font-bold">
           ⓘ
         </span>
+
         <p>Not sure? All courses have a 30-day money-back guarantee</p>
       </div>
 
       {/* Filter Toggle */}
       <button
         onClick={() => setShowFilters(!showFilters)}
-        className="mb-4 flex items-center hover:bg-slate-50 text-gray-700 font-semibold ml-4 border p-4 border-gray-500"
+        className="mb-4 flex items-center hover:bg-slate-50 text-gray-700 font-semibold ml-4 border "
       >
-        <Menu size={35} /> Filter
+        {/* Filters + Sort buttons */}
+        <div className="flex items-center gap-4 mt-4 flex-wrap pb-8">
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className="flex items-center gap-2 border border-gray-600 font-semibold px-4 py-2 rounded text-sm hover:bg-gray-100 transition"
+          >
+            <FaFilter /> Filter
+          </button>
+
+          <div className="relative inline-block text-left">
+            <button
+              onClick={() => setSortVisible(!sortVisible)}
+              className="border border-gray-600 px-4 py-2 rounded font-semibold text-sm"
+            >
+              Sort by: Most Popular
+            </button>
+            {sortVisible && (
+              <div className="absolute mt-1 w-40 bg-white border rounded shadow z-10">
+                <div className="py-1 text-sm text-gray-900">
+                  <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                    Most Popular
+                  </div>
+                  <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                    Highest Rated
+                  </div>
+                  <div className="px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                    Newest
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </button>
 
       <div className="px-6 py-8 pt-4 max-w-7xl mx-auto gap-2 flex flex-col md:flex-row">

@@ -7,13 +7,15 @@ import {
 
 const OfficeProductivityPage = () => {
   return (
-    <MainPage
-      title="Personal Development Courses"
-      paragraph="Explore courses from experienced, real-world experts."
-      courses={personalDevelopmentCourses}
-      topics={personalDevelopmentTopics}
-      instructors={personalDevelopmentInstructors}
-    />
+    <>
+      <MainPage
+        title="Personal Development Courses"
+        paragraph="Explore courses from experienced, real-world experts."
+        courses={personalDevelopmentCourses}
+        topics={personalDevelopmentTopics}
+        instructors={personalDevelopmentInstructors}
+      />
+    </>
   );
 };
 
